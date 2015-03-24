@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>Sprite/hero/cateran.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{139,125}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{139,125}</string>
+			</dict>
+			<key>Sprite/hero/cateran_disable.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{139,0},{139,125}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{139,125}</string>
+			</dict>
+			<key>Sprite/hero/general.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{687,0},{101,137}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{101,137}</string>
+			</dict>
+			<key>Sprite/hero/general_disable.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{550,0},{106,137}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{106,137}</string>
+			</dict>
+			<key>Sprite/hero/scholar_disable.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{278,0},{108,136}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{108,136}</string>
+			</dict>
+			<key>Sprite/hero/waiter.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{824,0},{101,137}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{101,137}</string>
+			</dict>
+			<key>Sprite/hero/waiter_disable.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{687,101},{101,137}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{101,137}</string>
+			</dict>
+			<key>Sprite/hero/scholar.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{414,0},{108,136}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{108,136}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>hero.png</string>
+			<key>realTextureFileName</key>
+			<string>hero.png</string>
+			<key>size</key>
+			<string>{961,202}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>961</integer>
+			<key>height</key>
+			<integer>202</integer>
+		</dict>
+	</dict>
+</plist>

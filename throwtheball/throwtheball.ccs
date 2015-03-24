@@ -1,0 +1,39 @@
+<Solution>
+  <PropertyGroup Name="throwtheball" Version="2.1.5.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Project Name="MainScene.csd" Type="Scene" />
+        <Image Name="HelloWorld.png" />
+        <Project Name="GameSceneNormal.csd" Type="Scene" />
+        <Folder Name="Sprite">
+          <Folder Name="hero">
+            <PlistInfo Name="hero.csi" Type="Plist" />
+            <Image Name="cateran.png" />
+            <Image Name="cateran_disable.png" />
+            <Image Name="general.png" />
+            <Image Name="general_disable.png" />
+            <Image Name="scholar_disable.png" />
+            <Image Name="waiter.png" />
+            <Image Name="waiter_disable.png" />
+            <Image Name="scholar.png" />
+          </Folder>
+          <Folder Name="object">
+            <PlistInfo Name="object.csi" Type="Plist" />
+            <Image Name="badegg.png" />
+            <Image Name="badvegetable.png" />
+            <Image Name="handkerchief.png" />
+            <Image Name="Hydrangea1.png" />
+            <Image Name="Hydrangea2.png" />
+            <Image Name="Hydrangea3.png" />
+            <Image Name="jade.png" />
+            <Image Name="jadependant.png" />
+            <Image Name="sachet.png" />
+            <Image Name="smellystockings.png" />
+            <Image Name="tile.png" />
+          </Folder>
+        </Folder>
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

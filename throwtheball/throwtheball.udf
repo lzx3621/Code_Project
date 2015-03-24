@@ -1,0 +1,26 @@
+<UserData>
+  <OpenedDocuments>
+    <FilePathData Path="Sprite/hero/hero.csi" />
+    <FilePathData Path="MainScene.csd" />
+    <FilePathData Path="Sprite/object/object.csi" />
+  </OpenedDocuments>
+  <ActiveDocument Path="MainScene.csd" />
+  <Properties>
+    <Item Key="PackageParamsKey">
+      <Value ctype="PackageParams">
+        <LuaIsEncrypt Value="False" />
+        <LuaEncryptKey Value="" />
+        <LuaEncryptSign Value="" />
+        <Android_PackageName Value="org.cocos.throwtheball" />
+        <AndroidkeyStore Value="" />
+        <AndroidVersion Value="android-11" />
+        <iOS_Target Value="throwtheball iOS" />
+        <iOS_BundleID Value="" />
+        <Platform Value="Android" />
+        <PublishSetting Value="Resource" />
+        <FrameworkVersion Value="cocos2d-x-3.4" />
+        <IsDebugKeystore Value="True" />
+      </Value>
+    </Item>
+  </Properties>
+</UserData>

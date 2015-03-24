@@ -1,0 +1,19 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Type="Plist" Name="object" ID="7e0b3ce8-7147-4925-a47b-bbb0ee1079af" Version="2.1.5.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="0" AllowRotation="True" AllowAnySize="True" AllowTrim="True" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="Sprite/object/badegg.png" />
+      <FilePathData Path="Sprite/object/badvegetable.png" />
+      <FilePathData Path="Sprite/object/handkerchief.png" />
+      <FilePathData Path="Sprite/object/Hydrangea1.png" />
+      <FilePathData Path="Sprite/object/Hydrangea2.png" />
+      <FilePathData Path="Sprite/object/Hydrangea3.png" />
+      <FilePathData Path="Sprite/object/jade.png" />
+      <FilePathData Path="Sprite/object/jadependant.png" />
+      <FilePathData Path="Sprite/object/sachet.png" />
+      <FilePathData Path="Sprite/object/smellystockings.png" />
+      <FilePathData Path="Sprite/object/tile.png" />
+    </ImageFiles>
+    <MaxSize Width="1024" Height="1024" />
+  </Content>
+</PlistInfoProjectFile>
