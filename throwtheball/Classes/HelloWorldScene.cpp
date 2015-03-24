@@ -37,14 +37,14 @@ bool HelloWorld::init()
 
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
-    auto body = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
+    auto body = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(1.0f, 0.0f, 0.5F), 3);
     this->setPhysicsBody(body);
     body->setPositionOffset(Point(visibleSize.width/2, visibleSize.height/2));
     addChild(rootNode,0);
     auto heroCache = CCSpriteFrameCache::getInstance(); 
     heroCache->addSpriteFramesWithFile("Sprite/hero/hero.plist");
     auto sprite = Sprite::createWithSpriteFrame(heroCache->getSpriteFrameByName("Sprite/hero/waiter.png"));
-    sprite->setPhysicsBody(PhysicsBody::createBox(sprite->getContentSize()));
+    sprite->setPhysicsBody(PhysicsBody::createBox(sprite->getContentSize(), PhysicsMaterial(1.0f, 0.0f, 0.5F)));
     
     auto mouseEvent = EventListenerTouchOneByOne::create();
     mouseEvent->onTouchBegan = [=](Touch* touch, Event* event){
@@ -58,6 +58,7 @@ bool HelloWorld::init()
         //sprite->setPosition(0, 0);
     };
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseEvent, sprite);
+
     /*rootNode->*/addChild(sprite);
     
     return true;

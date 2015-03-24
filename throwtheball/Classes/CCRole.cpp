@@ -19,7 +19,8 @@ bool SuperRole::init()
     {
         return false;
     }
-    
+    auto physicalBody = PhysicsBody::createBox(getSpriteFrameByRoleType()->getOriginalSize(), PhysicsMaterial(1.0f, 0.0f, 0.5F));
+    setPhysicsBody(physicalBody);
     return true;
 }
 
@@ -73,3 +74,69 @@ SpriteFrame* SuperRole::getSpriteFrameByRoleType()
     return framePath.empty()?nullptr:CCSpriteFrameCache::getInstance()->getSpriteFrameByName(framePath);
 }
 
+
+bool CChero::init()
+{
+    if (!SuperRole::init())
+    {
+        return false;
+    }
+    
+    //此处设置主角被所有东西碰撞，但下落物体自己不碰撞
+    getPhysicsBody()->setCategoryBitmask(0x01);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x01);
+    
+    auto contactListener = EventListenerPhysicsContact::create();
+    contactListener->onContactBegin = CC_CALLBACK_1(CChero::onContactBegin, this);
+    getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
+    setName("Hero");
+    return true;
+}
+
+
+//主角类实现
+
+bool CChero::onContactBegin( PhysicsContact& contact )
+{
+    auto ptr_NodeA = dynamic_cast<SuperRole*>(contact.getShapeA()->getBody()->getNode());
+    auto ptr_NodeB = dynamic_cast<SuperRole*>(contact.getShapeB()->getBody()->getNode());
+    if (nullptr == ptr_NodeA && nullptr == ptr_NodeB)
+    {
+    }
+    if (MAIN_HERO == ptr_NodeA->getType())
+    {
+        ptr_NodeA->_live += ptr_NodeB->_live;
+        ptr_NodeA->_score += ptr_NodeB->_score;
+        if (0 >= ptr_NodeA->_live)
+        {
+            _onHeroDeath();
+        }
+    }
+    if (MAIN_HERO == ptr_NodeB->getType())
+    {
+        ptr_NodeB->_live += ptr_NodeA->_live;
+        ptr_NodeB->_score += ptr_NodeA->_score;
+        if (0 >= ptr_NodeB->_live)
+        {
+            _onHeroDeath();
+        }
+    }
+    return true;
+}
+
+//绣球类实现
+
+bool CCHydrangea::init()
+{
+    if (!SuperRole::init())
+    {
+        return false;
+    }
+    //要设置同物体可以不相碰，但主角要相碰
+    getPhysicsBody()->setCategoryBitmask(0x01);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x01);
+    setName("Hydrangea");
+    return true;
+}
