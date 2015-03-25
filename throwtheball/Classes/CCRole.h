@@ -3,23 +3,22 @@
 
 #include "cocos2d.h"
 
-class SuperRole : public cocos2d::Sprite
+enum RoleType
 {
-public:
-	enum RoleType
-	{
-        Default = -1,
-		MAIN_HERO,                  //主角
-        DAMAGE_HYDRANGEA,           //绣球
-        DAMAGE_TILE,                //瓦片
-        DAMAGE_BAD_EGG,             //臭鸡蛋
-        DAMAGE_SMELLY_STOCKINGS,    //臭袜子
-        DAMAGE_BAD_VEGETABLE,       //栏菜叶
-        GAIN_SACHET,                //香囊
-        GAIN_HANDKERCHIEF,          //手帕
-        GAIN_JADE_PENDANT,          //玉佩
-        GAIN_JADE                   //如意
-	};                                
+    Default = -1,
+    MAIN_HERO,                  //主角
+    DAMAGE_HYDRANGEA,           //绣球
+    DAMAGE_TILE,                //瓦片
+    DAMAGE_BAD_EGG,             //臭鸡蛋
+    DAMAGE_SMELLY_STOCKINGS,    //臭袜子
+    DAMAGE_BAD_VEGETABLE,       //栏菜叶
+    GAIN_SACHET,                //香囊
+    GAIN_HANDKERCHIEF,          //手帕
+    GAIN_JADE_PENDANT,          //玉佩
+    GAIN_JADE                   //如意
+};  
+class SuperRole : public cocos2d::Sprite
+{                       
 protected:
     SuperRole():
         _roleType(Default),
@@ -51,31 +50,45 @@ public:
 
 };
 
+class CCRoleFactory
+{
+protected:
+    CCRoleFactory();
+    ~CCRoleFactory();
+public:
+    //施行托管，创建的精灵生命周期由Parents控制,返回精灵的引用
+    static SuperRole* createRole(RoleType &Type, cocos2d::Node* const &Parents );
+};
 
-//主角类应当为单例存在
+
+//主角类应当为在一个游戏模式中应该为单例存在
 
 class CChero : public SuperRole
 {
 /*
-    struct IheroDeath 
+    struct IUpdateLiveAndScore 
     {
     protected:
-        IheroDeath(){}
-        ~IheroDeath(){}
+        IUpdateLiveAndScore(){}
+        ~IUpdateLiveAndScore(){}
     public:
-        virtual void onheroDeath() = 0;
+        virtual void onUpdateLiveAndScore() = 0;
     };*/
+    typedef std::function<void(const int& iHerolive, const int& iHeroScore)> UpdateLiveAndScore;
 protected:
     CChero():SuperRole(MAIN_HERO, 5, 0){}
     ~CChero(){}
+    CREATE_FUNC(CChero);
 public:
     bool init() override;
     bool onContactBegin(cocos2d::PhysicsContact& contact);
-    void setHeroDeathCallback( const std::function<void()>& onHeroDeath) { _onHeroDeath = onHeroDeath;}
-    const std::function<void()> getHeroDeathCallback() {return &_onHeroDeath;}
+    void setUpdateLiveAndScoreCallback( UpdateLiveAndScore& onUpdateLiveAndScore) { _onUpdateLiveAndScore = onUpdateLiveAndScore;}
+    UpdateLiveAndScore getUpdateLiveAndScoreCallback() const {return _onUpdateLiveAndScore;}
 protected:
-/*    IheroDeath _onheroDeath;*/
-    std::function<void()> _onHeroDeath;
+/*    IUpdateLiveAndScore _onUpdateLiveAndScore;*/
+    //数据更新，用于通知界面更新数据
+    UpdateLiveAndScore _onUpdateLiveAndScore;
+    friend CCRoleFactory;
 };
 
 
@@ -84,8 +97,23 @@ class CCHydrangea : public SuperRole
 {
 protected:
     CCHydrangea():SuperRole(DAMAGE_HYDRANGEA, 0, 200){}
-    ~CCHydrangea();
+    ~CCHydrangea(){}
+    CREATE_FUNC(CCHydrangea);
 public:
     bool init() override;
+    friend CCRoleFactory;
 };
+
+//绣球类
+class CCTile : public SuperRole
+{
+protected:
+    CCTile():SuperRole(DAMAGE_HYDRANGEA, 0, 200){}
+    ~CCTile(){}
+    CREATE_FUNC(CCTile);
+public:
+    bool init() override;
+    friend CCRoleFactory;
+};
+
 #endif // __HELLOWORLD_SCENE_H__

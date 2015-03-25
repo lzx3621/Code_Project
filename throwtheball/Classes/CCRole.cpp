@@ -11,7 +11,14 @@ bool SuperRole::init()
 {
     auto heroCache = CCSpriteFrameCache::getInstance(); 
     if (nullptr == heroCache) { return false;}
+    auto fileUtil = FileUtils::getInstance();
+    std::string fliename(fileUtil->getWritablePath()+"appConfig.plist");
+    if (fileUtil->isFileExist(fliename))
+    {
+        ValueMap appConfig = fileUtil->getValueMapFromFile(fliename);
+    }
     
+
     heroCache->addSpriteFramesWithFile("Sprite/hero/hero.plist");
     heroCache->addSpriteFramesWithFile("Sprite/object/object.plist");
 
@@ -95,6 +102,44 @@ bool CChero::init()
 }
 
 
+//Role类工厂，用于创建角色对象，返回超类的引用对象
+
+SuperRole* CCRoleFactory::createRole( RoleType &Type, Node* const &Parents )
+{
+    SuperRole *ptr_Rtn = nullptr;
+    switch(Type)
+    {
+    case MAIN_HERO:
+        ptr_Rtn = CChero::create();
+        break;
+    case DAMAGE_HYDRANGEA:
+        ptr_Rtn = CCHydrangea::create();
+        break;
+    case DAMAGE_TILE:
+        ptr_Rtn = CCHydrangea::create();
+        break;
+    case DAMAGE_BAD_EGG:
+        ptr_Rtn = CCHydrangea::create();
+        break;
+    case DAMAGE_SMELLY_STOCKINGS:
+        ptr_Rtn = CCHydrangea::create();
+        break;
+    case DAMAGE_BAD_VEGETABLE:
+        ptr_Rtn = CCHydrangea::create();
+        break;
+    case GAIN_SACHET:
+        ptr_Rtn = CCHydrangea::create();
+        break;
+    };
+    if (nullptr != ptr_Rtn)
+    {
+        Parents->addChild(ptr_Rtn);
+    }
+    return ptr_Rtn;
+}
+
+
+
 //主角类实现
 
 bool CChero::onContactBegin( PhysicsContact& contact )
@@ -108,20 +153,15 @@ bool CChero::onContactBegin( PhysicsContact& contact )
     {
         ptr_NodeA->_live += ptr_NodeB->_live;
         ptr_NodeA->_score += ptr_NodeB->_score;
-        if (0 >= ptr_NodeA->_live)
-        {
-            _onHeroDeath();
-        }
+        _onUpdateLiveAndScore(ptr_NodeA->_live, ptr_NodeA->_score);
     }
     if (MAIN_HERO == ptr_NodeB->getType())
     {
         ptr_NodeB->_live += ptr_NodeA->_live;
         ptr_NodeB->_score += ptr_NodeA->_score;
-        if (0 >= ptr_NodeB->_live)
-        {
-            _onHeroDeath();
-        }
+        _onUpdateLiveAndScore(ptr_NodeB->_live, ptr_NodeB->_score);
     }
+    
     return true;
 }
 
@@ -134,9 +174,9 @@ bool CCHydrangea::init()
         return false;
     }
     //要设置同物体可以不相碰，但主角要相碰
-    getPhysicsBody()->setCategoryBitmask(0x01);
+    getPhysicsBody()->setCategoryBitmask(0x10);
     getPhysicsBody()->setContactTestBitmask(0x01);
-    getPhysicsBody()->setCollisionBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
     setName("Hydrangea");
     return true;
 }

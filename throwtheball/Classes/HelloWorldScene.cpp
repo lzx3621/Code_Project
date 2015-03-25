@@ -61,5 +61,22 @@ bool HelloWorld::init()
 
     /*rootNode->*/addChild(sprite);
     
+    auto fileUtil = FileUtils::getInstance();
+    std::string fliename(fileUtil->getWritablePath()+"appConfig.plist");
+    fliename = fileUtil->fullPathFromRelativeFile("res",fliename);
+    ValueMap appConfig;
+    if (fileUtil->isFileExist(fliename))
+    {
+         //appConfig= fileUtil->getValueMapFromFile(fliename);
+         auto test = fileUtil->getValueVectorFromFile(fliename);
+
+    }
+    else
+    {
+        Value iValue(3621);
+        appConfig.insert(ValueMap::value_type("test",iValue));
+        fileUtil->writeToFile(appConfig, fliename);
+    }
+
     return true;
 }
