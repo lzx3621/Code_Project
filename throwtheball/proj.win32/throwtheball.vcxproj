@@ -135,15 +135,20 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\CCGameSceneNormal.cpp" />
+    <ClCompile Include="..\Classes\CCRoleFactory.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\CCRole.cpp" />
+    <ClCompile Include="..\Classes\CCRule.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\CCGameSceneNormal.h" />
+    <ClInclude Include="..\Classes\CCRoleFactory.h" />
+    <ClInclude Include="..\Classes\Define.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\CCRole.h" />
+    <ClInclude Include="..\Classes\CCRule.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

@@ -102,6 +102,7 @@ bool CChero::init()
 }
 
 
+
 //主角类实现
 
 bool CChero::onContactBegin( PhysicsContact& contact )
@@ -110,18 +111,19 @@ bool CChero::onContactBegin( PhysicsContact& contact )
     auto ptr_NodeB = dynamic_cast<SuperRole*>(contact.getShapeB()->getBody()->getNode());
     if (nullptr == ptr_NodeA && nullptr == ptr_NodeB)
     {
+        return false;
     }
     if (MAIN_HERO == ptr_NodeA->getType())
     {
         ptr_NodeA->_live += ptr_NodeB->_live;
         ptr_NodeA->_score += ptr_NodeB->_score;
-        _onUpdateLiveAndScore(ptr_NodeA->_live, ptr_NodeA->_score);
+        _onHeroContact(ptr_NodeA, ptr_NodeB, ptr_NodeA->_live, ptr_NodeA->_score);
     }
     if (MAIN_HERO == ptr_NodeB->getType())
     {
         ptr_NodeB->_live += ptr_NodeA->_live;
         ptr_NodeB->_score += ptr_NodeA->_score;
-        _onUpdateLiveAndScore(ptr_NodeB->_live, ptr_NodeB->_score);
+        _onHeroContact(ptr_NodeB, ptr_NodeA, ptr_NodeB->_live, ptr_NodeB->_score);
     }
     
     return true;
