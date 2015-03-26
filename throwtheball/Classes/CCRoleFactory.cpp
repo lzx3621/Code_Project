@@ -9,7 +9,7 @@ using namespace cocostudio::timeline;
 
 //Role类工厂，用于创建角色对象，返回超类的引用对象
 
-SuperRole* CCRoleFactory::createRole( RoleType &Type, Node* const &Parents )
+Sprite* CCRoleFactory::createRoleForObject( RoleType &Type, Node* const &Mount )
 {
     SuperRole *ptr_Rtn = nullptr;
     switch(Type)
@@ -38,7 +38,7 @@ SuperRole* CCRoleFactory::createRole( RoleType &Type, Node* const &Parents )
     };
     if (nullptr != ptr_Rtn)
     {
-        Parents->addChild(ptr_Rtn);
+        Mount->addChild(ptr_Rtn);
     }
     return ptr_Rtn;
 }

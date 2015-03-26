@@ -1,24 +1,9 @@
 #ifndef __ROLE_SPRITE_H__
 #define __ROLE_SPRITE_H__
 
-#include "cocos2d.h"
+#include "Define.h"
 
 class CCRoleFactory;
-
-enum RoleType
-{
-    Default = -1,
-    MAIN_HERO,                  //主角
-    DAMAGE_HYDRANGEA,           //绣球
-    DAMAGE_TILE,                //瓦片
-    DAMAGE_BAD_EGG,             //臭鸡蛋
-    DAMAGE_SMELLY_STOCKINGS,    //臭袜子
-    DAMAGE_BAD_VEGETABLE,       //栏菜叶
-    GAIN_SACHET,                //香囊
-    GAIN_HANDKERCHIEF,          //手帕
-    GAIN_JADE_PENDANT,          //玉佩
-    GAIN_JADE                   //如意
-};  
 
 class SuperRole : public cocos2d::Sprite
 {                       
@@ -33,9 +18,9 @@ protected:
         _live(iLive),
         _score(iScore)
     {}
-    virtual ~SuperRole(){}
 
 public:
+    virtual ~SuperRole(){}
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init() override;
     RoleType getType(){ return _roleType; }
@@ -58,28 +43,27 @@ public:
 class CChero : public SuperRole
 {
 /*
-    struct IUpdateLiveAndScore 
+    struct IHeroContact 
     {
     protected:
-        IUpdateLiveAndScore(){}
-        ~IUpdateLiveAndScore(){}
+        IHeroContact(){}
+        ~IHeroContact(){}
     public:
-        virtual void onUpdateLiveAndScore() = 0;
+        virtual void onHeroContact() = 0;
     };*/
-    typedef std::function<void(const int& iHerolive, const int& iHeroScore)> UpdateLiveAndScore;
 protected:
     CChero():SuperRole(MAIN_HERO, 5, 0){}
-    ~CChero(){}
     CREATE_FUNC(CChero);
 public:
+    ~CChero(){}
     bool init() override;
     bool onContactBegin(cocos2d::PhysicsContact& contact);
-    void setUpdateLiveAndScoreCallback( UpdateLiveAndScore& onUpdateLiveAndScore) { _onUpdateLiveAndScore = onUpdateLiveAndScore;}
-    UpdateLiveAndScore getUpdateLiveAndScoreCallback() const {return _onUpdateLiveAndScore;}
+    void setHeroContactCallback( HeroContact& onHeroContact) { _onHeroContact = onHeroContact;}
+    HeroContact getHeroContactCallback() const {return _onHeroContact;}
 protected:
-/*    IUpdateLiveAndScore _onUpdateLiveAndScore;*/
+/*    IHeroContact _onHeroContact;*/
     //数据更新，用于通知界面更新数据
-    UpdateLiveAndScore _onUpdateLiveAndScore;
+    HeroContact _onHeroContact;
     friend CCRoleFactory;
 };
 
@@ -100,7 +84,7 @@ public:
 class CCTile : public SuperRole
 {
 protected:
-    CCTile():SuperRole(DAMAGE_TILE, 0, 200){}
+    CCTile():SuperRole(DAMAGE_TILE, -1, 0){}
     ~CCTile(){}
     CREATE_FUNC(CCTile);
 public:
@@ -112,7 +96,7 @@ public:
 class CCBadGgg : public SuperRole
 {
 protected:
-    CCBadGgg():SuperRole(DAMAGE_BAD_EGG, 0, 200){}
+    CCBadGgg():SuperRole(DAMAGE_BAD_EGG, 0, -150){}
     ~CCBadGgg(){}
     CREATE_FUNC(CCBadGgg);
 public:
@@ -124,7 +108,7 @@ public:
 class CCSmellyStockings : public SuperRole
 {
 protected:
-    CCSmellyStockings():SuperRole(DAMAGE_SMELLY_STOCKINGS, 0, 200){}
+    CCSmellyStockings():SuperRole(DAMAGE_SMELLY_STOCKINGS, 0, -100){}
     ~CCSmellyStockings(){}
     CREATE_FUNC(CCSmellyStockings);
 public:
@@ -136,7 +120,7 @@ public:
 class CCBadVegetable : public SuperRole
 {
 protected:
-    CCBadVegetable():SuperRole(DAMAGE_BAD_VEGETABLE, 0, 200){}
+    CCBadVegetable():SuperRole(DAMAGE_BAD_VEGETABLE, 0, -50){}
     ~CCBadVegetable(){}
     CREATE_FUNC(CCBadVegetable);
 public:
@@ -148,7 +132,7 @@ public:
 class CCSachet : public SuperRole
 {
 protected:
-    CCSachet():SuperRole(GAIN_SACHET, 0, 200){}
+    CCSachet():SuperRole(GAIN_SACHET, 0, 50){}
     ~CCSachet(){}
     CREATE_FUNC(CCSachet);
 public:
@@ -160,7 +144,7 @@ public:
 class CCHandkerchief : public SuperRole
 {
 protected:
-    CCHandkerchief():SuperRole(GAIN_HANDKERCHIEF, 0, 200){}
+    CCHandkerchief():SuperRole(GAIN_HANDKERCHIEF, 0, 100){}
     ~CCHandkerchief(){}
     CREATE_FUNC(CCHandkerchief);
 public:
@@ -172,7 +156,7 @@ public:
 class CCJadePendant : public SuperRole
 {
 protected:
-    CCJadePendant():SuperRole(GAIN_JADE_PENDANT, 0, 200){}
+    CCJadePendant():SuperRole(GAIN_JADE_PENDANT, 0, 150){}
     ~CCJadePendant(){}
     CREATE_FUNC(CCJadePendant);
 public:
