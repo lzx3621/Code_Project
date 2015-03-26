@@ -67,9 +67,7 @@ bool HelloWorld::init()
     ValueMap appConfig;
     if (fileUtil->isFileExist(fliename))
     {
-         //appConfig= fileUtil->getValueMapFromFile(fliename);
-         auto test = fileUtil->getValueVectorFromFile(fliename);
-
+         appConfig= fileUtil->getValueMapFromFile(fliename);
     }
     else
     {
