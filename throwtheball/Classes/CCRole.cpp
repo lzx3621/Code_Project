@@ -102,44 +102,6 @@ bool CChero::init()
 }
 
 
-//Role类工厂，用于创建角色对象，返回超类的引用对象
-
-SuperRole* CCRoleFactory::createRole( RoleType &Type, Node* const &Parents )
-{
-    SuperRole *ptr_Rtn = nullptr;
-    switch(Type)
-    {
-    case MAIN_HERO:
-        ptr_Rtn = CChero::create();
-        break;
-    case DAMAGE_HYDRANGEA:
-        ptr_Rtn = CCHydrangea::create();
-        break;
-    case DAMAGE_TILE:
-        ptr_Rtn = CCHydrangea::create();
-        break;
-    case DAMAGE_BAD_EGG:
-        ptr_Rtn = CCHydrangea::create();
-        break;
-    case DAMAGE_SMELLY_STOCKINGS:
-        ptr_Rtn = CCHydrangea::create();
-        break;
-    case DAMAGE_BAD_VEGETABLE:
-        ptr_Rtn = CCHydrangea::create();
-        break;
-    case GAIN_SACHET:
-        ptr_Rtn = CCHydrangea::create();
-        break;
-    };
-    if (nullptr != ptr_Rtn)
-    {
-        Parents->addChild(ptr_Rtn);
-    }
-    return ptr_Rtn;
-}
-
-
-
 //主角类实现
 
 bool CChero::onContactBegin( PhysicsContact& contact )
@@ -178,5 +140,117 @@ bool CCHydrangea::init()
     getPhysicsBody()->setContactTestBitmask(0x01);
     getPhysicsBody()->setCollisionBitmask(0x100);
     setName("Hydrangea");
+    return true;
+}
+
+bool CCTile::init()
+{
+    if (!SuperRole::init())
+    {
+        return false;
+    }
+    //要设置同物体可以不相碰，但主角要相碰
+    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
+    setName("Tile");
+    return true;
+}
+
+bool CCBadGgg::init()
+{
+    if (!SuperRole::init())
+    {
+        return false;
+    }
+    //要设置同物体可以不相碰，但主角要相碰
+    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
+    setName("BadGgg");
+    return true;
+}
+
+bool CCSmellyStockings::init()
+{
+    if (!SuperRole::init())
+    {
+        return false;
+    }
+    //要设置同物体可以不相碰，但主角要相碰
+    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
+    setName("SmellyStockings");
+    return true;
+}
+
+bool CCBadVegetable::init()
+{
+    if (!SuperRole::init())
+    {
+        return false;
+    }
+    //要设置同物体可以不相碰，但主角要相碰
+    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
+    setName("BadVegetable");
+    return true;
+}
+
+bool CCSachet::init()
+{
+    if (!SuperRole::init())
+    {
+        return false;
+    }
+    //要设置同物体可以不相碰，但主角要相碰
+    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
+    setName("Sachet");
+    return true;
+}
+
+bool CCHandkerchief::init()
+{
+    if (!SuperRole::init())
+    {
+        return false;
+    }
+    //要设置同物体可以不相碰，但主角要相碰
+    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
+    setName("Handkerchief");
+    return true;
+}
+
+bool CCJadePendant::init()
+{
+    if (!SuperRole::init())
+    {
+        return false;
+    }
+    //要设置同物体可以不相碰，但主角要相碰
+    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
+    setName("JadePendant");
+    return true;
+}
+
+bool CCJade::init()
+{
+    if (!SuperRole::init())
+    {
+        return false;
+    }
+    //要设置同物体可以不相碰，但主角要相碰
+    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
+    setName("Jade");
     return true;
 }
