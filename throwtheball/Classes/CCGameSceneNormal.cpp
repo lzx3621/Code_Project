@@ -9,7 +9,7 @@ using namespace cocostudio::timeline;
 Scene* GameSceneNormal::createScene()
 {
     // 'scene' is an autorelease object
-    auto scene = Scene::create();
+    auto scene = Scene::createWithPhysics();
     
     // 'layer' is an autorelease object
     auto layer = GameSceneNormal::create();

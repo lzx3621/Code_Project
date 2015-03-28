@@ -115,15 +115,15 @@ bool CChero::onContactBegin( PhysicsContact& contact )
     }
     if (MAIN_HERO == ptr_NodeA->getType())
     {
-        ptr_NodeA->_live += ptr_NodeB->_live;
-        ptr_NodeA->_score += ptr_NodeB->_score;
-        _onHeroContact(ptr_NodeA, ptr_NodeB, ptr_NodeA->_live, ptr_NodeA->_score);
+        ptr_NodeA->_currentLive += ptr_NodeB->_currentLive;
+        ptr_NodeA->_currentScore += ptr_NodeB->_currentScore;
+        _onHeroContact(ptr_NodeA, ptr_NodeB, ptr_NodeA->_currentLive, ptr_NodeA->_currentScore);
     }
     if (MAIN_HERO == ptr_NodeB->getType())
     {
-        ptr_NodeB->_live += ptr_NodeA->_live;
-        ptr_NodeB->_score += ptr_NodeA->_score;
-        _onHeroContact(ptr_NodeB, ptr_NodeA, ptr_NodeB->_live, ptr_NodeB->_score);
+        ptr_NodeB->_currentLive += ptr_NodeA->_currentLive;
+        ptr_NodeB->_currentScore += ptr_NodeA->_currentScore;
+        _onHeroContact(ptr_NodeB, ptr_NodeA, ptr_NodeB->_currentLive, ptr_NodeB->_currentScore);
     }
     
     return true;
