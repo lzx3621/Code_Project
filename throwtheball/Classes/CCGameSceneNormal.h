@@ -2,10 +2,12 @@
 #define __GAMESCENENORMAL_SCENE_H__
 
 #include "cocos2d.h"
+#include "CCRule.h"
 
-class GameSceneNormal : public cocos2d::Layer
+class CCGameSceneNormal : public cocos2d::Layer
 {
 public:
+    CCGameSceneNormal(){}
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
 
@@ -13,7 +15,10 @@ public:
     virtual bool init();
 
     // implement the "static create()" method manually
-    CREATE_FUNC(GameSceneNormal);
+    CREATE_FUNC(CCGameSceneNormal);
+
+    void startGame();
+
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -4,16 +4,21 @@
 class CCNormalRule :
     public CCRule
 {
-public:
+protected:
     CCNormalRule(void);
-    ~CCNormalRule(void);
-    
+    CCNormalRule(CCRoleAdapter* heroSprite,
+            CCRoleFactory* roleFactory)
+            :CCRule(heroSprite, roleFactory){}
 public:
-    virtual void onHeroContact(cocos2d::Sprite* Hero, cocos2d::Sprite* Contact, const int& iHerolive, const int& iHeroScore) override;
+    static CCNormalRule* create(cocos2d::Node* const parent);
+    ~CCNormalRule(void);
+    virtual bool init() override;
     virtual void onStart() override;
+    virtual void onRestat() override;
     virtual void onPause() override;
     virtual void onEnd() override;
-
+    void createObjectOffFall(float dt);
+    virtual void onHeroContact(cocos2d::Sprite* Hero, cocos2d::Sprite* Contact, const int& iHerolive, const int& iHeroScore) override;
 };
 
 #endif __NORMALRULE_H__

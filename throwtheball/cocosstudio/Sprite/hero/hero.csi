@@ -1,5 +1,5 @@
 <PlistInfoProjectFile>
-  <PropertyGroup Type="Plist" Name="hero" ID="ffd71a0b-eca0-433b-860a-cbe8fae57e84" Version="2.1.5.0" />
+  <PropertyGroup Type="Plist" Name="hero" ID="ffd71a0b-eca0-433b-860a-cbe8fae57e84" Version="2.2.1.0" />
   <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="0" AllowRotation="True" AllowAnySize="True" AllowTrim="True" ctype="PlistInfoData">
     <ImageFiles>
       <FilePathData Path="Sprite/hero/cateran.png" />

@@ -1,15 +1,13 @@
-#include "CCRole.h"
-#include "CCRoleFactory.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-
+#include "CCRoleFactoryOfObject.h"
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
 
 //Role类工厂，用于创建角色对象，返回超类的引用对象
 
-Sprite* CCRoleFactoryOfObject::createRoleForObject( RoleType Type, Node* const &Mount )
+SuperRole* CCRoleFactoryOfObject::createRoleForObject( RoleType Type, const Vec2 &pos )
 {
     SuperRole *ptr_Rtn = nullptr;
     switch(Type)
@@ -38,7 +36,29 @@ Sprite* CCRoleFactoryOfObject::createRoleForObject( RoleType Type, Node* const &
     };
     if (nullptr != ptr_Rtn)
     {
-        Mount->addChild(ptr_Rtn);
+        _parents->addChild(ptr_Rtn);
+        ptr_Rtn->setPosition(pos);
     }
     return ptr_Rtn;
+}
+
+bool CCRoleFactoryOfObject::init()
+{
+    return true;
+}
+
+ptr_RoleFactory CCRoleFactoryOfObject::create( cocos2d::Node* const &parents )
+{
+    if ( nullptr == parents) 
+    {
+        return ptr_RoleFactory(nullptr);
+    }
+    auto instance = ptr_RoleFactory(new(std::nothrow) CCRoleFactoryOfObject(parents));
+    instance->init();
+    return instance;
+}
+
+CCRoleAdapter* CCRoleFactoryOfObject::getRoleAdapter( cocos2d::Sprite* factoryCreate )
+{
+    return nullptr;
 }

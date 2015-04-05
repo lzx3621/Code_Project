@@ -1,25 +1,24 @@
 #ifndef __ROLE_FACTORY_H__
 #define __ROLE_FACTORY_H__
 #include "CCRole.h"
+#include "CCRoleAdapter.h"
 
-class CCRoleFactory_Interface
+class CCRoleFactory;
+
+typedef std::shared_ptr<CCRoleFactory> ptr_RoleFactory;
+
+class CCRoleFactory/*:public cocos2d::Ref*/
 {
 protected:
-    CCRoleFactory_Interface();
-    
+    CCRoleFactory():_parents(nullptr){}
+    CCRoleFactory(cocos2d::Node* parents):_parents(parents){}
 public:
-    virtual ~CCRoleFactory_Interface();
-    virtual cocos2d::Sprite* createRole(RoleType Type, cocos2d::Node* const &Mount) = 0;
-};
-
-class CCRoleFactoryOfObject: public CCRoleFactory_Interface
-{
+    virtual ~CCRoleFactory(){}
+    virtual bool init() = 0;
+    virtual cocos2d::Sprite* createRole(RoleType Type, const cocos2d::Vec2 &pos) = 0;
+    virtual CCRoleAdapter* getRoleAdapter(cocos2d::Sprite* factoryCreate) = 0;
 protected:
-    CCRoleFactoryOfObject();
-    ~CCRoleFactoryOfObject();
-public:
-    //施行托管，创建的精灵生命周期由Parents控制,返回精灵的引用
-    /*SuperRole*?考虑中。。。*/cocos2d::Sprite* createRoleForObject(RoleType Type, cocos2d::Node* const &Mount );
+    cocos2d::Node* _parents;
 };
 
 #endif // __ROLE_FACTORY_H__

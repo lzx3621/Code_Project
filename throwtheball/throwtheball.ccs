@@ -1,5 +1,5 @@
 <Solution>
-  <PropertyGroup Name="throwtheball" Version="2.1.5.0" Type="CocosStudio" />
+  <PropertyGroup Name="throwtheball" Version="2.2.1.0" Type="CocosStudio" />
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
@@ -32,6 +32,9 @@
             <Image Name="smellystockings.png" />
             <Image Name="tile.png" />
           </Folder>
+        </Folder>
+        <Folder Name="Common">
+          <Image Name="background.png" />
         </Folder>
       </RootFolder>
     </Group>

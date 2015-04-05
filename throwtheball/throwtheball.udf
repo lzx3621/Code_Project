@@ -1,10 +1,8 @@
 <UserData>
   <OpenedDocuments>
-    <FilePathData Path="Sprite/hero/hero.csi" />
-    <FilePathData Path="MainScene.csd" />
     <FilePathData Path="Sprite/object/object.csi" />
   </OpenedDocuments>
-  <ActiveDocument Path="MainScene.csd" />
+  <ActiveDocument Path="Sprite/object/object.csi" />
   <Properties>
     <Item Key="PackageParamsKey">
       <Value ctype="PackageParams">
@@ -20,6 +18,14 @@
         <PublishSetting Value="Resource" />
         <FrameworkVersion Value="cocos2d-x-3.4" />
         <IsDebugKeystore Value="True" />
+      </Value>
+    </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="GameSceneNormal.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="GameSceneNormal.csd" />
       </Value>
     </Item>
   </Properties>

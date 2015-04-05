@@ -61,7 +61,7 @@ class CChero : protected SuperRole
         virtual void onHeroContact() = 0;
     };*/
 protected:
-    CChero():SuperRole(MAIN_HERO, 5, 0){}
+    CChero():SuperRole(MAIN_HERO, 5, 0), _onHeroContact(nullptr){}
     ~CChero(){}
     CREATE_FUNC(CChero);
 public:

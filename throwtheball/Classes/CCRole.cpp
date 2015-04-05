@@ -9,8 +9,8 @@ using namespace cocostudio::timeline;
 // on "init" you need to initialize your instance
 bool SuperRole::init()
 {
-    auto heroCache = CCSpriteFrameCache::getInstance(); 
-    if (nullptr == heroCache) { return false;}
+    auto frameCache = CCSpriteFrameCache::getInstance(); 
+    if (nullptr == frameCache) { return false;}
     auto fileUtil = FileUtils::getInstance();
     std::string fliename(fileUtil->getWritablePath()+"appConfig.plist");
     if (fileUtil->isFileExist(fliename))
@@ -19,14 +19,16 @@ bool SuperRole::init()
     }
     
 
-    heroCache->addSpriteFramesWithFile("Sprite/hero/hero.plist");
-    heroCache->addSpriteFramesWithFile("Sprite/object/object.plist");
+    frameCache->addSpriteFramesWithFile("Sprite/hero/hero.plist");
+    frameCache->addSpriteFramesWithFile("Sprite/object/object.plist");
 
-    if ( !Sprite::initWithSpriteFrame(getSpriteFrameByRoleType()))
+    auto spriteFrame = getSpriteFrameByRoleType();
+    if ( !Sprite::initWithSpriteFrame(spriteFrame))
     {
         return false;
     }
-    auto physicalBody = PhysicsBody::createBox(getSpriteFrameByRoleType()->getOriginalSize(), PhysicsMaterial(1.0f, 0.0f, 0.5F));
+    setAnchorPoint(Vec2(0.5f,0.0f));
+    auto physicalBody = PhysicsBody::createBox(spriteFrame->getOriginalSize(), PhysicsMaterial(10.0f, 0.0f, 0.0F));
     setPhysicsBody(physicalBody);
     return true;
 }
@@ -48,7 +50,7 @@ SpriteFrame* SuperRole::getSpriteFrameByRoleType()
         CCUserDefault::getInstance()->getStringForKey("HydrangeaFrameName", framePath);
         if ("" == framePath)
         {
-            framePath = "Sprite/hero/Hydrangea1.png";
+            framePath = "Sprite/object/Hydrangea1.png";
         }
         break;
     case DAMAGE_TILE:
@@ -117,13 +119,19 @@ bool CChero::onContactBegin( PhysicsContact& contact )
     {
         ptr_NodeA->_currentLive += ptr_NodeB->_currentLive;
         ptr_NodeA->_currentScore += ptr_NodeB->_currentScore;
-        _onHeroContact(ptr_NodeA, ptr_NodeB, ptr_NodeA->_currentLive, ptr_NodeA->_currentScore);
+        if (nullptr !=_onHeroContact)
+        {
+            _onHeroContact(ptr_NodeA, ptr_NodeB, ptr_NodeA->_currentLive, ptr_NodeA->_currentScore);
+        }
     }
     if (MAIN_HERO == ptr_NodeB->getType())
     {
         ptr_NodeB->_currentLive += ptr_NodeA->_currentLive;
         ptr_NodeB->_currentScore += ptr_NodeA->_currentScore;
-        _onHeroContact(ptr_NodeB, ptr_NodeA, ptr_NodeB->_currentLive, ptr_NodeB->_currentScore);
+        if (nullptr != _onHeroContact)
+        {
+            _onHeroContact(ptr_NodeB, ptr_NodeA, ptr_NodeB->_currentLive, ptr_NodeB->_currentScore);
+        }
     }
     
     return true;
@@ -137,10 +145,11 @@ bool CCHydrangea::init()
     {
         return false;
     }
-    //要设置同物体可以不相碰，但主角要相碰
-    getPhysicsBody()->setCategoryBitmask(0x10);
+
+    getPhysicsBody()->setCategoryBitmask(0x1001);
     getPhysicsBody()->setContactTestBitmask(0x01);
     getPhysicsBody()->setCollisionBitmask(0x100);
+
     setName("Hydrangea");
     return true;
 }
@@ -151,10 +160,11 @@ bool CCTile::init()
     {
         return false;
     }
-    //要设置同物体可以不相碰，但主角要相碰
-    getPhysicsBody()->setCategoryBitmask(0x10);
+
+    getPhysicsBody()->setCategoryBitmask(0x1001);
     getPhysicsBody()->setContactTestBitmask(0x01);
     getPhysicsBody()->setCollisionBitmask(0x100);
+
     setName("Tile");
     return true;
 }
@@ -165,8 +175,7 @@ bool CCBadGgg::init()
     {
         return false;
     }
-    //要设置同物体可以不相碰，但主角要相碰
-    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setCategoryBitmask(0x1001);
     getPhysicsBody()->setContactTestBitmask(0x01);
     getPhysicsBody()->setCollisionBitmask(0x100);
     setName("BadGgg");
@@ -179,8 +188,7 @@ bool CCSmellyStockings::init()
     {
         return false;
     }
-    //要设置同物体可以不相碰，但主角要相碰
-    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setCategoryBitmask(0x1001);
     getPhysicsBody()->setContactTestBitmask(0x01);
     getPhysicsBody()->setCollisionBitmask(0x100);
     setName("SmellyStockings");
@@ -193,8 +201,7 @@ bool CCBadVegetable::init()
     {
         return false;
     }
-    //要设置同物体可以不相碰，但主角要相碰
-    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setCategoryBitmask(0x1001);
     getPhysicsBody()->setContactTestBitmask(0x01);
     getPhysicsBody()->setCollisionBitmask(0x100);
     setName("BadVegetable");
@@ -207,8 +214,7 @@ bool CCSachet::init()
     {
         return false;
     }
-    //要设置同物体可以不相碰，但主角要相碰
-    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setCategoryBitmask(0x1001);
     getPhysicsBody()->setContactTestBitmask(0x01);
     getPhysicsBody()->setCollisionBitmask(0x100);
     setName("Sachet");
@@ -221,8 +227,7 @@ bool CCHandkerchief::init()
     {
         return false;
     }
-    //要设置同物体可以不相碰，但主角要相碰
-    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setCategoryBitmask(0x1001);
     getPhysicsBody()->setContactTestBitmask(0x01);
     getPhysicsBody()->setCollisionBitmask(0x100);
     setName("Handkerchief");
@@ -235,8 +240,7 @@ bool CCJadePendant::init()
     {
         return false;
     }
-    //要设置同物体可以不相碰，但主角要相碰
-    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setCategoryBitmask(0x1001);
     getPhysicsBody()->setContactTestBitmask(0x01);
     getPhysicsBody()->setCollisionBitmask(0x100);
     setName("JadePendant");
@@ -249,8 +253,7 @@ bool CCJade::init()
     {
         return false;
     }
-    //要设置同物体可以不相碰，但主角要相碰
-    getPhysicsBody()->setCategoryBitmask(0x10);
+    getPhysicsBody()->setCategoryBitmask(0x1001);
     getPhysicsBody()->setContactTestBitmask(0x01);
     getPhysicsBody()->setCollisionBitmask(0x100);
     setName("Jade");

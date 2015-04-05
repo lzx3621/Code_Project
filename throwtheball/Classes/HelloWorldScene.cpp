@@ -44,37 +44,43 @@ bool HelloWorld::init()
     auto heroCache = CCSpriteFrameCache::getInstance(); 
     heroCache->addSpriteFramesWithFile("Sprite/hero/hero.plist");
     auto sprite = Sprite::createWithSpriteFrame(heroCache->getSpriteFrameByName("Sprite/hero/waiter.png"));
-    sprite->setPhysicsBody(PhysicsBody::createBox(sprite->getContentSize(), PhysicsMaterial(1.0f, 0.0f, 0.5F)));
-    
+    body = PhysicsBody::createBox(sprite->getContentSize(), PhysicsMaterial(1.0f, 0.0f, 0.0F));
+    //body->setPositionOffset(sprite->getContentSize()/2);
+    sprite->setPhysicsBody(body);
+
     auto mouseEvent = EventListenerTouchOneByOne::create();
     mouseEvent->onTouchBegan = [=](Touch* touch, Event* event){
-        sprite->setPosition(touch->getLocation());
+        CCLOG("touch x:%f, y:%f", touch->getLocation().x, sprite->getContentSize().height/2);
+        sprite->setPositionX(touch->getLocation().x);
         return true;
     };
     mouseEvent->onTouchMoved = [=](Touch* touch, Event* event)
     {
         auto sprite1 = static_cast<Sprite *>(event->getCurrentTarget());
-        sprite->setPosition(touch->getLocation());
+        sprite->setPositionX(touch->getLocation().x);
         //sprite->setPosition(0, 0);
     };
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseEvent, sprite);
 
     /*rootNode->*/addChild(sprite);
-    
-    auto fileUtil = FileUtils::getInstance();
-    std::string fliename(fileUtil->getWritablePath()+"appConfig.plist");
-    fliename = fileUtil->fullPathFromRelativeFile("res",fliename);
-    ValueMap appConfig;
-    if (fileUtil->isFileExist(fliename))
-    {
-         appConfig= fileUtil->getValueMapFromFile(fliename);
-    }
-    else
-    {
-        Value iValue(3621);
-        appConfig.insert(ValueMap::value_type("test",iValue));
-        fileUtil->writeToFile(appConfig, fliename);
-    }
+
+    sprite->setAnchorPoint(Vec2(0.5,0.5));
+
+    sprite->setPosition(sprite->getContentSize());
+//     auto fileUtil = FileUtils::getInstance();
+//     std::string fliename(fileUtil->getWritablePath()+"appConfig.plist");
+//     fliename = fileUtil->fullPathFromRelativeFile("res",fliename);
+//     ValueMap appConfig;
+//     if (fileUtil->isFileExist(fliename))
+//     {
+//          appConfig= fileUtil->getValueMapFromFile(fliename);
+//     }
+//     else
+//     {
+//         Value iValue(3621);
+//         appConfig.insert(ValueMap::value_type("test",iValue));
+//         fileUtil->writeToFile(appConfig, fliename);
+//     }
 
     return true;
 }
