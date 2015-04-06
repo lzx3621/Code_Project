@@ -9,6 +9,7 @@ protected:
     CCNormalRule(CCRoleAdapter* heroSprite,
             CCRoleFactory* roleFactory)
             :CCRule(heroSprite, roleFactory){}
+    //CREATE_FUNC(CCNormalRule);
 public:
     static CCNormalRule* create(cocos2d::Node* const parent);
     ~CCNormalRule(void);

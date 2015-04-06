@@ -81,7 +81,7 @@ bool CCNormalRule::init()
         {
             _roleFactory = CCRoleFactoryOfObject::create(getParent());
         }
-        _roleFactory->createRole(MAIN_HERO, Vec2(200,3));
+        auto hero = _roleFactory->createRole(MAIN_HERO, Vec2(200,3));
         return true;
     }
     else

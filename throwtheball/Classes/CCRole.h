@@ -11,17 +11,13 @@ class SuperRole : public cocos2d::Sprite
 protected:
     SuperRole():
         _roleType(Default),
-        _currentLive(0),
-        _currentScore(0),
-        _originLive(0),
-        _originScore(0)
+        _live(0),
+        _score(0)
     {}
     SuperRole(RoleType eRoleType, int iLive, int iScore):
         _roleType(eRoleType),
-        _currentLive(iLive),
-        _currentScore(iScore),
-        _originLive(iLive),
-        _originScore(iScore)
+        _live(iLive),
+        _score(iScore)
     {}
 
 public:
@@ -29,8 +25,8 @@ public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init() override;
     RoleType getType(){ return _roleType; }
-    int getCurrentLive() {return _currentLive;}
-    int getCurrentScore() {return _currentScore;}
+    int getCurrentLive() {return _live;}
+    int getCurrentScore() {return _score;}
 protected:
     //获取游戏主要角色精灵的SpriteFrame
     cocos2d::SpriteFrame*   getSpriteFrameByRoleType();
@@ -38,12 +34,10 @@ public:
     //角色类型
     RoleType                _roleType;
     //角色生命，一般主角为正，会扣除主角生命数的为负
-    int                     _currentLive;
+    int                     _live;
     //当前角色分数
-    int                     _currentScore;
-    //
-    const int               _originLive;
-    const int               _originScore;
+    int                     _score;
+
     //friend class CChero;
 };
 
@@ -61,7 +55,11 @@ class CChero : protected SuperRole
         virtual void onHeroContact() = 0;
     };*/
 protected:
-    CChero():SuperRole(MAIN_HERO, 5, 0), _onHeroContact(nullptr){}
+    CChero():
+        SuperRole(MAIN_HERO, 5, 0),
+        _onHeroContact(nullptr),
+        _originLive(SuperRole::_live),
+        _originScore(SuperRole::_score){}
     ~CChero(){}
     CREATE_FUNC(CChero);
 public:
@@ -73,6 +71,10 @@ protected:
 /*    IHeroContact _onHeroContact;*/
     //数据更新，用于通知界面更新数据
     HeroContact _onHeroContact;
+    //
+    const int               _originLive;
+    const int               _originScore;
+
     friend class CCRoleFactoryOfObject;
 };
 

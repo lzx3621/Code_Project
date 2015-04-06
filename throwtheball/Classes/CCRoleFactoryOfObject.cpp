@@ -44,6 +44,7 @@ SuperRole* CCRoleFactoryOfObject::createRoleForObject( RoleType Type, const Vec2
 
 bool CCRoleFactoryOfObject::init()
 {
+    
     return true;
 }
 
@@ -60,5 +61,6 @@ ptr_RoleFactory CCRoleFactoryOfObject::create( cocos2d::Node* const &parents )
 
 CCRoleAdapter* CCRoleFactoryOfObject::getRoleAdapter( cocos2d::Sprite* factoryCreate )
 {
+
     return nullptr;
 }
