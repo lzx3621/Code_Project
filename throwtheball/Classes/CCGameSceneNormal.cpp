@@ -40,7 +40,8 @@ bool CCGameSceneNormal::init()
     body->setPositionOffset(Point(visibleSize.width/2, visibleSize.height/2));
 	this->setPhysicsBody(body);
     addChild(rootNode);
-    CCNormalRule::create(this);
+    //CCNormalRule::create(this);
+    addChild(CCNormalRule::create());
     return true;
 }
 

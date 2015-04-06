@@ -30,7 +30,7 @@
     <ClCompile Include="..\Classes\CCNormalRule.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CCRoleFactoryOfObject.cpp">
+    <ClCompile Include="..\Classes\CCRoleFactory.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,9 +50,6 @@
     <ClInclude Include="..\Classes\CCRole.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCRoleFactory.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\CCRule.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -65,7 +62,7 @@
     <ClInclude Include="..\Classes\CCRoleAdapter.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCRoleFactoryOfObject.h">
+    <ClInclude Include="..\Classes\CCRoleFactory.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

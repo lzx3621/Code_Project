@@ -1,24 +1,24 @@
-#ifndef __ROLE_FACTORY_H__
-#define __ROLE_FACTORY_H__
+#ifndef __CCROLEFACTORYOFOBJECT_H__
+#define __CCROLEFACTORYOFOBJECT_H__
 #include "CCRole.h"
 #include "CCRoleAdapter.h"
 
-class CCRoleFactory;
 
-typedef std::shared_ptr<CCRoleFactory> ptr_RoleFactory;
-
-class CCRoleFactory/*:public cocos2d::Ref*/
+class CCRoleFactory: public cocos2d::Node
 {
 protected:
-    CCRoleFactory():_parents(nullptr){}
-    CCRoleFactory(cocos2d::Node* parents):_parents(parents){}
+    CCRoleFactory():_physicsWorld(nullptr){}
+    ~CCRoleFactory(){}
 public:
-    virtual ~CCRoleFactory(){}
-    virtual bool init() = 0;
-    virtual cocos2d::Sprite* createRole(RoleType Type, const cocos2d::Vec2 &pos) = 0;
-    virtual CCRoleAdapter* getRoleAdapter(cocos2d::Sprite* factoryCreate) = 0;
+    CREATE_FUNC(CCRoleFactory);
+    virtual bool init() override;
+    //施行托管，创建的精灵生命周期由Parents控制,返回精灵的引用
+    virtual cocos2d::Sprite* createRole(RoleType Type, const cocos2d::Vec2 &pos) ;
+    virtual CCRoleAdapter* getRoleAdapter(cocos2d::Sprite* factoryCreate) ;
 protected:
-    cocos2d::Node* _parents;
+    SuperRole* createRoleOfPhysics(RoleType Type, const cocos2d::Vec2 &pos );
+    cocos2d::PhysicsWorld* _physicsWorld;
+    friend class CCRoleFactory;
 };
 
-#endif // __ROLE_FACTORY_H__
+#endif // __CCROLEFACTORYOFOBJECT_H__

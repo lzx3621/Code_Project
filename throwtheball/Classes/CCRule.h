@@ -10,10 +10,10 @@
 class CCRule:public cocos2d::Node
 {
 protected:
-    CCRule(void): _heroSprite(nullptr), _roleFactory(nullptr){}
+    CCRule(void): _hero(nullptr), _roleFactory(nullptr){}
     CCRule(CCRoleAdapter* heroSprite,
         CCRoleFactory* roleFactory)
-        :_heroSprite(heroSprite),
+        :_hero(_hero),
         _roleFactory(roleFactory){}
     ~CCRule(void){}
 public:
@@ -35,10 +35,10 @@ public:
     virtual void onRestat() = 0;
     virtual void onPause() = 0;
     virtual void onEnd() = 0;
-
+    virtual bool onHeroTouch(cocos2d::Touch* touch, cocos2d::Event* event) = 0;
 protected:
-    CCRoleAdapter*          _heroSprite;
-    ptr_RoleFactory         _roleFactory;
+    CCHeroAdapter*          _hero;
+    CCRoleFactory*          _roleFactory;
 };
 
 #endif __RULE_FACTORY_H__

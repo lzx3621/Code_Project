@@ -9,9 +9,8 @@ protected:
     CCNormalRule(CCRoleAdapter* heroSprite,
             CCRoleFactory* roleFactory)
             :CCRule(heroSprite, roleFactory){}
-    //CREATE_FUNC(CCNormalRule);
 public:
-    static CCNormalRule* create(cocos2d::Node* const parent);
+    CREATE_FUNC(CCNormalRule);
     ~CCNormalRule(void);
     virtual bool init() override;
     virtual void onStart() override;
@@ -20,6 +19,7 @@ public:
     virtual void onEnd() override;
     void createObjectOffFall(float dt);
     virtual void onHeroContact(cocos2d::Sprite* Hero, cocos2d::Sprite* Contact, const int& iHerolive, const int& iHeroScore) override;
+    virtual bool onHeroTouch(cocos2d::Touch* touch, cocos2d::Event* event) override;
 };
 
 #endif __NORMALRULE_H__

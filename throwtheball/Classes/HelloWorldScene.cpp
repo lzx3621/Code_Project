@@ -51,13 +51,19 @@ bool HelloWorld::init()
     auto mouseEvent = EventListenerTouchOneByOne::create();
     mouseEvent->onTouchBegan = [=](Touch* touch, Event* event){
         CCLOG("touch x:%f, y:%f", touch->getLocation().x, sprite->getContentSize().height/2);
-        sprite->setPositionX(touch->getLocation().x);
+//         if (event->getCurrentTarget() == sprite)
+//         {
+//             sprite->setPositionX(touch->getLocation().x);
+//         }
         return true;
     };
     mouseEvent->onTouchMoved = [=](Touch* touch, Event* event)
     {
-        auto sprite1 = static_cast<Sprite *>(event->getCurrentTarget());
-        sprite->setPositionX(touch->getLocation().x);
+        //锚点在中间位置
+        if ((sprite->getContentSize().width)/2 >= abs(sprite->getPositionX() - touch->getLocation().x))
+        {
+            sprite->setPositionX(touch->getLocation().x);
+        }
         //sprite->setPosition(0, 0);
     };
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseEvent, sprite);

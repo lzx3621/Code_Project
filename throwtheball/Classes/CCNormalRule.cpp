@@ -1,5 +1,5 @@
 #include "CCNormalRule.h"
-#include "CCRoleFactoryOfObject.h"
+#include "CCRoleFactory.h"
 
 USING_NS_CC;
 
@@ -12,31 +12,6 @@ CCNormalRule::~CCNormalRule(void)
 {
 }
 
-
-CCNormalRule* CCNormalRule::create( cocos2d::Node* const parent )
-{
-    auto *pRet = new(std::nothrow) CCNormalRule(); 
-    if (pRet ) 
-    { 
-        parent->addChild(pRet);
-        if (!pRet->init())
-        {
-            parent->removeChild(pRet);
-            delete pRet; 
-            pRet = NULL; 
-            return NULL;
-        }
-        pRet->autorelease(); 
-        return pRet; 
-    } 
-    else 
-    { 
-        delete pRet; 
-        pRet = NULL; 
-        return NULL; 
-    } 
-}
-
 void CCNormalRule::onHeroContact( cocos2d::Sprite* Hero, cocos2d::Sprite* Contact, const int& iHerolive, const int& iHeroScore )
 {
 
@@ -45,6 +20,7 @@ void CCNormalRule::onHeroContact( cocos2d::Sprite* Hero, cocos2d::Sprite* Contac
 void CCNormalRule::onStart()
 {
     /*_heroSprite =*/ 
+    _roleFactory->createRole(MAIN_HERO, Vec2(200,3));
     this->schedule(CC_CALLBACK_1(CCNormalRule::createObjectOffFall, this), 5.0f, CC_REPEAT_FOREVER, 0, std::string("createObjectOffFall"));
     
 }
@@ -79,13 +55,21 @@ bool CCNormalRule::init()
     {
         if (nullptr == _roleFactory)
         {
-            _roleFactory = CCRoleFactoryOfObject::create(getParent());
+            _roleFactory = CCRoleFactory::create();
         }
-        auto hero = _roleFactory->createRole(MAIN_HERO, Vec2(200,3));
+        addChild(_roleFactory);
+
         return true;
     }
     else
     {
         return false;
     }
+}
+
+bool CCNormalRule::onHeroTouch(Touch* touch, Event* event)
+{
+    /*event->*/
+    _hero->getSprite()->setPositionX(touch->getLocation().x);
+    return true;
 }

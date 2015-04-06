@@ -3,7 +3,7 @@
 
 #include "Define.h"
 
-class CCRoleFactoryOfObject;
+class CCRoleFactory;
 class CChero;
 
 class SuperRole : public cocos2d::Sprite
@@ -75,7 +75,7 @@ protected:
     const int               _originLive;
     const int               _originScore;
 
-    friend class CCRoleFactoryOfObject;
+    friend class CCRoleFactory;
 };
 
 
@@ -88,7 +88,7 @@ protected:
     CREATE_FUNC(CCHydrangea);
 public:
     bool init() override;
-    friend class CCRoleFactoryOfObject;
+    friend class CCRoleFactory;
 };
 
 //瓦片类
@@ -100,7 +100,7 @@ protected:
     CREATE_FUNC(CCTile);
 public:
     bool init() override;
-    friend class CCRoleFactoryOfObject;
+    friend class CCRoleFactory;
 };
 
 //臭鸡蛋类
@@ -112,7 +112,7 @@ protected:
     CREATE_FUNC(CCBadGgg);
 public:
     bool init() override;
-    friend class CCRoleFactoryOfObject;
+    friend class CCRoleFactory;
 };
 
 //臭袜子类
@@ -124,7 +124,7 @@ protected:
     CREATE_FUNC(CCSmellyStockings);
 public:
     bool init() override;
-    friend class CCRoleFactoryOfObject;
+    friend class CCRoleFactory;
 };
 
 //栏菜叶类
@@ -136,7 +136,7 @@ protected:
     CREATE_FUNC(CCBadVegetable);
 public:
     bool init() override;
-    friend class CCRoleFactoryOfObject;
+    friend class CCRoleFactory;
 };
 
 //香囊类
@@ -148,7 +148,7 @@ protected:
     CREATE_FUNC(CCSachet);
 public:
     bool init() override;
-    friend class CCRoleFactoryOfObject;
+    friend class CCRoleFactory;
 };
 
 //手帕类
@@ -160,7 +160,7 @@ protected:
     CREATE_FUNC(CCHandkerchief);
 public:
     bool init() override;
-    friend class CCRoleFactoryOfObject;
+    friend class CCRoleFactory;
 };
 
 //玉佩类
@@ -172,7 +172,7 @@ protected:
     CREATE_FUNC(CCJadePendant);
 public:
     bool init() override;
-    friend class CCRoleFactoryOfObject;
+    friend class CCRoleFactory;
 };
 
 //如意类
@@ -184,7 +184,7 @@ protected:
     CREATE_FUNC(CCJade);
 public:
     bool init() override;
-    friend class CCRoleFactoryOfObject;
+    friend class CCRoleFactory;
 };
 
 #endif // __ROLE_SPRITE_H__

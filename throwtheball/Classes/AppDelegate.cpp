@@ -45,12 +45,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-    auto scene = CCGameSceneNormal::createScene();
+    auto scene = HelloWorld::createScene();
     
     // run
     director->runWithScene(scene);
-    auto gameLayer = scene->getChildByName<CCGameSceneNormal*>("CCGameSceneNormal");
-    gameLayer->startGame();
+    //(scene->getChildByName<CCGameSceneNormal*>("CCGameSceneNormal"))->startGame();
+
     return true;
 }
 
