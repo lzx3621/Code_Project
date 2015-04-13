@@ -10,6 +10,18 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Adapter">
+      <UniqueIdentifier>{e4a37bf2-c6a4-4a7d-afdb-b3e84371a811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scene">
+      <UniqueIdentifier>{43e7e070-118c-4df2-b968-e552c51eea25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rule">
+      <UniqueIdentifier>{6c47ad5f-fc27-4943-b4d1-b3e185ebaa86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Role">
+      <UniqueIdentifier>{440413e7-b93d-43dd-9a0e-d7da61423bb0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -18,20 +30,29 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\CCGameSceneNormal.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CCRole.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>src\Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\CCNormalRule.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Rule</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCRole.cpp">
+      <Filter>src\Role</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\CCRoleFactory.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Role</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCRoleAdapter.cpp">
+      <Filter>src\Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCHeroAdapterOfPhysics.cpp">
+      <Filter>src\Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCSupportAdapterOfPhysics.cpp">
+      <Filter>src\Adapter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -41,29 +62,35 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCGameSceneNormal.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCRole.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCRule.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Define.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCNormalRule.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\CCRoleAdapter.h">
-      <Filter>src</Filter>
+      <Filter>src\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCGameSceneNormal.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCNormalRule.h">
+      <Filter>src\Rule</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCRule.h">
+      <Filter>src\Rule</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCRole.h">
+      <Filter>src\Role</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\CCRoleFactory.h">
-      <Filter>src</Filter>
+      <Filter>src\Role</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCHeroAdapterOfPhysics.h">
+      <Filter>src\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCSupportAdapterOfPhysics.h">
+      <Filter>src\Adapter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

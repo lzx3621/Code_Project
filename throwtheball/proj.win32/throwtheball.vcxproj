@@ -136,7 +136,10 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\CCGameSceneNormal.cpp" />
     <ClCompile Include="..\Classes\CCNormalRule.cpp" />
+    <ClCompile Include="..\Classes\CCRoleAdapter.cpp" />
     <ClCompile Include="..\Classes\CCRoleFactory.cpp" />
+    <ClCompile Include="..\Classes\CCHeroAdapterOfPhysics.cpp" />
+    <ClCompile Include="..\Classes\CCSupportAdapterOfPhysics.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\CCRole.cpp" />
     <ClCompile Include="main.cpp" />
@@ -147,6 +150,8 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\CCNormalRule.h" />
     <ClInclude Include="..\Classes\CCRoleAdapter.h" />
     <ClInclude Include="..\Classes\CCRoleFactory.h" />
+    <ClInclude Include="..\Classes\CCHeroAdapterOfPhysics.h" />
+    <ClInclude Include="..\Classes\CCSupportAdapterOfPhysics.h" />
     <ClInclude Include="..\Classes\Define.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\CCRole.h" />
