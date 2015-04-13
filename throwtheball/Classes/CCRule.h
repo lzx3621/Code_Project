@@ -11,7 +11,7 @@ class CCRule:public cocos2d::Node
 {
 protected:
     CCRule(void): _hero(nullptr), _roleFactory(nullptr){}
-    CCRule(CCHeroAdapter* heroSprite,
+    CCRule(CCRoleAdapter* heroSprite,
         CCRoleFactory* roleFactory)
         :_hero(_hero),
         _roleFactory(roleFactory){}
@@ -30,11 +30,12 @@ public:
         }
         
     }
+    virtual void onHeroContact(cocos2d::Sprite* Hero, cocos2d::Sprite* Contact, const int& iHerolive, const int& iHeroScore)=0;
     virtual void onStart() = 0;
     virtual void onRestat() = 0;
     virtual void onPause() = 0;
     virtual void onEnd() = 0;
-    //virtual bool onHeroTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) = 0;
+    virtual bool onHeroTouch(cocos2d::Touch* touch, cocos2d::Event* event) = 0;
 protected:
     CCHeroAdapter*          _hero;
     CCRoleFactory*          _roleFactory;

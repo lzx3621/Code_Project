@@ -12,7 +12,7 @@
         <PrePosition X="0.0000" Y="0.0000" />
         <PreSize X="0.0000" Y="0.0000" />
         <Children>
-          <NodeObjectData Name="background" ActionTag="503703425" FrameEvent="" Tag="6" ctype="SpriteObjectData">
+          <NodeObjectData Name="Sprite_2" ActionTag="503703425" FrameEvent="" Tag="6" ctype="SpriteObjectData">
             <Position X="360.0000" Y="640.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

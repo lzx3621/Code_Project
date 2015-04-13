@@ -11,6 +11,7 @@ Scene* CCGameSceneNormal::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::createWithPhysics();
+    
     // 'layer' is an autorelease object
     auto layer = CCGameSceneNormal::create();
 
@@ -35,13 +36,10 @@ bool CCGameSceneNormal::init()
     auto rootNode = CSLoader::createNode("GameSceneNormal.csb");
 	
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	auto body = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(0.0f, 0.0f, 0.0F), 3.0f);
+	auto body = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(1000.0f, 0.0f, 0.0F), 3.0f);
     body->setPositionOffset(Point(visibleSize.width/2, visibleSize.height/2));
-    body->setCategoryBitmask(0x1);
-    body->setContactTestBitmask(0x2);
-    body->setCollisionBitmask(0x6);
+	this->setPhysicsBody(body);
     addChild(rootNode);
-    setPhysicsBody(body);
     //CCNormalRule::create(this);
     addChild(CCNormalRule::create());
     return true;
@@ -51,4 +49,3 @@ void CCGameSceneNormal::startGame()
 {
     getChildByName<CCRule*>("Rule")->onStart();
 }
-

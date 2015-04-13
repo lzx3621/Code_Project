@@ -43,12 +43,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     FileUtils::getInstance()->addSearchPath("res");
+
     // create a scene. it's an autorelease object
-    auto scene = CCGameSceneNormal::createScene();
+    auto scene = HelloWorld::createScene();
     
     // run
     director->runWithScene(scene);
-    (scene->getChildByName<CCGameSceneNormal*>("CCGameSceneNormal"))->startGame();
+    //(scene->getChildByName<CCGameSceneNormal*>("CCGameSceneNormal"))->startGame();
 
     return true;
 }

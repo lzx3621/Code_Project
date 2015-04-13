@@ -1,9 +1,6 @@
 #include "CCRole.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-#include "CCRoleAdapter.h"
-#include "CCHeroAdapterOfPhysics.h"
-#include "CCSupportAdapterOfPhysics.h"
 
 USING_NS_CC;
 
@@ -33,10 +30,6 @@ bool SuperRole::init()
     setAnchorPoint(Vec2(0.5f,0.0f));
     auto physicalBody = PhysicsBody::createBox(spriteFrame->getOriginalSize(), PhysicsMaterial(10.0f, 0.0f, 0.0F));
     setPhysicsBody(physicalBody);
-    //只注册一次，不要多次注册，不然会引起充分删除崩溃
-    auto contactListener = EventListenerPhysicsContact::create();
-    contactListener->onContactBegin = SuperRole::onContactBegin;
-    getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
     return true;
 }
 
@@ -90,89 +83,8 @@ SpriteFrame* SuperRole::getSpriteFrameByRoleType()
     return framePath.empty()?nullptr:CCSpriteFrameCache::getInstance()->getSpriteFrameByName(framePath);
 }
 
-bool SuperRole::onContactBegin(cocos2d::PhysicsContact& contact)
-{
-    auto ptr_NodeA = dynamic_cast<SuperRole*>(contact.getShapeA()->getBody()->getNode());
-    auto ptr_NodeB = dynamic_cast<SuperRole*>(contact.getShapeB()->getBody()->getNode());
-    if (nullptr == ptr_NodeA &&
-        nullptr == ptr_NodeB)
-    {
-        return true;
-    }
-    //碰撞边界
-    else if (nullptr != ptr_NodeA && nullptr == ptr_NodeB)
-    {
-        auto UserObject = ptr_NodeA->getUserObject();
-        if (nullptr != UserObject)
-        {
-            //防止传进去的参数被释放
-            ptr_NodeA->retain();
-            UserObject->retain();
-            auto SupportAdapet = dynamic_cast<CCSupportAdapter*>(UserObject);
-            if (nullptr != SupportAdapet)
-            {
-                CCSupportAdapter::s_onObjectContactBottom(SupportAdapet);
-            }
-            UserObject->release();
-            ptr_NodeA->release();
-        }
-        return true;
-    }
-    //碰撞边界
-    else if (nullptr != ptr_NodeB && nullptr == ptr_NodeA)
-    {
-        auto UserObject = ptr_NodeB->getUserObject();
-        if (nullptr != UserObject)
-        {
-            //防止传进去的参数被释放
-            UserObject->retain();
-            auto SupportAdapet = dynamic_cast<CCSupportAdapter*>(UserObject);
-            if (nullptr != SupportAdapet)
-            {
-                CCSupportAdapter::s_onObjectContactBottom(SupportAdapet);
-            }
-            UserObject->release();
-        }
-        return true;
-    }
-    else
-    {
-        //碰撞配角
-        if (MAIN_HERO == ptr_NodeA->getType())
-        {
-            //ptr_NodeA->getChildByName();
-            ptr_NodeA->_live    += ptr_NodeB->_live;
-            ptr_NodeA->_score   += ptr_NodeB->_score;
-            auto heroAdapet     = dynamic_cast<CCHeroAdapter*>(ptr_NodeA->getUserObject());
-            auto SupportAdapet  = dynamic_cast<CCSupportAdapter*>(ptr_NodeB->getUserObject());
-            if (nullptr != heroAdapet &&
-                nullptr != SupportAdapet &&
-                nullptr != CCHeroAdapter::s_onHeroContact)
-            {
-                CCHeroAdapter::s_onHeroContact(heroAdapet,SupportAdapet);
-            }
-            return false;
-        }
-        else if (MAIN_HERO == ptr_NodeB->getType())
-        {
-            ptr_NodeB->_live    += ptr_NodeA->_live;
-            ptr_NodeB->_score   += ptr_NodeA->_score;
-            auto heroAdapet     = dynamic_cast<CCHeroAdapter*>(ptr_NodeB->getUserObject());
-            auto SupportAdapet  = dynamic_cast<CCSupportAdapter*>(ptr_NodeA->getUserObject());
-            if (nullptr != heroAdapet &&
-                nullptr != SupportAdapet &&
-                nullptr != CCHeroAdapter::s_onHeroContact)
-            {
-                CCHeroAdapter::s_onHeroContact(heroAdapet,SupportAdapet);
-            }
-            return false;
-        }
-        return true;
-    }
-}
 
-
-bool CCHero::init()
+bool CChero::init()
 {
     if (!SuperRole::init())
     {
@@ -180,40 +92,48 @@ bool CCHero::init()
     }
     
     //此处设置主角被所有东西碰撞，但下落物体自己不碰撞
-    auto hysicsBody = getPhysicsBody();
-    if (nullptr != hysicsBody)
-    {
-        hysicsBody->setCategoryBitmask(0x4);
-        hysicsBody->setContactTestBitmask(0x2);
-        hysicsBody->setCollisionBitmask(0x4);
-        hysicsBody->setDynamic(false);
-    }
-    auto adapter = CCHeroAdapterOfPhysics::create();
-    adapter->setHero(this);
-    setUserObject(adapter);
+    getPhysicsBody()->setCategoryBitmask(0x01);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x01);
+    
+    auto contactListener = EventListenerPhysicsContact::create();
+    contactListener->onContactBegin = CC_CALLBACK_1(CChero::onContactBegin, this);
+    getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
     setName("Hero");
     return true;
 }
 
-//配角类
-bool CCSupport::init()
+
+
+//主角类实现
+
+bool CChero::onContactBegin( PhysicsContact& contact )
 {
-    if (!SuperRole::init())
+    auto ptr_NodeA = dynamic_cast<SuperRole*>(contact.getShapeA()->getBody()->getNode());
+    auto ptr_NodeB = dynamic_cast<SuperRole*>(contact.getShapeB()->getBody()->getNode());
+    if (nullptr == ptr_NodeA && nullptr == ptr_NodeB)
     {
         return false;
     }
-    auto support = CCSupportAdapterOfPhysics::create();
-    support->setSupport(this);
-    setUserObject(support);
-
-    auto hysicsBody = getPhysicsBody();
-    if (nullptr != hysicsBody)
+    if (MAIN_HERO == ptr_NodeA->getType())
     {
-        hysicsBody->setCategoryBitmask(0x12);
-        hysicsBody->setContactTestBitmask(0x5);
-        hysicsBody->setCollisionBitmask(0x9);
+        ptr_NodeA->_live += ptr_NodeB->_live;
+        ptr_NodeA->_score += ptr_NodeB->_score;
+        if (nullptr !=_onHeroContact)
+        {
+            _onHeroContact(ptr_NodeA, ptr_NodeB, ptr_NodeA->_live, ptr_NodeA->_score);
+        }
     }
-
+    if (MAIN_HERO == ptr_NodeB->getType())
+    {
+        ptr_NodeB->_live += ptr_NodeA->_live;
+        ptr_NodeB->_score += ptr_NodeA->_score;
+        if (nullptr != _onHeroContact)
+        {
+            _onHeroContact(ptr_NodeB, ptr_NodeA, ptr_NodeB->_live, ptr_NodeB->_score);
+        }
+    }
+    
     return true;
 }
 
@@ -221,106 +141,121 @@ bool CCSupport::init()
 
 bool CCHydrangea::init()
 {
-    if (!CCSupport::init())
+    if (!SuperRole::init())
     {
         return false;
     }
+
+    getPhysicsBody()->setCategoryBitmask(0x1001);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
+
     setName("Hydrangea");
     return true;
 }
 
-//瓦片类实现
-
 bool CCTile::init()
 {
-    if (!CCSupport::init())
+    if (!SuperRole::init())
     {
         return false;
     }
+
+    getPhysicsBody()->setCategoryBitmask(0x1001);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
+
     setName("Tile");
     return true;
 }
 
-//臭鸡蛋类实现
-
 bool CCBadGgg::init()
 {
-    if (!CCSupport::init())
+    if (!SuperRole::init())
     {
         return false;
     }
+    getPhysicsBody()->setCategoryBitmask(0x1001);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
     setName("BadGgg");
     return true;
 }
 
-//臭袜子类实现
-
 bool CCSmellyStockings::init()
 {
-    if (!CCSupport::init())
+    if (!SuperRole::init())
     {
         return false;
     }
+    getPhysicsBody()->setCategoryBitmask(0x1001);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
     setName("SmellyStockings");
     return true;
 }
 
-////栏菜叶类实现
-
 bool CCBadVegetable::init()
 {
-    if (!CCSupport::init())
+    if (!SuperRole::init())
     {
         return false;
     }
+    getPhysicsBody()->setCategoryBitmask(0x1001);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
     setName("BadVegetable");
     return true;
 }
 
-//香囊类实现
-
 bool CCSachet::init()
 {
-    if (!CCSupport::init())
+    if (!SuperRole::init())
     {
         return false;
     }
+    getPhysicsBody()->setCategoryBitmask(0x1001);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
     setName("Sachet");
     return true;
 }
 
-//手帕类实现
-
 bool CCHandkerchief::init()
 {
-    if (!CCSupport::init())
+    if (!SuperRole::init())
     {
         return false;
     }
+    getPhysicsBody()->setCategoryBitmask(0x1001);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
     setName("Handkerchief");
     return true;
 }
 
-//玉佩类实现
-    
 bool CCJadePendant::init()
 {
-    if (!CCSupport::init())
+    if (!SuperRole::init())
     {
         return false;
     }
+    getPhysicsBody()->setCategoryBitmask(0x1001);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
     setName("JadePendant");
     return true;
 }
 
-//如意类实现
-
 bool CCJade::init()
 {
-    if (!CCSupport::init())
+    if (!SuperRole::init())
     {
         return false;
     }
+    getPhysicsBody()->setCategoryBitmask(0x1001);
+    getPhysicsBody()->setContactTestBitmask(0x01);
+    getPhysicsBody()->setCollisionBitmask(0x100);
     setName("Jade");
     return true;
 }

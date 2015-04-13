@@ -4,7 +4,7 @@
 #include "Define.h"
 
 class CCRoleFactory;
-class CCHeroAdapterOfPhysics;
+class CChero;
 
 class SuperRole : public cocos2d::Sprite
 {                       
@@ -25,14 +25,11 @@ public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init() override;
     RoleType getType(){ return _roleType; }
-    int getLive() const { return _live; }
-    void setLive(const int &val) { _live = val; }
-    int getScore() const { return _score; }
-    void setScore(const int &val) { _score = val; }
+    int getCurrentLive() {return _live;}
+    int getCurrentScore() {return _score;}
 protected:
     //获取游戏主要角色精灵的SpriteFrame
     cocos2d::SpriteFrame*   getSpriteFrameByRoleType();
-    static bool onContactBegin(cocos2d::PhysicsContact& contact);
 public:
     //角色类型
     RoleType                _roleType;
@@ -46,43 +43,47 @@ public:
 
 //主角类应当为在一个游戏模式中应该为单例存在
 
-class CCHero : protected SuperRole
+class CChero : protected SuperRole
 {
+/*
+    struct IHeroContact 
+    {
+    protected:
+        IHeroContact(){}
+        ~IHeroContact(){}
+    public:
+        virtual void onHeroContact() = 0;
+    };*/
 protected:
-    CCHero():
+    CChero():
         SuperRole(MAIN_HERO, 5, 0),
+        _onHeroContact(nullptr),
         _originLive(SuperRole::_live),
         _originScore(SuperRole::_score){}
-    ~CCHero(){}
-    CREATE_FUNC(CCHero);
+    ~CChero(){}
+    CREATE_FUNC(CChero);
 public:
     bool init() override;
-    const int getOriginLive() const { return _originLive; }
-    const int getOriginScore() const { return _originScore; }
+    bool onContactBegin(cocos2d::PhysicsContact& contact);
+    void setHeroContactCallback( HeroContact& onHeroContact) { _onHeroContact = onHeroContact;}
+    HeroContact getHeroContactCallback() const {return _onHeroContact;}
 protected:
+/*    IHeroContact _onHeroContact;*/
+    //数据更新，用于通知界面更新数据
+    HeroContact _onHeroContact;
     //
     const int               _originLive;
     const int               _originScore;
-    friend class CCRoleFactory;
-    friend class CCHeroAdapterOfPhysics;
-};
 
-class CCSupport :public SuperRole
-{
-protected:
-    CCSupport(RoleType eRoleType, int iLive, int iScore)
-        :SuperRole(eRoleType, iLive, iScore){}
-    ~CCSupport(){}
-public:
-    bool init() override;
+    friend class CCRoleFactory;
 };
 
 
 //绣球类
-class CCHydrangea : protected CCSupport
+class CCHydrangea : protected SuperRole
 {
 protected:
-    CCHydrangea():CCSupport(DAMAGE_HYDRANGEA, 0, 200){}
+    CCHydrangea():SuperRole(DAMAGE_HYDRANGEA, 0, 200){}
     ~CCHydrangea(){}
     CREATE_FUNC(CCHydrangea);
 public:
@@ -91,10 +92,10 @@ public:
 };
 
 //瓦片类
-class CCTile : protected CCSupport
+class CCTile : protected SuperRole
 {
 protected:
-    CCTile():CCSupport(DAMAGE_TILE, -1, 0){}
+    CCTile():SuperRole(DAMAGE_TILE, -1, 0){}
     ~CCTile(){}
     CREATE_FUNC(CCTile);
 public:
@@ -103,10 +104,10 @@ public:
 };
 
 //臭鸡蛋类
-class CCBadGgg : protected CCSupport
+class CCBadGgg : protected SuperRole
 {
 protected:
-    CCBadGgg():CCSupport(DAMAGE_BAD_EGG, 0, -150){}
+    CCBadGgg():SuperRole(DAMAGE_BAD_EGG, 0, -150){}
     ~CCBadGgg(){}
     CREATE_FUNC(CCBadGgg);
 public:
@@ -115,10 +116,10 @@ public:
 };
 
 //臭袜子类
-class CCSmellyStockings : protected CCSupport
+class CCSmellyStockings : protected SuperRole
 {
 protected:
-    CCSmellyStockings():CCSupport(DAMAGE_SMELLY_STOCKINGS, 0, -100){}
+    CCSmellyStockings():SuperRole(DAMAGE_SMELLY_STOCKINGS, 0, -100){}
     ~CCSmellyStockings(){}
     CREATE_FUNC(CCSmellyStockings);
 public:
@@ -127,10 +128,10 @@ public:
 };
 
 //栏菜叶类
-class CCBadVegetable : protected CCSupport
+class CCBadVegetable : protected SuperRole
 {
 protected:
-    CCBadVegetable():CCSupport(DAMAGE_BAD_VEGETABLE, 0, -50){}
+    CCBadVegetable():SuperRole(DAMAGE_BAD_VEGETABLE, 0, -50){}
     ~CCBadVegetable(){}
     CREATE_FUNC(CCBadVegetable);
 public:
@@ -139,10 +140,10 @@ public:
 };
 
 //香囊类
-class CCSachet : protected CCSupport
+class CCSachet : protected SuperRole
 {
 protected:
-    CCSachet():CCSupport(GAIN_SACHET, 0, 50){}
+    CCSachet():SuperRole(GAIN_SACHET, 0, 50){}
     ~CCSachet(){}
     CREATE_FUNC(CCSachet);
 public:
@@ -151,10 +152,10 @@ public:
 };
 
 //手帕类
-class CCHandkerchief : protected CCSupport
+class CCHandkerchief : protected SuperRole
 {
 protected:
-    CCHandkerchief():CCSupport(GAIN_HANDKERCHIEF, 0, 100){}
+    CCHandkerchief():SuperRole(GAIN_HANDKERCHIEF, 0, 100){}
     ~CCHandkerchief(){}
     CREATE_FUNC(CCHandkerchief);
 public:
@@ -163,10 +164,10 @@ public:
 };
 
 //玉佩类
-class CCJadePendant : protected CCSupport
+class CCJadePendant : protected SuperRole
 {
 protected:
-    CCJadePendant():CCSupport(GAIN_JADE_PENDANT, 0, 150){}
+    CCJadePendant():SuperRole(GAIN_JADE_PENDANT, 0, 150){}
     ~CCJadePendant(){}
     CREATE_FUNC(CCJadePendant);
 public:
@@ -175,10 +176,10 @@ public:
 };
 
 //如意类
-class CCJade : protected CCSupport
+class CCJade : protected SuperRole
 {
 protected:
-    CCJade():CCSupport(GAIN_JADE, 0, 200){}
+    CCJade():SuperRole(GAIN_JADE, 0, 200){}
     ~CCJade(){}
     CREATE_FUNC(CCJade);
 public:
