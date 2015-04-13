@@ -18,7 +18,6 @@ public:
     CREATE_FUNC(CCGameSceneNormal);
 
     void startGame();
-
 };
 
 #endif // __HELLOWORLD_SCENE_H__

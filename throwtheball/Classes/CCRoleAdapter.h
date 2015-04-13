@@ -1,48 +1,44 @@
 #ifndef __ROLEADAPTER_H__
 #define __ROLEADAPTER_H__
 #include "cocos2d.h"
-class CCHeroAdapter;
+#include "Define.h"
 class CCSupportAdapter;
-typedef std::function<void(CCHeroAdapter*, CCSupportAdapter*)> fancHeroContact;
-typedef std::function<void(cocos2d::Sprite*)> fancObjectContactBottom;
-class CCRoleAdapter
-{
-public:
-    CCRoleAdapter(void);
-    ~CCRoleAdapter(void);
-    virtual bool init()= 0;
-    virtual cocos2d::Sprite* getSprite() = 0;
-    virtual cocos2d::Value getValueByKey(cocos2d::Value) = 0;
-    virtual bool setValueBykey(const cocos2d::Value& key, const cocos2d::Value& value) = 0;
-    virtual RoleType getType() = 0;
-};
+class CCHeroAdapter;
+typedef std::function<void(CCHeroAdapter*, CCSupportAdapter*)> onHeroContact;
+typedef std::function<void(CCSupportAdapter*)> onObjectContactBottom;
 
 class CCHeroAdapter 
 {
 public:
-    CCHeroAdapter(void);
-    ~CCHeroAdapter(void);
+    CCHeroAdapter(void){}
+    ~CCHeroAdapter(void){}
     virtual bool init()= 0;
     virtual cocos2d::Sprite* getSprite() = 0;
-    virtual cocos2d::Value getOrigin(cocos2d::Value) = 0;
-    virtual cocos2d::Value getValueBykey(cocos2d::Value) = 0;
-    virtual void setHeroContactCallback(const fancHeroContact&) = 0;
-    virtual void setObjectContactBottomCallback(const fancObjectContactBottom&) = 0;
-    virtual RoleType getType() = 0;
+    virtual int getOriginLive() = 0;
+    virtual int getOriginScore() = 0;
+    virtual int getCurrentScore() = 0;
+    virtual void setCurrentScore(const int & val) = 0;
+    virtual int getCurrentLive() = 0;
+    virtual void setCurrentLive(const int & val) = 0;
+    static void setHeroContactCallback(onHeroContact HeroContact);
+protected:
+    static onHeroContact s_onHeroContact;
 };
+
 
 class CCSupportAdapter
 {
 public:
-    CCSupportAdapter(void);
-    ~CCSupportAdapter(void);
+    CCSupportAdapter(void){}
+    ~CCSupportAdapter(void){}
     virtual bool init()= 0;
     virtual cocos2d::Sprite* getSprite() = 0;
-protected:
-    virtual cocos2d::Value getOrigin(cocos2d::Value) = 0;
-    virtual cocos2d::Value getValueBykey(cocos2d::Value) = 0;
-public:
-    virtual void setObjectContactBottomCallback(const fancObjectContactBottom&) = 0;
+    virtual int getPropertyOfLive() = 0;
+    virtual int getPropertyOfScore() = 0;
+    static void setObjectContactBottomCallback(onObjectContactBottom ObjectContactBottom);
     virtual RoleType getType() = 0;
+protected:
+    static onObjectContactBottom s_onObjectContactBottom;
 };
+
 #endif __ROLEADAPTER_H__
