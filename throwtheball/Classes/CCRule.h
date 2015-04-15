@@ -2,42 +2,32 @@
 #define __RULE_FACTORY_H__
 
 #include "cocos2d.h"
-#include "CCRoleFactory.h"
-#include "CCRoleAdapter.h"
+
 /************************************************************************/
 /* 定义规则使用，决定游戏如何进行                                       */
 /************************************************************************/
-class CCRule:public cocos2d::Node
+class CCRule /*:public cocos2d::Node*/
 {
 protected:
-    CCRule(void): _hero(nullptr), _roleFactory(nullptr){}
-    CCRule(CCHeroAdapter* heroSprite,
-        CCRoleFactory* roleFactory)
-        :_hero(_hero),
-        _roleFactory(roleFactory){}
+    CCRule(void){}
     ~CCRule(void){}
+//     virtual bool init() override
+//     {
+//         if (cocos2d::Node::init())
+//         {
+//             cocos2d::Node::setName("Rule");
+//             return true;
+//         }
+//         else
+//         {
+//             return false;
+//         }
+//     }
 public:
-    virtual bool init()
-    { 
-        if (cocos2d::Node::init())
-        {
-            setName("Rule"); 
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        
-    }
-    virtual void onStart() = 0;
-    virtual void onRestat() = 0;
-    virtual void onPause() = 0;
-    virtual void onEnd() = 0;
-    //virtual bool onHeroTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) = 0;
-protected:
-    CCHeroAdapter*          _hero;
-    CCRoleFactory*          _roleFactory;
+    virtual void gameStart() = 0;
+    virtual void gameRestart() = 0;
+    virtual void gamePause() = 0;
+    virtual void gameOver() = 0;
 };
 
 #endif __RULE_FACTORY_H__

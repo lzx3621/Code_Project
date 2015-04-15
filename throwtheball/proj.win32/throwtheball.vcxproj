@@ -134,7 +134,8 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\CCGameSceneNormal.cpp" />
+    <ClCompile Include="..\Classes\CCGameScene.cpp" />
+    <ClCompile Include="..\Classes\CCGameUIAdapter.cpp" />
     <ClCompile Include="..\Classes\CCNormalRule.cpp" />
     <ClCompile Include="..\Classes\CCRoleAdapter.cpp" />
     <ClCompile Include="..\Classes\CCRoleFactory.cpp" />
@@ -146,7 +147,8 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\Classes\CCGameSceneNormal.h" />
+    <ClInclude Include="..\Classes\CCGameScene.h" />
+    <ClInclude Include="..\Classes\CCGameUIAdapter.h" />
     <ClInclude Include="..\Classes\CCNormalRule.h" />
     <ClInclude Include="..\Classes\CCRoleAdapter.h" />
     <ClInclude Include="..\Classes\CCRoleFactory.h" />

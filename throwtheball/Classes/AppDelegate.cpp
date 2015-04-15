@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include "CCGameSceneNormal.h"
-#include "CCNormalRule.h"
+#include "CCGameScene.h"
+
 
 USING_NS_CC;
 
@@ -44,12 +44,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     FileUtils::getInstance()->addSearchPath("res");
     // create a scene. it's an autorelease object
-    auto scene = CCGameSceneNormal::createScene();
+    auto scene = CCGameScene::createScene();
     
     // run
     director->runWithScene(scene);
-    (scene->getChildByName<CCGameSceneNormal*>("CCGameSceneNormal"))->startGame();
-
+    //scene->getChildByName<CCRule *>("Rule")->startGame();
     return true;
 }
 

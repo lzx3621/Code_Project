@@ -45,7 +45,7 @@ SuperRole* CCRoleFactory::createRoleOfPhysics( RoleType Type, const cocos2d::Vec
     };
     if (nullptr != ptr_Rtn)
     {
-		getScene()?getScene()->addChild(ptr_Rtn):CCLOG("no mount scene!");
+		//getScene()?getScene()->addChild(ptr_Rtn, 1):CCLOG("no mount scene!");
         ptr_Rtn->setPosition(pos);
     }
     return ptr_Rtn;
@@ -53,28 +53,7 @@ SuperRole* CCRoleFactory::createRoleOfPhysics( RoleType Type, const cocos2d::Vec
 //自动挂载到父节点的场景，如果没有场景，返回未挂载的
 Sprite* CCRoleFactory::createRole( RoleType Type, const cocos2d::Vec2 &pos /*= Vec2(0,0)*/)
 {
-	if (nullptr != this->getScene())
-	{
-		auto physicsWorld = this->getScene()->getPhysicsWorld();
-		if (nullptr != physicsWorld)
-		{
-			//物理世界不是同一个的时候，需要一个添加一个底部精灵来判断物体下落到底的消失事件
-			if (_physicsWorld != physicsWorld)
-			{
-				//getParent()->addChild(Sprite::create("",))
-			}
-			return createRoleOfPhysics(Type, pos);
-		}
-		else
-		{
-			//未完成
-			return nullptr;
-		}
-	}
-	else
-	{
-		return createRoleOfPhysics(Type, pos);
-	}
+	return createRoleOfPhysics(Type, pos);
 }
 // 
 // bool CCRoleFactory::init()

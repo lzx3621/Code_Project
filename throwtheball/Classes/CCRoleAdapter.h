@@ -41,4 +41,4 @@ protected:
     static onObjectContactBottom s_onObjectContactBottom;
 };
 
-#endif __ROLEADAPTER_H__
+#endif /*__ROLEADAPTER_H__*/

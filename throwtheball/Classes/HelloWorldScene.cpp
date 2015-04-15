@@ -14,10 +14,41 @@ Scene* HelloWorld::createScene()
     
     // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
-
-    // add layer as a child to scene
     scene->addChild(layer);
-	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    auto heroCache = CCSpriteFrameCache::getInstance(); 
+    heroCache->addSpriteFramesWithFile("Sprite/hero/hero.plist");
+    auto sprite = Sprite::createWithSpriteFrame(heroCache->getSpriteFrameByName("Sprite/hero/waiter.png"));
+    auto body = PhysicsBody::createBox(sprite->getContentSize(), PhysicsMaterial(1.0f, 0.0f, 0.0F));
+    //body->setPositionOffset(sprite->getContentSize()/2);
+    sprite->setPhysicsBody(body);
+
+    auto mouseEvent = EventListenerTouchOneByOne::create();
+    mouseEvent->onTouchBegan = [=](Touch* touch, Event* event){
+        CCLOG("touch x:%f, y:%f", touch->getLocation().x, sprite->getContentSize().height/2);
+        //         if (event->getCurrentTarget() == sprite)
+        //         {
+        //             sprite->setPositionX(touch->getLocation().x);
+        //         }
+        return true;
+    };
+    mouseEvent->onTouchMoved = [=](Touch* touch, Event* event)
+    {
+        //锚点在中间位置
+        if ((sprite->getContentSize().width)/2 >= abs(sprite->getPositionX() - touch->getLocation().x))
+        {
+            sprite->setPositionX(touch->getLocation().x);
+        }
+        //sprite->setPosition(0, 0);
+    };
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseEvent, sprite);
+
+    sprite->setAnchorPoint(Vec2(0.5,0.5));
+
+    sprite->setPosition(sprite->getContentSize());
+    /*rootNode->*/scene->addChild(sprite);
+    // add layer as a child to scene
+
     //scene->getPhysicsWorld()->setGravity(Vect(0.0f, -98.0f));
     // return the scene
     return scene;
@@ -41,38 +72,9 @@ bool HelloWorld::init()
     this->setPhysicsBody(body);
     body->setPositionOffset(Point(visibleSize.width/2, visibleSize.height/2));
     addChild(rootNode,0);
-    auto heroCache = CCSpriteFrameCache::getInstance(); 
-    heroCache->addSpriteFramesWithFile("Sprite/hero/hero.plist");
-    auto sprite = Sprite::createWithSpriteFrame(heroCache->getSpriteFrameByName("Sprite/hero/waiter.png"));
-    body = PhysicsBody::createBox(sprite->getContentSize(), PhysicsMaterial(1.0f, 0.0f, 0.0F));
-    //body->setPositionOffset(sprite->getContentSize()/2);
-    sprite->setPhysicsBody(body);
+    
 
-    auto mouseEvent = EventListenerTouchOneByOne::create();
-    mouseEvent->onTouchBegan = [=](Touch* touch, Event* event){
-        CCLOG("touch x:%f, y:%f", touch->getLocation().x, sprite->getContentSize().height/2);
-//         if (event->getCurrentTarget() == sprite)
-//         {
-//             sprite->setPositionX(touch->getLocation().x);
-//         }
-        return true;
-    };
-    mouseEvent->onTouchMoved = [=](Touch* touch, Event* event)
-    {
-        //锚点在中间位置
-        if ((sprite->getContentSize().width)/2 >= abs(sprite->getPositionX() - touch->getLocation().x))
-        {
-            sprite->setPositionX(touch->getLocation().x);
-        }
-        //sprite->setPosition(0, 0);
-    };
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseEvent, sprite);
 
-    /*rootNode->*/addChild(sprite);
-
-    sprite->setAnchorPoint(Vec2(0.5,0.5));
-
-    sprite->setPosition(sprite->getContentSize());
 //     auto fileUtil = FileUtils::getInstance();
 //     std::string fliename(fileUtil->getWritablePath()+"appConfig.plist");
 //     fliename = fileUtil->fullPathFromRelativeFile("res",fliename);

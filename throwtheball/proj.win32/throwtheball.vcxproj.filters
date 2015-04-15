@@ -30,9 +30,6 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CCGameSceneNormal.cpp">
-      <Filter>src\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
@@ -54,6 +51,12 @@
     <ClCompile Include="..\Classes\CCSupportAdapterOfPhysics.cpp">
       <Filter>src\Adapter</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\CCGameScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCGameUIAdapter.cpp">
+      <Filter>src\Adapter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -67,9 +70,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\CCRoleAdapter.h">
       <Filter>src\Adapter</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCGameSceneNormal.h">
-      <Filter>src\Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src\Scene</Filter>
@@ -90,6 +90,12 @@
       <Filter>src\Adapter</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\CCSupportAdapterOfPhysics.h">
+      <Filter>src\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCGameScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCGameUIAdapter.h">
       <Filter>src\Adapter</Filter>
     </ClInclude>
   </ItemGroup>

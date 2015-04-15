@@ -140,9 +140,6 @@ bool SuperRole::onContactBegin(cocos2d::PhysicsContact& contact)
         //Åö×²Åä½Ç
         if (MAIN_HERO == ptr_NodeA->getType())
         {
-            //ptr_NodeA->getChildByName();
-            ptr_NodeA->_live    += ptr_NodeB->_live;
-            ptr_NodeA->_score   += ptr_NodeB->_score;
             auto heroAdapet     = dynamic_cast<CCHeroAdapter*>(ptr_NodeA->getUserObject());
             auto SupportAdapet  = dynamic_cast<CCSupportAdapter*>(ptr_NodeB->getUserObject());
             if (nullptr != heroAdapet &&
@@ -155,8 +152,6 @@ bool SuperRole::onContactBegin(cocos2d::PhysicsContact& contact)
         }
         else if (MAIN_HERO == ptr_NodeB->getType())
         {
-            ptr_NodeB->_live    += ptr_NodeA->_live;
-            ptr_NodeB->_score   += ptr_NodeA->_score;
             auto heroAdapet     = dynamic_cast<CCHeroAdapter*>(ptr_NodeB->getUserObject());
             auto SupportAdapet  = dynamic_cast<CCSupportAdapter*>(ptr_NodeA->getUserObject());
             if (nullptr != heroAdapet &&

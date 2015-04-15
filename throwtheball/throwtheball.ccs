@@ -5,7 +5,6 @@
       <RootFolder Name=".">
         <Project Name="MainScene.csd" Type="Scene" />
         <Image Name="HelloWorld.png" />
-        <Project Name="GameSceneNormal.csd" Type="Scene" />
         <Folder Name="Sprite">
           <Folder Name="hero">
             <PlistInfo Name="hero.csi" Type="Plist" />
@@ -35,6 +34,20 @@
         </Folder>
         <Folder Name="Common">
           <Image Name="background.png" />
+          <Image Name="tools.png" />
+          <Image Name="clock.png" />
+          <Image Name="fan.png" />
+        </Folder>
+        <Folder Name="Scene">
+          <Folder Name="Start" />
+          <Folder Name="Game">
+            <Project Name="GameScene.csd" Type="Scene" />
+            <Image Name="lives.png" />
+            <Image Name="prop.png" />
+            <Image Name="title.png" />
+            <Project Name="ScoreAndLive.csd" Type="Node" />
+            <Project Name="GameLayer.csd" Type="Layer" />
+          </Folder>
         </Folder>
       </RootFolder>
     </Group>

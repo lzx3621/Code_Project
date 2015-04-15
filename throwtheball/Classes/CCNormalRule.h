@@ -4,31 +4,30 @@
 
 class CCHeroAdapter;
 class CCSupportAdapter;
+class CCRoleFactory;
 
-typedef std::function<void(int, int)> onHeroUpdate;
 class CCNormalRule :
-    public CCRule
+    public CCRule, public cocos2d::Node
 {
 protected:
-    CCNormalRule(void):_isStart(false){}
-    CCNormalRule(CCHeroAdapter* heroSprite,
-            CCRoleFactory* roleFactory)
-            :CCRule(heroSprite, roleFactory){}
-public:
-    CREATE_FUNC(CCNormalRule);
-    ~CCNormalRule(void){}
+    CCNormalRule(cocos2d::Node* gameScene);
+    ~CCNormalRule(void);
     virtual bool init() override;
-    virtual void onStart() override;
-    virtual void onRestat() override;
-    virtual void onPause() override;
-    virtual void onEnd() override;
+public:
+    static CCNormalRule* create(cocos2d::Node* game);
+    virtual void gameStart() override;
+    virtual void gameRestart() override;
+    virtual void gamePause() override;
+    virtual void gameOver() override;
+protected:
     void createObjectOffFall(float dt);
     virtual bool onHeroTouchBegan(cocos2d::Touch*, cocos2d::Event*) ;
 	virtual void onHeroTouchMove(cocos2d::Touch* touch, cocos2d::Event* event) ;
     virtual void onHeroContact(CCHeroAdapter* hero, CCSupportAdapter* support);
     virtual void onObjectContactBottom(CCSupportAdapter* support);
 protected:
-	cocos2d::Scene* _gamescene;
+    CCRoleFactory*  _roleFactory;
+	cocos2d::Node* _gameScene;
 	bool			_isStart;
 };
 
