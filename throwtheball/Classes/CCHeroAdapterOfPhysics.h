@@ -14,10 +14,10 @@ public:
     virtual void setHero(CCHero* hero);
     virtual int getOriginLive() override;
     virtual int getOriginScore() override;
-    virtual void setCurrentScore(const int & val) override;
+    virtual void setCurrentScore(const unsigned int & val) override;
     virtual int getCurrentScore() override;
     virtual int getCurrentLive() override;
-    virtual void setCurrentLive(const int & val) override;
+    virtual void setCurrentLive(const unsigned int & val) override;
     CREATE_FUNC(CCHeroAdapterOfPhysics);
 protected:
     CCHero* _hero;

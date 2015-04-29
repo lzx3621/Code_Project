@@ -14,7 +14,7 @@ protected:
         _live(0),
         _score(0)
     {}
-    SuperRole(RoleType eRoleType, int iLive, int iScore):
+    SuperRole(RoleType eRoleType, unsigned int iLive, unsigned int iScore):
         _roleType(eRoleType),
         _live(iLive),
         _score(iScore)
@@ -24,24 +24,17 @@ public:
     virtual ~SuperRole(){}
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init() override;
-    RoleType getType(){ return _roleType; }
-    int getLive() const { return _live; }
-    void setLive(const int &val) { _live = val; }
-    int getScore() const { return _score; }
-    void setScore(const int &val) { _score = val; }
 protected:
     //获取游戏主要角色精灵的SpriteFrame
     cocos2d::SpriteFrame*   getSpriteFrameByRoleType();
     static bool onContactBegin(cocos2d::PhysicsContact& contact);
-public:
-    //角色类型
-    RoleType                _roleType;
-    //角色生命，一般主角为正，会扣除主角生命数的为负
-    int                     _live;
-    //当前角色分数
-    int                     _score;
 
-    //friend class CChero;
+    //角色类型
+    CC_SYNTHESIZE(RoleType, _roleType, Type);
+    //角色生命
+    CC_SYNTHESIZE(int, _live, Live);
+    //当前角色分数
+    CC_SYNTHESIZE(int, _score, Score);
 };
 
 //主角类应当为在一个游戏模式中应该为单例存在
@@ -82,7 +75,7 @@ public:
 class CCHydrangea : protected CCSupport
 {
 protected:
-    CCHydrangea():CCSupport(DAMAGE_HYDRANGEA, 0, 200){}
+    CCHydrangea():CCSupport(GAIN_HYDRANGEA, 0, 200){}
     ~CCHydrangea(){}
     CREATE_FUNC(CCHydrangea);
 public:

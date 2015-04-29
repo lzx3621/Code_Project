@@ -20,8 +20,6 @@ bool SuperRole::init()
     {
         ValueMap appConfig = fileUtil->getValueMapFromFile(fliename);
     }
-    
-
     frameCache->addSpriteFramesWithFile("Sprite/hero/hero.plist");
     frameCache->addSpriteFramesWithFile("Sprite/object/object.plist");
 
@@ -53,7 +51,7 @@ SpriteFrame* SuperRole::getSpriteFrameByRoleType()
             framePath = "Sprite/hero/waiter.png";
         }
         break;
-    case DAMAGE_HYDRANGEA:
+    case GAIN_HYDRANGEA:
         CCUserDefault::getInstance()->getStringForKey("HydrangeaFrameName", framePath);
         if ("" == framePath)
         {
@@ -99,6 +97,7 @@ bool SuperRole::onContactBegin(cocos2d::PhysicsContact& contact)
     {
         return true;
     }
+
     //Åö×²±ß½ç
     else if (nullptr != ptr_NodeA && nullptr == ptr_NodeB)
     {

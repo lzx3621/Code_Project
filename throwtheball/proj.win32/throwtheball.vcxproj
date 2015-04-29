@@ -67,7 +67,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\cocos\audio\include;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\external;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\external\chipmunk\include\chipmunk;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot);$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\cocos\audio\include;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\external;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\external\chipmunk\include\chipmunk;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -135,8 +135,9 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\CCGameScene.cpp" />
-    <ClCompile Include="..\Classes\CCGameUIAdapter.cpp" />
+    <ClCompile Include="..\Classes\CCLoaderScene.cpp" />
     <ClCompile Include="..\Classes\CCNormalRule.cpp" />
+    <ClCompile Include="..\Classes\CCPopupLayer.cpp" />
     <ClCompile Include="..\Classes\CCRoleAdapter.cpp" />
     <ClCompile Include="..\Classes\CCRoleFactory.cpp" />
     <ClCompile Include="..\Classes\CCHeroAdapterOfPhysics.cpp" />
@@ -149,7 +150,9 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\CCGameScene.h" />
     <ClInclude Include="..\Classes\CCGameUIAdapter.h" />
+    <ClInclude Include="..\Classes\CCLoaderScene.h" />
     <ClInclude Include="..\Classes\CCNormalRule.h" />
+    <ClInclude Include="..\Classes\CCPopupLayer.h" />
     <ClInclude Include="..\Classes\CCRoleAdapter.h" />
     <ClInclude Include="..\Classes\CCRoleFactory.h" />
     <ClInclude Include="..\Classes\CCHeroAdapterOfPhysics.h" />

@@ -1,5 +1,3 @@
-#include "cocostudio/CocoStudio.h"
-#include "ui/CocosGUI.h"
 #include "CCRoleFactory.h"
 USING_NS_CC;
 
@@ -12,7 +10,7 @@ SuperRole* CCRoleFactory::createRoleOfPhysics( RoleType Type, const cocos2d::Vec
     case MAIN_HERO:
         ptr_Rtn = CCHero::create();
         break;
-    case DAMAGE_HYDRANGEA:
+    case GAIN_HYDRANGEA:
         ptr_Rtn = CCHydrangea::create();
         break;
     case DAMAGE_TILE:
@@ -45,7 +43,6 @@ SuperRole* CCRoleFactory::createRoleOfPhysics( RoleType Type, const cocos2d::Vec
     };
     if (nullptr != ptr_Rtn)
     {
-		//getScene()?getScene()->addChild(ptr_Rtn, 1):CCLOG("no mount scene!");
         ptr_Rtn->setPosition(pos);
     }
     return ptr_Rtn;
@@ -55,9 +52,4 @@ Sprite* CCRoleFactory::createRole( RoleType Type, const cocos2d::Vec2 &pos /*= V
 {
 	return createRoleOfPhysics(Type, pos);
 }
-// 
-// bool CCRoleFactory::init()
-// {
-//     cocos2d::Node::init();
-//     return true;
-// }
+

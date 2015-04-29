@@ -4,11 +4,11 @@
 
 typedef std::function<void(cocos2d::Sprite* Hero, cocos2d::Sprite* Contact, const int& iHerolive, const int& iHeroScore)> HeroContact;
 
-enum RoleType
+enum RoleType :int
 {
     Default = -1,
     MAIN_HERO,                  //Ö÷½Ç
-    DAMAGE_HYDRANGEA,           //ÐåÇò
+    GAIN_HYDRANGEA,             //ÐåÇò
     DAMAGE_TILE,                //ÍßÆ¬
     DAMAGE_BAD_EGG,             //³ô¼¦µ°
     DAMAGE_SMELLY_STOCKINGS,    //³ôÍà×Ó

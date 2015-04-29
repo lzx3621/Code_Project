@@ -31,16 +31,6 @@
                 <PreSize X="0.0000" Y="0.0000" />
                 <FileData Type="Normal" Path="Scene/Game/lives.png" />
               </NodeObjectData>
-              <NodeObjectData Name="tools" ActionTag="543336960" FrameEvent="" Tag="3" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="572.4305" RightMargin="-18.4305" TopMargin="-19.1614" BottomMargin="-22.8386" ctype="SpriteObjectData">
-                <Position X="636.4305" Y="41.1614" />
-                <Scale ScaleX="0.5000" ScaleY="0.5000" />
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <CColor A="255" R="255" G="255" B="255" />
-                <Size X="128.0000" Y="128.0000" />
-                <PrePosition X="0.9332" Y="0.4786" />
-                <PreSize X="0.0000" Y="0.0000" />
-                <FileData Type="Normal" Path="Common/tools.png" />
-              </NodeObjectData>
               <NodeObjectData Name="prop_1" ActionTag="-2124103691" FrameEvent="" Tag="6" LeftMargin="1.6636" RightMargin="595.3364" TopMargin="108.5046" BottomMargin="-107.5046" ctype="SpriteObjectData">
                 <Position X="1.6636" Y="-65.0046" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
@@ -88,45 +78,56 @@
             </Children>
             <FileData Type="Normal" Path="Scene/Game/title.png" />
           </NodeObjectData>
-          <NodeObjectData Name="Label_Fan" ActionTag="2008525894" FrameEvent="" Tag="2" LeftMargin="100.0000" RightMargin="-138.0000" TopMargin="163.5000" BottomMargin="-199.5000" LabelText="X 1" ctype="TextBMFontObjectData">
+          <NodeObjectData Name="Label_live" ActionTag="-2056175832" FrameEvent="" Tag="52" LeftMargin="79.9999" RightMargin="-151.9999" TopMargin="40.2200" BottomMargin="-88.2200" FontSize="48" LabelText="X 5" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" ctype="TextObjectData">
+            <Position X="115.9999" Y="-64.2200" />
+            <Scale ScaleX="0.7222" ScaleY="0.6465" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <CColor A="255" R="64" G="39" B="7" />
+            <Size X="72.0000" Y="48.0000" />
+            <PrePosition X="0.0000" Y="0.0000" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <FontResource Type="Normal" Path="Font/Japan.ttc" />
+          </NodeObjectData>
+          <NodeObjectData Name="Label_Fan" ActionTag="393337429" FrameEvent="" Tag="53" LeftMargin="100.0000" RightMargin="-148.0000" TopMargin="165.0000" BottomMargin="-198.0000" FontSize="32" LabelText="X 1" ctype="TextObjectData">
             <Position X="100.0000" Y="-181.5000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
-            <CColor A="255" R="255" G="255" B="255" />
-            <Size X="38.0000" Y="36.0000" />
+            <CColor A="255" R="64" G="39" B="7" />
+            <Size X="48.0000" Y="33.0000" />
             <PrePosition X="0.0000" Y="0.0000" />
             <PreSize X="0.0000" Y="0.0000" />
-            <LabelBMFontFile_CNB Type="Default" Path="Default/defaultBMFont.fnt" />
           </NodeObjectData>
-          <NodeObjectData Name="Label_Clock" ActionTag="-1624242981" FrameEvent="" Tag="3" LeftMargin="100.0000" RightMargin="-138.0000" TopMargin="249.0001" BottomMargin="-285.0001" LabelText="X 1" ctype="TextBMFontObjectData">
-            <Position X="100.0000" Y="-267.0001" />
+          <NodeObjectData Name="Label_Clock" ActionTag="1377901369" FrameEvent="" Tag="54" LeftMargin="100.0000" RightMargin="-148.0000" TopMargin="250.5000" BottomMargin="-283.5000" FontSize="32" LabelText="X 1" ctype="TextObjectData">
+            <Position X="100.0000" Y="-267.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
-            <CColor A="255" R="255" G="255" B="255" />
-            <Size X="38.0000" Y="36.0000" />
+            <CColor A="255" R="64" G="39" B="7" />
+            <Size X="48.0000" Y="33.0000" />
             <PrePosition X="0.0000" Y="0.0000" />
             <PreSize X="0.0000" Y="0.0000" />
-            <LabelBMFontFile_CNB Type="Default" Path="Default/defaultBMFont.fnt" />
           </NodeObjectData>
-          <NodeObjectData Name="Label_live" ActionTag="-501229799" FrameEvent="" Tag="4" LeftMargin="90.0000" RightMargin="-128.0000" TopMargin="43.2226" BottomMargin="-79.2226" LabelText="X 5" ctype="TextBMFontObjectData">
-            <Position X="90.0000" Y="-61.2226" />
+          <NodeObjectData Name="Label_Score" ActionTag="898700548" FrameEvent="" Tag="55" LeftMargin="340.1693" RightMargin="-379.1693" TopMargin="5.2451" BottomMargin="-73.2451" FontSize="68" LabelText="0" ctype="TextObjectData">
+            <Position X="359.6693" Y="-39.2451" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <AnchorPoint ScaleY="0.5000" />
-            <CColor A="255" R="0" G="0" B="0" />
-            <Size X="38.0000" Y="36.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <CColor A="255" R="64" G="36" B="7" />
+            <Size X="39.0000" Y="68.0000" />
             <PrePosition X="0.0000" Y="0.0000" />
             <PreSize X="0.0000" Y="0.0000" />
-            <LabelBMFontFile_CNB Type="Default" Path="Default/defaultBMFont.fnt" />
+            <FontResource Type="Normal" Path="Font/Casper.ttf" />
           </NodeObjectData>
-          <NodeObjectData Name="Label_Score" ActionTag="1898130559" FrameEvent="" Tag="5" LeftMargin="348.7297" RightMargin="-363.7297" TopMargin="22.1362" BottomMargin="-58.1362" LabelText="0" ctype="TextBMFontObjectData">
-            <Position X="356.2297" Y="-40.1362" />
-            <Scale ScaleX="1.6878" ScaleY="1.9524" />
+          <NodeObjectData Name="tools" ActionTag="2122110770" FrameEvent="" Tag="3" LeftMargin="574.0000" RightMargin="-702.0000" TopMargin="-20.3750" BottomMargin="-107.6250" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="128" Scale9Height="128" ctype="ButtonObjectData">
+            <Position X="638.0000" Y="-43.6250" />
+            <Scale ScaleX="0.6000" ScaleY="0.6000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="15.0000" Y="36.0000" />
+            <Size X="128.0000" Y="128.0000" />
             <PrePosition X="0.0000" Y="0.0000" />
             <PreSize X="0.0000" Y="0.0000" />
-            <LabelBMFontFile_CNB Type="Default" Path="Default/defaultBMFont.fnt" />
+            <TextColor A="255" R="65" G="65" B="70" />
+            <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
+            <PressedFileData Type="Normal" Path="Common/tools_s.png" />
+            <NormalFileData Type="Normal" Path="Common/tools.png" />
           </NodeObjectData>
         </Children>
       </ObjectData>

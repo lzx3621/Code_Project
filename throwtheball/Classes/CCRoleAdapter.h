@@ -17,9 +17,9 @@ public:
     virtual int getOriginLive() = 0;
     virtual int getOriginScore() = 0;
     virtual int getCurrentScore() = 0;
-    virtual void setCurrentScore(const int & val) = 0;
+    virtual void setCurrentScore(const unsigned int & val) = 0;
     virtual int getCurrentLive() = 0;
-    virtual void setCurrentLive(const int & val) = 0;
+    virtual void setCurrentLive(const unsigned int & val) = 0;
     static void setHeroContactCallback(onHeroContact HeroContact);
 protected:
     static onHeroContact s_onHeroContact;

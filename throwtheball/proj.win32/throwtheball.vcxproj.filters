@@ -22,6 +22,12 @@
     <Filter Include="src\Role">
       <UniqueIdentifier>{440413e7-b93d-43dd-9a0e-d7da61423bb0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Pop">
+      <UniqueIdentifier>{d1889e1c-c85a-41e2-b094-8f9ba08b3cf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\PlayerConfig">
+      <UniqueIdentifier>{e943747f-ce6a-400c-ab20-fccd20467397}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,8 +60,11 @@
     <ClCompile Include="..\Classes\CCGameScene.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CCGameUIAdapter.cpp">
-      <Filter>src\Adapter</Filter>
+    <ClCompile Include="..\Classes\CCPopupLayer.cpp">
+      <Filter>src\Pop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCLoaderScene.cpp">
+      <Filter>src\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +106,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\CCGameUIAdapter.h">
       <Filter>src\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCPopupLayer.h">
+      <Filter>src\Pop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCLoaderScene.h">
+      <Filter>src\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

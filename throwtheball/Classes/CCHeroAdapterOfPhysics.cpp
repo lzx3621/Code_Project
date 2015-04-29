@@ -37,12 +37,12 @@ int CCHeroAdapterOfPhysics::getCurrentLive()
     return _hero->getLive();
 }
 
-void CCHeroAdapterOfPhysics::setCurrentLive(const int & val)
+void CCHeroAdapterOfPhysics::setCurrentLive(const unsigned int & val)
 {
     _hero->setLive(val);
 }
 
-void CCHeroAdapterOfPhysics::setCurrentScore(const int & val)
+void CCHeroAdapterOfPhysics::setCurrentScore(const unsigned int & val)
 {
     _hero->setScore(val);
 }

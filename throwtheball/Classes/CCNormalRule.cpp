@@ -1,19 +1,18 @@
 #include "CCNormalRule.h"
 #include "CCRoleFactory.h"
 #include "CCRoleAdapter.h"
-#include "CCGameScene.h"
+#include "CCGameUIAdapter.h"
 
 USING_NS_CC;
 
-CCNormalRule::CCNormalRule(Node* gameScene):
+CCNormalRule::CCNormalRule():
     _isStart(false),
-    _gameScene(nullptr)
+    _gameScene(nullptr),
+    _UIAdapter(nullptr),
+    _level(0),
+    _storeUp(0),
+    _levelResume(0)
 {
-    if (nullptr != gameScene)
-    {
-        _gameScene = gameScene;
-        _gameScene->retain();
-    }
 }
 
 CCNormalRule::~CCNormalRule(void)
@@ -30,7 +29,7 @@ void CCNormalRule::gameStart()
     if (!_isStart)
     {
 		_gameScene->schedule(CC_CALLBACK_1(CCNormalRule::createObjectOffFall, this),
-			5.0f, 
+			1.0f, 
 			CC_REPEAT_FOREVER,
 			0,
 			std::string("createObjectOffFall"));
@@ -41,7 +40,7 @@ void CCNormalRule::gameStart()
         hero->setPosition(hero->getContentSize().width/2, (hero->getContentSize().height/2)+3);
 		hero->getEventDispatcher()->addEventListenerWithSceneGraphPriority(
 			touchListener,hero);
-        _gameScene->addChild(hero);
+        _UIAdapter->addRole(hero);
 		_isStart = true;
     }
     
@@ -54,12 +53,22 @@ void CCNormalRule::gameRestart()
 
 void CCNormalRule::gamePause()
 {
+    _UIAdapter->showPauseUI();
+    pauseAllRole();
+}
 
+
+void CCNormalRule::gameResume()
+{
+    resumeAllRole();
+    _UIAdapter->hidePauseUI();
+    setLevel(_level);
 }
 
 void CCNormalRule::gameOver()
 {
-	_gameScene = nullptr;
+    _gameScene->unschedule(std::string("createObjectOffFall"));
+    pauseAllRole();
 	_isStart = true;
 }
 
@@ -69,49 +78,47 @@ void CCNormalRule::createObjectOffFall( float dt )
     {
         return ;
     }
-
-    auto role = _roleFactory->createRole((RoleType)cocos2d::random<int>((int)DAMAGE_HYDRANGEA, (int)GAIN_JADE));
-    if (nullptr == role)
+    for (auto i = 0, max = cocos2d::random<int>(1, 3);
+        i < max;
+        i++)
     {
-        CCLOG("can\'t not create role!");
-        return ;
+        addRole((RoleType)cocos2d::random<int>((int)DAMAGE_TILE, (int)GAIN_JADE));
     }
-    auto roleSize = role->getContentSize();
-    auto apartLeftmin = roleSize.width/2;
-    auto apartRightMax = _gameScene->getContentSize().width - (roleSize.width/2);
-    auto height = _gameScene->getContentSize().height - (roleSize.height/2);
-    role->setPosition(cocos2d::random<float>(apartLeftmin, apartRightMax), height-4);
-    _gameScene->addChild(role);
 }
 
-bool CCNormalRule::init()
+bool CCNormalRule::init(CCGameUIAdapter* UIAdapter)
 {
     _roleFactory = CCRoleFactory::create();
-    if (nullptr == _gameScene || 
+    _UIAdapter   = UIAdapter;
+    if (nullptr == _UIAdapter ||
+        nullptr == _UIAdapter->getGameScene() || 
         nullptr == _roleFactory ||
         !Node::init())
     {
         return false;
     }
+    _gameScene = _UIAdapter->getGameScene();
+    _gameScene->retain();
     setName("Rule");
     CCHeroAdapter::setHeroContactCallback(CC_CALLBACK_2(CCNormalRule::onHeroContact, this));
     CCSupportAdapter::setObjectContactBottomCallback(CC_CALLBACK_1(CCNormalRule::onObjectContactBottom,this));
 
-    _gameScene->addChild(_roleFactory);
-
+    addChild(_roleFactory);
+    setLevel(1);
     return true;
 }
 
 bool CCNormalRule::onHeroTouchBegan(Touch* touch, Event* event)
 {
 	auto hero		= event->getCurrentTarget();
-    if (hero == nullptr)
+    if (hero == nullptr || "Hero" != hero->getName())
     {
         return true;
     }
 	auto heroSize	= hero->getContentSize();
 	//是否在精灵上的点击,并且没有超出边界,浮点数不要判断=了
 	if (nullptr != _gameScene && 
+        0 == _levelResume &&
         heroSize.height > touch->getLocation().y &&
 		(heroSize.width)/2 > abs(hero->getPositionX() - touch->getLocation().x))
 	{
@@ -142,6 +149,7 @@ void CCNormalRule::onHeroTouchMove(Touch* touch, Event* event)
     auto hero		= event->getCurrentTarget();
 	auto heroSize	= event->getCurrentTarget()->getContentSize();
     if (nullptr != _gameScene &&
+        0 == _levelResume &&
         heroSize.height > touch->getLocation().y )
 	{
         auto apartLeftmin = heroSize.width/2;
@@ -172,15 +180,11 @@ void CCNormalRule::onHeroContact(CCHeroAdapter* hero, CCSupportAdapter* support)
             auto score = hero->getCurrentScore();
             live += support->getPropertyOfLive();
             score += support->getPropertyOfScore();
-            dynamic_cast<CCGameUIAdapter*>(_gameScene)->updateheroScoreAndLive(live, score);
-            auto spriteParent   = sprite->getParent();
-            spriteParent?spriteParent->removeChild(sprite):NULL;
-            hero->setCurrentLive(live);
-            hero->setCurrentScore(score);
-            if (0 == live)
-            {
-                gameOver();
-            }
+
+            hero->setCurrentLive(live<0?live = 0:live);
+            hero->setCurrentScore(score<0?score = 0:score);
+            _UIAdapter->updateheroScoreAndLive(live, score);
+            sprite->removeFromParent();
         }
     }
 }
@@ -192,16 +196,15 @@ void CCNormalRule::onObjectContactBottom(CCSupportAdapter* support)
         auto sprite = support->getSprite();
         if (nullptr != sprite)
         {
-            auto spriteParent   = sprite->getParent();
-            spriteParent?spriteParent->removeChild(sprite):NULL;
+            sprite->removeFromParent();
         }
     }
 }
 
-CCNormalRule* CCNormalRule::create(cocos2d::Node* game)
+CCNormalRule* CCNormalRule::create(CCGameUIAdapter* UIAdapter)
 {
-    auto *pRet = new(std::nothrow) CCNormalRule(game); 
-    if (pRet && pRet->init()) 
+    auto *pRet = new(std::nothrow) CCNormalRule(); 
+    if (pRet && pRet->init(UIAdapter)) 
     { 
         pRet->autorelease(); 
         return pRet; 
@@ -212,4 +215,89 @@ CCNormalRule* CCNormalRule::create(cocos2d::Node* game)
         pRet = NULL; 
         return NULL; 
     } 
+}
+
+void CCNormalRule::setLevel(const int& level)
+{
+    if (nullptr == _gameScene->getPhysicsWorld())
+    {
+        CCLOG("Scene is null");
+    }
+    _level = level;
+    _gameScene->getPhysicsWorld()->setGravity(Vec2(0, -500*_level));
+}
+
+int CCNormalRule::getLevel()
+{
+    return _level;
+}
+
+bool CCNormalRule::gameContinue(CCHeroAdapter* &hero, CCSupportAdapter* &support)
+{
+    if (0 == hero->getCurrentLive())
+    {
+        return false;
+    }
+    auto Score = hero->getCurrentScore();
+    _storeUp += (support->getPropertyOfScore()>0?support->getPropertyOfScore():0);
+    if (_storeUp > 1750)
+    {
+        auto level = _level;
+        setLevel(++level);
+        _storeUp = 0;
+    }
+    if (Score >= 21000)
+    {
+        addRole(GAIN_HYDRANGEA);
+    }
+    
+    return true;
+}
+
+void CCNormalRule::addRole(RoleType type)
+{
+    auto role = _roleFactory->createRole(type);
+    if (nullptr == role)
+    {
+        CCLOG("can\'t not create role!");
+        return ;
+    }
+    auto roleSize = role->getContentSize();
+    auto apartLeftmin = roleSize.width/2;
+    auto apartRightMax = _gameScene->getContentSize().width - (roleSize.width/2);
+    auto height = _gameScene->getContentSize().height - (roleSize.height/2);
+    role->setPosition(cocos2d::random<float>(apartLeftmin, apartRightMax), height-4);
+    _UIAdapter->addRole(role);
+}
+
+void CCNormalRule::pauseAllRole()
+{
+    _gameScene->getPhysicsWorld()->setGravity(Vec2::ZERO);
+    auto Roles = _UIAdapter->getRole();
+    for (auto role : Roles)
+    {
+//         role->pause();
+//         role->retain();
+        _velocity.insert(std::make_pair(static_cast<Sprite*>(role),
+            role->getPhysicsBody()->getVelocity()));
+        role->getPhysicsBody()->setVelocity(Vec2::ZERO);
+    }
+    _gameScene->pause();
+    _level==0?_level:_levelResume = _level;
+    setLevel(0);
+}
+
+void CCNormalRule::resumeAllRole()
+{
+    _gameScene->resume();
+    auto Roles = _UIAdapter->getRole();
+    for (auto role : Roles)
+    {
+//         role->resume();
+//         role->release();
+        role->getPhysicsBody()->setVelocity(_velocity.at(static_cast<Sprite*>(role)));
+    }
+    _velocity.clear();
+    setLevel(_levelResume);
+    _levelResume = 0;
 }
