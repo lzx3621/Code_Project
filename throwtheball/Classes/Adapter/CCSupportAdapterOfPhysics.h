@@ -1,7 +1,7 @@
 #ifndef CCSUPPORTADAPTEROFPHYSICAL_H
 #define CCSUPPORTADAPTEROFPHYSICAL_H
 #include "CCRoleAdapter.h"
-#include "CCRole.h"
+#include "./Role/CCRole.h"
 class CCSupportAdapterOfPhysics :
     public CCSupportAdapter, public cocos2d::Ref
 {

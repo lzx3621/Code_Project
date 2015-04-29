@@ -1,7 +1,7 @@
 #include "CCLoaderScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-#include "CCNormalRule.h"
+#include "./Rule/CCNormalRule.h"
 #include "ui/UITextBMFont.h"
 
 USING_NS_CC;

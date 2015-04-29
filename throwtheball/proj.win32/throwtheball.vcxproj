@@ -133,34 +133,34 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Classes\Adapter\CCHeroAdapterOfPhysics.cpp" />
+    <ClCompile Include="..\Classes\Adapter\CCRoleAdapter.cpp" />
+    <ClCompile Include="..\Classes\Adapter\CCSupportAdapterOfPhysics.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\CCGameScene.cpp" />
-    <ClCompile Include="..\Classes\CCLoaderScene.cpp" />
-    <ClCompile Include="..\Classes\CCNormalRule.cpp" />
-    <ClCompile Include="..\Classes\CCPopupLayer.cpp" />
-    <ClCompile Include="..\Classes\CCRoleAdapter.cpp" />
-    <ClCompile Include="..\Classes\CCRoleFactory.cpp" />
-    <ClCompile Include="..\Classes\CCHeroAdapterOfPhysics.cpp" />
-    <ClCompile Include="..\Classes\CCSupportAdapterOfPhysics.cpp" />
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
-    <ClCompile Include="..\Classes\CCRole.cpp" />
+    <ClCompile Include="..\Classes\Pop\CCPopupLayer.cpp" />
+    <ClCompile Include="..\Classes\Role\CCRole.cpp" />
+    <ClCompile Include="..\Classes\Role\CCRoleFactory.cpp" />
+    <ClCompile Include="..\Classes\Rule\CCNormalRule.cpp" />
+    <ClCompile Include="..\Classes\Scene\CCGameScene.cpp" />
+    <ClCompile Include="..\Classes\Scene\CCLoaderScene.cpp" />
+    <ClCompile Include="..\Classes\Scene\HelloWorldScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Classes\Adapter\CCGameUIAdapter.h" />
+    <ClInclude Include="..\Classes\Adapter\CCHeroAdapterOfPhysics.h" />
+    <ClInclude Include="..\Classes\Adapter\CCRoleAdapter.h" />
+    <ClInclude Include="..\Classes\Adapter\CCSupportAdapterOfPhysics.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\Classes\CCGameScene.h" />
-    <ClInclude Include="..\Classes\CCGameUIAdapter.h" />
-    <ClInclude Include="..\Classes\CCLoaderScene.h" />
-    <ClInclude Include="..\Classes\CCNormalRule.h" />
-    <ClInclude Include="..\Classes\CCPopupLayer.h" />
-    <ClInclude Include="..\Classes\CCRoleAdapter.h" />
-    <ClInclude Include="..\Classes\CCRoleFactory.h" />
-    <ClInclude Include="..\Classes\CCHeroAdapterOfPhysics.h" />
-    <ClInclude Include="..\Classes\CCSupportAdapterOfPhysics.h" />
     <ClInclude Include="..\Classes\Define.h" />
-    <ClInclude Include="..\Classes\HelloWorldScene.h" />
-    <ClInclude Include="..\Classes\CCRole.h" />
-    <ClInclude Include="..\Classes\CCRule.h" />
+    <ClInclude Include="..\Classes\Pop\CCPopupLayer.h" />
+    <ClInclude Include="..\Classes\Role\CCRole.h" />
+    <ClInclude Include="..\Classes\Role\CCRoleFactory.h" />
+    <ClInclude Include="..\Classes\Rule\CCNormalRule.h" />
+    <ClInclude Include="..\Classes\Rule\CCRule.h" />
+    <ClInclude Include="..\Classes\Scene\CCGameScene.h" />
+    <ClInclude Include="..\Classes\Scene\CCLoaderScene.h" />
+    <ClInclude Include="..\Classes\Scene\HelloWorldScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

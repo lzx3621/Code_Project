@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
-#include "CCGameScene.h"
-#include "CCLoaderScene.h"
+#include "./Scene/HelloWorldScene.h"
+#include "./Scene/CCGameScene.h"
+#include "./Scene/CCLoaderScene.h"
 
 
 USING_NS_CC;

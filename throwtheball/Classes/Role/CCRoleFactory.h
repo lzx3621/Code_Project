@@ -1,7 +1,7 @@
 #ifndef __CCROLEFACTORYOFOBJECT_H__
 #define __CCROLEFACTORYOFOBJECT_H__
 #include "CCRole.h"
-#include "CCRoleAdapter.h"
+#include "./Adapter/CCRoleAdapter.h"
 
 
 class CCRoleFactory: public cocos2d::Node

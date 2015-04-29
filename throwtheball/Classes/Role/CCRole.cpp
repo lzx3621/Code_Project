@@ -1,9 +1,9 @@
 #include "CCRole.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-#include "CCRoleAdapter.h"
-#include "CCHeroAdapterOfPhysics.h"
-#include "CCSupportAdapterOfPhysics.h"
+#include "./Adapter/CCRoleAdapter.h"
+#include "./Adapter/CCHeroAdapterOfPhysics.h"
+#include "./Adapter/CCSupportAdapterOfPhysics.h"
 
 USING_NS_CC;
 

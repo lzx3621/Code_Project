@@ -2,8 +2,8 @@
 #define __GAMESCENENORMAL_SCENE_H__
 
 #include "cocos2d.h"
-#include "CCRule.h"
-#include "CCGameUIAdapter.h"
+#include "./Rule/CCRule.h"
+#include "./Adapter/CCGameUIAdapter.h"
 
 class CCGameScene :
     public cocos2d::Layer, public CCGameUIAdapter

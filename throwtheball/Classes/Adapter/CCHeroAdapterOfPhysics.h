@@ -1,7 +1,7 @@
 #ifndef CHEROADAPTEROFPHYSICAL_H
 #define CHEROADAPTEROFPHYSICAL_H
 #include "CCRoleAdapter.h"
-#include "CCRole.h"
+#include "./Role/CCRole.h"
 class CCHeroAdapterOfPhysics :
     public CCHeroAdapter, public cocos2d::Ref
 {

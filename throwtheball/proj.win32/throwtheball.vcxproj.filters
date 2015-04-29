@@ -36,35 +36,35 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src\Scene</Filter>
+    <ClCompile Include="..\Classes\Adapter\CCHeroAdapterOfPhysics.cpp">
+      <Filter>src\Adapter</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CCNormalRule.cpp">
+    <ClCompile Include="..\Classes\Adapter\CCRoleAdapter.cpp">
+      <Filter>src\Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Adapter\CCSupportAdapterOfPhysics.cpp">
+      <Filter>src\Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Role\CCRole.cpp">
+      <Filter>src\Role</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Role\CCRoleFactory.cpp">
+      <Filter>src\Role</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Rule\CCNormalRule.cpp">
       <Filter>src\Rule</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CCRole.cpp">
-      <Filter>src\Role</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CCRoleFactory.cpp">
-      <Filter>src\Role</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CCRoleAdapter.cpp">
-      <Filter>src\Adapter</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CCHeroAdapterOfPhysics.cpp">
-      <Filter>src\Adapter</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CCSupportAdapterOfPhysics.cpp">
-      <Filter>src\Adapter</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CCGameScene.cpp">
+    <ClCompile Include="..\Classes\Scene\CCGameScene.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CCPopupLayer.cpp">
+    <ClCompile Include="..\Classes\Scene\CCLoaderScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\HelloWorldScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Pop\CCPopupLayer.cpp">
       <Filter>src\Pop</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CCLoaderScene.cpp">
-      <Filter>src\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,41 +77,41 @@
     <ClInclude Include="..\Classes\Define.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCRoleAdapter.h">
+    <ClInclude Include="..\Classes\Adapter\CCHeroAdapterOfPhysics.h">
       <Filter>src\Adapter</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src\Scene</Filter>
+    <ClInclude Include="..\Classes\Adapter\CCRoleAdapter.h">
+      <Filter>src\Adapter</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCNormalRule.h">
-      <Filter>src\Rule</Filter>
+    <ClInclude Include="..\Classes\Adapter\CCSupportAdapterOfPhysics.h">
+      <Filter>src\Adapter</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCRule.h">
-      <Filter>src\Rule</Filter>
+    <ClInclude Include="..\Classes\Adapter\CCGameUIAdapter.h">
+      <Filter>src\Adapter</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCRole.h">
+    <ClInclude Include="..\Classes\Role\CCRole.h">
       <Filter>src\Role</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCRoleFactory.h">
+    <ClInclude Include="..\Classes\Role\CCRoleFactory.h">
       <Filter>src\Role</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCHeroAdapterOfPhysics.h">
-      <Filter>src\Adapter</Filter>
+    <ClInclude Include="..\Classes\Rule\CCNormalRule.h">
+      <Filter>src\Rule</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCSupportAdapterOfPhysics.h">
-      <Filter>src\Adapter</Filter>
+    <ClInclude Include="..\Classes\Rule\CCRule.h">
+      <Filter>src\Rule</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCGameScene.h">
+    <ClInclude Include="..\Classes\Scene\CCGameScene.h">
       <Filter>src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCGameUIAdapter.h">
-      <Filter>src\Adapter</Filter>
+    <ClInclude Include="..\Classes\Scene\CCLoaderScene.h">
+      <Filter>src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCPopupLayer.h">
+    <ClInclude Include="..\Classes\Scene\HelloWorldScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Pop\CCPopupLayer.h">
       <Filter>src\Pop</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCLoaderScene.h">
-      <Filter>src\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

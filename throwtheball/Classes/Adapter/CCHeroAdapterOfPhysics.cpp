@@ -1,5 +1,5 @@
 #include "CCHeroAdapterOfPhysics.h"
-#include "CCRole.h"
+#include "./Role/CCRole.h"
 
 USING_NS_CC;
 

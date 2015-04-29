@@ -1,7 +1,7 @@
 #include "CCNormalRule.h"
-#include "CCRoleFactory.h"
-#include "CCRoleAdapter.h"
-#include "CCGameUIAdapter.h"
+#include "./Role/CCRoleFactory.h"
+#include "./Adapter/CCRoleAdapter.h"
+#include "./Adapter/CCGameUIAdapter.h"
 
 USING_NS_CC;
 
