@@ -36,6 +36,7 @@ void CCNormalRule::gameStart()
 		auto touchListener = EventListenerTouchOneByOne::create();
 		touchListener->onTouchBegan = CC_CALLBACK_2(CCNormalRule::onHeroTouchBegan, this);
 		touchListener->onTouchMoved = CC_CALLBACK_2(CCNormalRule::onHeroTouchMove, this);
+        touchListener->setSwallowTouches(true);
 		auto hero = _roleFactory->createRole(MAIN_HERO, Vec2(0,0));
         hero->setPosition(hero->getContentSize().width/2, (hero->getContentSize().height/2)+3);
 		hero->getEventDispatcher()->addEventListenerWithSceneGraphPriority(
@@ -113,7 +114,7 @@ bool CCNormalRule::onHeroTouchBegan(Touch* touch, Event* event)
 	auto hero		= event->getCurrentTarget();
     if (hero == nullptr || "Hero" != hero->getName())
     {
-        return true;
+        return false;
     }
 	auto heroSize	= hero->getContentSize();
 	//是否在精灵上的点击,并且没有超出边界,浮点数不要判断=了

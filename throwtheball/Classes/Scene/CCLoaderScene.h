@@ -15,8 +15,12 @@ public:
 protected:
     bool initloading();
     bool initfinish();
-//     virtual void onEnterTransitionDidFinish() override;
-//     virtual void onExitTransitionDidStart() override;
+    virtual void onEnterTransitionDidFinish() override;
+//    virtual void onExitTransitionDidStart() override;
+    static void initResourceAndPlayer(CCLoaderScene* pthis);
+    bool onHydrangeaTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) ;
+    void onHydrangeaTouchMove(cocos2d::Touch* touch, cocos2d::Event* event) ;
+    void onHydrangeaTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) ;
 
 private:
     cocos2d::Node* _rootNode;

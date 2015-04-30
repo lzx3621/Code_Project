@@ -137,12 +137,15 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\Adapter\CCRoleAdapter.cpp" />
     <ClCompile Include="..\Classes\Adapter\CCSupportAdapterOfPhysics.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\Pop\CCPopupLayer.cpp" />
+    <ClCompile Include="..\Classes\Expand\Pop\CCPopupLayer.cpp" />
+    <ClCompile Include="..\Classes\Expand\SpriteButtom\CCSpriteButtom.cpp" />
+    <ClCompile Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.cpp" />
     <ClCompile Include="..\Classes\Role\CCRole.cpp" />
     <ClCompile Include="..\Classes\Role\CCRoleFactory.cpp" />
     <ClCompile Include="..\Classes\Rule\CCNormalRule.cpp" />
     <ClCompile Include="..\Classes\Scene\CCGameScene.cpp" />
     <ClCompile Include="..\Classes\Scene\CCLoaderScene.cpp" />
+    <ClCompile Include="..\Classes\Scene\CCSelectLevelScene.cpp" />
     <ClCompile Include="..\Classes\Scene\HelloWorldScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -153,13 +156,16 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\Adapter\CCSupportAdapterOfPhysics.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Define.h" />
-    <ClInclude Include="..\Classes\Pop\CCPopupLayer.h" />
+    <ClInclude Include="..\Classes\Expand\Pop\CCPopupLayer.h" />
+    <ClInclude Include="..\Classes\Expand\SpriteButtom\CCSpriteButtom.h" />
+    <ClInclude Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.h" />
     <ClInclude Include="..\Classes\Role\CCRole.h" />
     <ClInclude Include="..\Classes\Role\CCRoleFactory.h" />
     <ClInclude Include="..\Classes\Rule\CCNormalRule.h" />
     <ClInclude Include="..\Classes\Rule\CCRule.h" />
     <ClInclude Include="..\Classes\Scene\CCGameScene.h" />
     <ClInclude Include="..\Classes\Scene\CCLoaderScene.h" />
+    <ClInclude Include="..\Classes\Scene\CCSelectLevelScene.h" />
     <ClInclude Include="..\Classes\Scene\HelloWorldScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

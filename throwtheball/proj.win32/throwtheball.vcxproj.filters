@@ -22,11 +22,17 @@
     <Filter Include="src\Role">
       <UniqueIdentifier>{440413e7-b93d-43dd-9a0e-d7da61423bb0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Pop">
-      <UniqueIdentifier>{d1889e1c-c85a-41e2-b094-8f9ba08b3cf0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\PlayerConfig">
       <UniqueIdentifier>{e943747f-ce6a-400c-ab20-fccd20467397}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Expand">
+      <UniqueIdentifier>{ba8fe770-2cdc-4c22-a897-f3ac5c0b7c0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Expand\Pop">
+      <UniqueIdentifier>{d1889e1c-c85a-41e2-b094-8f9ba08b3cf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Expand\SpriteButtom">
+      <UniqueIdentifier>{381885ff-46b3-4e20-a09f-b6a995d45354}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,8 +69,17 @@
     <ClCompile Include="..\Classes\Scene\HelloWorldScene.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Pop\CCPopupLayer.cpp">
-      <Filter>src\Pop</Filter>
+    <ClCompile Include="..\Classes\Scene\CCSelectLevelScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Expand\Pop\CCPopupLayer.cpp">
+      <Filter>src\Expand\Pop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Expand\SpriteButtom\CCSpriteButtom.cpp">
+      <Filter>src\Expand\SpriteButtom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.cpp">
+      <Filter>src\Expand\SpriteButtom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,8 +125,17 @@
     <ClInclude Include="..\Classes\Scene\HelloWorldScene.h">
       <Filter>src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Pop\CCPopupLayer.h">
-      <Filter>src\Pop</Filter>
+    <ClInclude Include="..\Classes\Scene\CCSelectLevelScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Expand\Pop\CCPopupLayer.h">
+      <Filter>src\Expand\Pop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Expand\SpriteButtom\CCSpriteButtom.h">
+      <Filter>src\Expand\SpriteButtom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.h">
+      <Filter>src\Expand\SpriteButtom</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,6 @@
 #include "CCLoaderScene.h"
 #include "cocostudio/CocoStudio.h"
-#include "ui/CocosGUI.h"
-#include "./Rule/CCNormalRule.h"
-#include "ui/UITextBMFont.h"
-
 USING_NS_CC;
-
 using namespace cocostudio::timeline;
 
 CCLoaderScene::CCLoaderScene()
@@ -57,7 +52,6 @@ bool CCLoaderScene::init()
     _rootNode->retain();
     
     addChild(_rootNode);
-    addChild(_finish);
 
     return true;
 }
@@ -87,4 +81,68 @@ bool CCLoaderScene::initfinish()
     _finish->getChildByName("title")->runAction(RepeatForever::create(Sequence::createWithTwoActions(FadeOut::create(1.0f), FadeIn::create(0.5f))));
     _finish->getChildByName("arrows_up")->runAction(RepeatForever::create(Sequence::createWithTwoActions(FadeOut::create(1.0f), FadeIn::create(0.5f))));
     return true;
+}
+
+void CCLoaderScene::onEnterTransitionDidFinish()
+{
+    Node::onEnterTransitionDidFinish();
+
+    addChild(_loading);
+    //驾照音乐等资源
+
+    std::thread loadRes(initResourceAndPlayer,this);
+    loadRes.detach();
+}
+
+void CCLoaderScene::initResourceAndPlayer(CCLoaderScene* pthis)
+{
+    if (nullptr == pthis)
+    {
+        CCLOG("pthis is Null!");
+        return ;
+    }
+    Sleep(3000);
+    pthis->getScheduler()->performFunctionInCocosThread([=]{
+        pthis->removeChild(pthis->_loading);
+        pthis->addChild(pthis->_finish);
+        pthis->_finish->runAction(Sequence::createWithTwoActions(FadeOut::create(0.0f), FadeIn::create(1.0f)));
+        //没有阻塞函数通知是否完成某个动作，生硬点转换了
+        auto hydrangea = pthis->_rootNode->getChildByName<Sprite*>("hydrangea");
+        auto touchEvent = EventListenerTouchOneByOne::create();
+        touchEvent->setSwallowTouches(true);
+        touchEvent->onTouchBegan = CC_CALLBACK_2(CCLoaderScene::onHydrangeaTouchBegan, pthis);
+        touchEvent->onTouchMoved = CC_CALLBACK_2(CCLoaderScene::onHydrangeaTouchMove, pthis);
+        touchEvent->onTouchEnded = CC_CALLBACK_2(CCLoaderScene::onHydrangeaTouchEnded, pthis);
+        hydrangea->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchEvent, hydrangea);
+    });
+}
+
+bool CCLoaderScene::onHydrangeaTouchBegan(Touch* touch, Event* event)
+{
+    auto hydrangea = dynamic_cast<Sprite*>(event->getCurrentTarget());
+    auto point = touch->getLocation();
+    if (nullptr == hydrangea || 
+        !hydrangea->getBoundingBox().containsPoint(point))
+    {
+        return false;
+    }
+    
+    CCLOG("x:%f , y:%f", point.x, point.y);
+    return true;
+}
+
+void CCLoaderScene::onHydrangeaTouchMove(Touch* touch, Event* event)
+{
+    auto hydrangea = dynamic_cast<Sprite*>(event->getCurrentTarget());
+    hydrangea->setPositionY(touch->getLocation().y);
+}
+
+void CCLoaderScene::onHydrangeaTouchEnded(Touch* touch, Event* event)
+{
+    auto hydrangea = dynamic_cast<Sprite*>(event->getCurrentTarget());
+    if (hydrangea->getPositionY() > 900)
+    {
+        CCLOG("switch scene!");
+    }
+    
 }
