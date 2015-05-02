@@ -19,7 +19,7 @@ public:
     CCSpriteButtomEvent* clone() override;
 
 public:
-    std::function<void()> onClick;
+    std::function<void(cocos2d::Node*)> onClick;
     friend class cocos2d::EventDispatcher;
 };
 #endif __SPRITEBUTTOMEVENT_H__

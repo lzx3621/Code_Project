@@ -21,7 +21,7 @@
             <PrePosition X="0.0000" Y="0.0000" />
             <PreSize X="1.0000" Y="1.0000" />
             <Children>
-              <NodeObjectData Name="Sprite_1" ActionTag="-321362533" FrameEvent="" Tag="17" LeftMargin="-0.0001" RightMargin="0.0001" TopMargin="81.0044" BottomMargin="478.9957" ctype="SpriteObjectData">
+              <NodeObjectData Name="Sprite_1" ActionTag="-321362533" FrameEvent="" Tag="17" LeftMargin="-0.0001" RightMargin="0.0001" TopMargin="81.0043" BottomMargin="478.9957" ctype="SpriteObjectData">
                 <Position X="359.9999" Y="838.9957" />
                 <Scale ScaleX="0.7000" ScaleY="0.7000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -39,7 +39,7 @@
           </NodeObjectData>
           <NodeObjectData Name="back" ActionTag="968973162" FrameEvent="" Tag="6" LeftMargin="272.9998" RightMargin="273.0002" TopMargin="260.1710" BottomMargin="932.8290" TouchEnable="True" FontSize="48" ButtonText="返回" Scale9Width="256" Scale9Height="128" ctype="ButtonObjectData">
             <Position X="359.9998" Y="976.3290" />
-            <Scale ScaleX="0.8000" ScaleY="0.8000" />
+            <Scale ScaleX="0.9000" ScaleY="0.9000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <Size X="174.0000" Y="87.0000" />
@@ -51,13 +51,13 @@
             <PressedFileData Type="Normal" Path="Common/bt_p_1.png" />
             <NormalFileData Type="Normal" Path="Common/bt_n_1.png" />
           </NodeObjectData>
-          <NodeObjectData Name="level" ActionTag="1051750235" FrameEvent="" Tag="7" LeftMargin="272.9998" RightMargin="273.0002" TopMargin="385.0719" BottomMargin="807.9281" TouchEnable="True" FontSize="48" ButtonText="关卡" Scale9Width="256" Scale9Height="128" ctype="ButtonObjectData">
-            <Position X="359.9998" Y="851.4281" />
-            <Scale ScaleX="0.8000" ScaleY="0.8000" />
+          <NodeObjectData Name="level" ActionTag="1051750235" FrameEvent="" Tag="7" LeftMargin="272.9998" RightMargin="273.0002" TopMargin="390.6221" BottomMargin="802.3779" TouchEnable="True" FontSize="48" ButtonText="关卡" Scale9Width="256" Scale9Height="128" ctype="ButtonObjectData">
+            <Position X="359.9998" Y="845.8779" />
+            <Scale ScaleX="0.9000" ScaleY="0.9000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <Size X="174.0000" Y="87.0000" />
-            <PrePosition X="0.5000" Y="0.6652" />
+            <PrePosition X="0.5000" Y="0.6608" />
             <PreSize X="0.2417" Y="0.0680" />
             <FontResource Type="Normal" Path="Font/summer.ttf" />
             <TextColor A="255" R="64" G="39" B="7" />
@@ -65,13 +65,13 @@
             <PressedFileData Type="Normal" Path="Common/bt_p_1.png" />
             <NormalFileData Type="Normal" Path="Common/bt_n_1.png" />
           </NodeObjectData>
-          <NodeObjectData Name="replay" ActionTag="858729065" FrameEvent="" Tag="8" LeftMargin="272.9998" RightMargin="273.0002" TopMargin="506.0729" BottomMargin="686.9271" TouchEnable="True" FontSize="48" ButtonText="重玩" Scale9Width="256" Scale9Height="128" ctype="ButtonObjectData">
-            <Position X="359.9998" Y="730.4271" />
-            <Scale ScaleX="0.8000" ScaleY="0.8000" />
+          <NodeObjectData Name="replay" ActionTag="858729065" FrameEvent="" Tag="8" LeftMargin="272.9995" RightMargin="273.0005" TopMargin="521.0731" BottomMargin="671.9269" TouchEnable="True" FontSize="48" ButtonText="重玩" Scale9Width="256" Scale9Height="128" ctype="ButtonObjectData">
+            <Position X="359.9995" Y="715.4269" />
+            <Scale ScaleX="0.9000" ScaleY="0.9000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <Size X="174.0000" Y="87.0000" />
-            <PrePosition X="0.5000" Y="0.5706" />
+            <PrePosition X="0.5000" Y="0.5589" />
             <PreSize X="0.2417" Y="0.0680" />
             <FontResource Type="Normal" Path="Font/summer.ttf" />
             <TextColor A="255" R="64" G="39" B="7" />

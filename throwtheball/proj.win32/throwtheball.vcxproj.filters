@@ -22,9 +22,6 @@
     <Filter Include="src\Role">
       <UniqueIdentifier>{440413e7-b93d-43dd-9a0e-d7da61423bb0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\PlayerConfig">
-      <UniqueIdentifier>{e943747f-ce6a-400c-ab20-fccd20467397}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Expand">
       <UniqueIdentifier>{ba8fe770-2cdc-4c22-a897-f3ac5c0b7c0f}</UniqueIdentifier>
     </Filter>
@@ -33,6 +30,9 @@
     </Filter>
     <Filter Include="src\Expand\SpriteButtom">
       <UniqueIdentifier>{381885ff-46b3-4e20-a09f-b6a995d45354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\AppConfig">
+      <UniqueIdentifier>{e943747f-ce6a-400c-ab20-fccd20467397}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +80,15 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.cpp">
       <Filter>src\Expand\SpriteButtom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PlayerConfig\CCAppConfig.cpp">
+      <Filter>src\AppConfig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Adapter\CConfigFileAdapter.cpp">
+      <Filter>src\Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\CCStoreScene.cpp">
+      <Filter>src\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +145,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.h">
       <Filter>src\Expand\SpriteButtom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PlayerConfig\CCAppConfig.h">
+      <Filter>src\AppConfig</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Adapter\CCConfigReadAndWriteAdapter.h">
+      <Filter>src\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Adapter\CConfigFileAdapter.h">
+      <Filter>src\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\CCStoreScene.h">
+      <Filter>src\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

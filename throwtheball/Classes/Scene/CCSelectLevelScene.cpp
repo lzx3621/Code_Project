@@ -1,6 +1,7 @@
 #include "CCSelectLevelScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "Expand/SpriteButtom/CCSpriteButtomEvent.h"
+#include "PlayerConfig/CCAppConfig.h"
 USING_NS_CC;
 using namespace cocostudio::timeline;
 
@@ -56,13 +57,22 @@ bool CCSelectLevelScene::init()
 
 bool CCSelectLevelScene::initMenu()
 {
-    auto sprite = _rootNode->getChildByName("Limited");
+    auto sprite = _rootNode->getChildByName("limited");
     if (nullptr == sprite)
     {
         CCLOG("Limited load failed!");
         return false;
     }
-    sprite->getEventDispatcher()->addEventListenerWithSceneGraphPriority(CCSpriteButtomEvent::create(), sprite);
+    auto listener = CCSpriteButtomEvent::create();
+    listener->onClick = CC_CALLBACK_1(CCSelectLevelScene::onPlayCallback, this);
+    sprite->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, sprite);
+    sprite = _rootNode->getChildByName("normal");
+    if (nullptr == sprite)
+    {
+        CCLOG("normal load failed!");
+        return false;
+    }
+    sprite->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener->clone(), sprite);
     return true;
 }
 
@@ -76,13 +86,14 @@ bool CCSelectLevelScene::initSelect()
     }
     auto checkBoxes = _CheckGroup->getChildren();
     ui::CheckBox* Temp = nullptr;
+
+    auto i = 0;
     for (auto checkBox : checkBoxes)
     {
         Temp = dynamic_cast<ui::CheckBox*>(checkBox);
         if (nullptr != Temp)
         {
             Temp->addEventListener(CC_CALLBACK_2(CCSelectLevelScene::selectedStateEvent, this));
-            setCheckBoxEnable(Temp, false);
         }
     }
     return true;
@@ -122,6 +133,19 @@ void CCSelectLevelScene::setCheckBoxEnable(cocos2d::ui::CheckBox* cbox, bool ena
             cbox->getChildByName(name + "_title")->setVisible(false);
             cbox->getChildByName(name + "_disable")->setVisible(true);
         }
+    }
+}
+
+void CCSelectLevelScene::onPlayCallback(cocos2d::Node* target)
+{
+    CCLOG("name :%s", target->getName().c_str());
+    if ("limited" == target->getName())
+    {
+
+    }
+    else if ("normal" == target->getName())
+    {
+
     }
 }
 

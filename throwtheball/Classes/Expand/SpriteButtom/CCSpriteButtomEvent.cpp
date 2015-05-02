@@ -28,13 +28,21 @@ bool CCSpriteButtomEvent::init()
 bool CCSpriteButtomEvent::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     auto target = event->getCurrentTarget();
-    if (target &&
-        target->getBoundingBox().containsPoint(touch->getLocation()))
+
+    if (nullptr != target)
     {
-        target->setScaleX(target->getScaleX()*0.8);
-        target->setScaleY(target->getScaleY()*0.8);
-        target->setScaleZ(target->getScaleZ()*0.8);
-        return true;
+        auto locationInNode = target->convertToNodeSpace(touch->getLocation());
+        auto s = target->getContentSize();
+        auto rect = Rect(0, 0, s.width, s.height);
+        if (rect.containsPoint(locationInNode))
+        {
+            target->setScaleX(target->getScaleX()*0.8);
+            target->setScaleY(target->getScaleY()*0.8);
+            target->setScaleZ(target->getScaleZ()*0.8);
+            return true;
+        }
+        //target->getBoundingBox().containsPoint(target->convertToWorldSpace(touch->getLocation())))
+        
     }
     return false;
 }
@@ -53,10 +61,14 @@ void CCSpriteButtomEvent::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event* ev
         target->setScaleX(target->getScaleX()/0.8);
         target->setScaleY(target->getScaleY()/0.8);
         target->setScaleZ(target->getScaleZ()/0.8);
-        if (nullptr != onClick && target->getBoundingBox().containsPoint(touch->getLocation()))
+
+        auto locationInNode = target->convertToNodeSpace(touch->getLocation());
+        auto s = target->getContentSize();
+        auto rect = Rect(0, 0, s.width, s.height);
+        if (nullptr != onClick && rect.containsPoint(locationInNode))
         {
             CCLOG("onClick");
-            onClick;
+            onClick(target);
         }
     }
 }

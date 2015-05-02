@@ -27,7 +27,7 @@ protected:
     //设置难度
     virtual void setLevel(const int& level);
     //游戏是否继续
-    virtual bool gameContinue(CCHeroAdapter* &hero, CCSupportAdapter* &support);
+    virtual bool isGameContinue(CCHeroAdapter* &hero, CCSupportAdapter* &support);
     virtual int getLevel();
     void createObjectOffFall(float dt);
     virtual bool onHeroTouchBegan(cocos2d::Touch*, cocos2d::Event*) ;

@@ -4,6 +4,7 @@
 #include "./Adapter/CCRoleAdapter.h"
 #include "./Adapter/CCHeroAdapterOfPhysics.h"
 #include "./Adapter/CCSupportAdapterOfPhysics.h"
+#include "PlayerConfig/CCAppConfig.h"
 
 USING_NS_CC;
 
@@ -14,12 +15,7 @@ bool SuperRole::init()
 {
     auto frameCache = CCSpriteFrameCache::getInstance(); 
     if (nullptr == frameCache) { return false;}
-    auto fileUtil = FileUtils::getInstance();
-    std::string fliename(fileUtil->getWritablePath()+"appConfig.plist");
-    if (fileUtil->isFileExist(fliename))
-    {
-        ValueMap appConfig = fileUtil->getValueMapFromFile(fliename);
-    }
+
     frameCache->addSpriteFramesWithFile("Sprite/hero/hero.plist");
     frameCache->addSpriteFramesWithFile("Sprite/object/object.plist");
 
@@ -48,7 +44,9 @@ SpriteFrame* SuperRole::getSpriteFrameByRoleType()
         CCUserDefault::getInstance()->getStringForKey("HeroFrameName", framePath);
         if ("" == framePath)
         {
-            framePath = "Sprite/hero/waiter.png";
+            framePath += "Sprite/hero/";
+            framePath += CCAppConfig::getInstance()->getHeroName().asString() ;
+            framePath += ".png";
         }
         break;
     case GAIN_HYDRANGEA:

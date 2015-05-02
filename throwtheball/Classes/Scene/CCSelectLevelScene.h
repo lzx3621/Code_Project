@@ -24,6 +24,7 @@ protected:
     void selectedStateEvent(cocos2d::Ref* pSender, cocos2d::ui::CheckBox::EventType type);
     void setCheckBoxEnable(cocos2d::ui::CheckBox* cbox, bool enable);
 
+    void onPlayCallback(cocos2d::Node* target);
 private:
     cocos2d::Node* _rootNode;
     cocos2d::Node* _CheckGroup;

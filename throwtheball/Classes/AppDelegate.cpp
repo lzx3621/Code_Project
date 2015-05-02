@@ -2,6 +2,8 @@
 #include "./Scene/HelloWorldScene.h"
 #include "./Scene/CCGameScene.h"
 #include "./Scene/CCLoaderScene.h"
+#include "Scene/CCSelectLevelScene.h"
+#include "Scene/CCStoreScene.h"
 
 
 USING_NS_CC;
@@ -45,7 +47,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     FileUtils::getInstance()->addSearchPath("res");
     // create a scene. it's an autorelease object
-    auto scene = CCLoaderScene::create();
+    auto scene = CCStoreScene::create();
     
     // run
     director->runWithScene(scene);

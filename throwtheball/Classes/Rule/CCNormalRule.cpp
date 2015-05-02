@@ -2,6 +2,7 @@
 #include "./Role/CCRoleFactory.h"
 #include "./Adapter/CCRoleAdapter.h"
 #include "./Adapter/CCGameUIAdapter.h"
+#include "PlayerConfig/CCAppConfig.h"
 
 USING_NS_CC;
 
@@ -117,11 +118,12 @@ bool CCNormalRule::onHeroTouchBegan(Touch* touch, Event* event)
         return false;
     }
 	auto heroSize	= hero->getContentSize();
+    auto locationInNode = hero->convertToNodeSpace(touch->getLocation());
+    auto rect = Rect(0, 0, heroSize.width, heroSize.height);
 	//是否在精灵上的点击,并且没有超出边界,浮点数不要判断=了
 	if (nullptr != _gameScene && 
         0 == _levelResume &&
-        heroSize.height > touch->getLocation().y &&
-		(heroSize.width)/2 > abs(hero->getPositionX() - touch->getLocation().x))
+        rect.containsPoint(locationInNode))
 	{
         auto apartLeftmin = heroSize.width/2;
         auto apartRightMax = _gameScene->getContentSize().width - (heroSize.width/2);
@@ -148,10 +150,12 @@ bool CCNormalRule::onHeroTouchBegan(Touch* touch, Event* event)
 void CCNormalRule::onHeroTouchMove(Touch* touch, Event* event)
 {
     auto hero		= event->getCurrentTarget();
-	auto heroSize	= event->getCurrentTarget()->getContentSize();
+    auto heroSize	= hero->getContentSize();
+    auto locationInNode = hero->convertToNodeSpace(touch->getLocation());
+    auto rect = Rect(0, 0, heroSize.width, heroSize.height);
     if (nullptr != _gameScene &&
         0 == _levelResume &&
-        heroSize.height > touch->getLocation().y )
+        rect.containsPoint(locationInNode))
 	{
         auto apartLeftmin = heroSize.width/2;
         auto apartRightMax = _gameScene->getContentSize().width - (heroSize.width/2);
@@ -186,6 +190,10 @@ void CCNormalRule::onHeroContact(CCHeroAdapter* hero, CCSupportAdapter* support)
             hero->setCurrentScore(score<0?score = 0:score);
             _UIAdapter->updateheroScoreAndLive(live, score);
             sprite->removeFromParent();
+        }
+        if (!isGameContinue(hero, support))
+        {
+            gameOver();
         }
     }
 }
@@ -233,10 +241,17 @@ int CCNormalRule::getLevel()
     return _level;
 }
 
-bool CCNormalRule::gameContinue(CCHeroAdapter* &hero, CCSupportAdapter* &support)
+bool CCNormalRule::isGameContinue(CCHeroAdapter* &hero, CCSupportAdapter* &support)
 {
-    if (0 == hero->getCurrentLive())
+    if (0 == hero->getCurrentLive() || 
+        GAIN_HYDRANGEA == support->getType() )
     {
+        if (CCAppConfig::getInstance()->getHighestScores().asInt() <
+            hero->getCurrentScore()
+            )
+        {
+            CCAppConfig::getInstance()->setHighestScores(Value(hero->getCurrentScore()));
+        }
         return false;
     }
     auto Score = hero->getCurrentScore();
