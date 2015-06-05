@@ -11,28 +11,40 @@
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Adapter">
-      <UniqueIdentifier>{e4a37bf2-c6a4-4a7d-afdb-b3e84371a811}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Scene">
-      <UniqueIdentifier>{43e7e070-118c-4df2-b968-e552c51eea25}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Rule">
-      <UniqueIdentifier>{6c47ad5f-fc27-4943-b4d1-b3e185ebaa86}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Role">
-      <UniqueIdentifier>{440413e7-b93d-43dd-9a0e-d7da61423bb0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Expand">
-      <UniqueIdentifier>{ba8fe770-2cdc-4c22-a897-f3ac5c0b7c0f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Expand\Pop">
-      <UniqueIdentifier>{d1889e1c-c85a-41e2-b094-8f9ba08b3cf0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Expand\SpriteButtom">
-      <UniqueIdentifier>{381885ff-46b3-4e20-a09f-b6a995d45354}</UniqueIdentifier>
+      <UniqueIdentifier>{44abf9c3-2a22-4742-a04d-ece34bf6f865}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\AppConfig">
-      <UniqueIdentifier>{e943747f-ce6a-400c-ab20-fccd20467397}</UniqueIdentifier>
+      <UniqueIdentifier>{8f1959dc-e739-4af5-beb5-43bfc66af8c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Expand">
+      <UniqueIdentifier>{44c09fa0-717e-428b-a5a3-803a1d028bd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Layer">
+      <UniqueIdentifier>{eaa4aacd-c082-48eb-8666-40ade91dd769}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Role">
+      <UniqueIdentifier>{7e9ea535-4f6d-4d39-8b96-2b8305131fc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rule">
+      <UniqueIdentifier>{6bdc1148-cb07-4d02-8bbb-e289ce826dbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scene">
+      <UniqueIdentifier>{020b8cf3-8d19-404b-ad3d-9554b11d0cb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Expand\ImageScale">
+      <UniqueIdentifier>{d366a28b-a041-4e69-ba21-c98c0dd08b6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Expand\SpriteButtom">
+      <UniqueIdentifier>{58eaacb3-7079-4c99-bdc7-36c28fe715e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Expand\Hero">
+      <UniqueIdentifier>{fe7bf63e-6809-42cd-a2ed-dd37aac10eab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\NDKHelper">
+      <UniqueIdentifier>{ee6fb512-1490-4f73-8ba7-3fe4acce79ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Audio">
+      <UniqueIdentifier>{306b623c-04c5-4552-a4fa-41562fde295c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -42,8 +54,29 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Adapter\CCHeroAdapterOfPhysics.cpp">
+    <ClCompile Include="..\Classes\AppConfig\CCAppConfig.cpp">
+      <Filter>src\AppConfig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Adapter\CConfigFileAdapter.cpp">
       <Filter>src\Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\CCLoaderScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\CCMenuScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Layer\CCSelectLevelLayer.cpp">
+      <Filter>src\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Layer\CCStoreLayer.cpp">
+      <Filter>src\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Expand\ImageScale\CCImageScaleEvent.cpp">
+      <Filter>src\Expand\ImageScale</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.cpp">
+      <Filter>src\Expand\SpriteButtom</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Adapter\CCRoleAdapter.cpp">
       <Filter>src\Adapter</Filter>
@@ -51,44 +84,56 @@
     <ClCompile Include="..\Classes\Adapter\CCSupportAdapterOfPhysics.cpp">
       <Filter>src\Adapter</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Adapter\CCHeroAdapterOfPhysics.cpp">
+      <Filter>src\Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Rule\CCNormalRule.cpp">
+      <Filter>src\Rule</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Role\CCRole.cpp">
       <Filter>src\Role</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Role\CCRoleFactory.cpp">
       <Filter>src\Role</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Rule\CCNormalRule.cpp">
-      <Filter>src\Rule</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Scene\CCGameScene.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Scene\CCLoaderScene.cpp">
-      <Filter>src\Scene</Filter>
+    <ClCompile Include="..\Classes\NDKHelper\NDKCallbackNode.cpp">
+      <Filter>src\NDKHelper</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Scene\HelloWorldScene.cpp">
-      <Filter>src\Scene</Filter>
+    <ClCompile Include="..\Classes\NDKHelper\NDKHelper.cpp">
+      <Filter>src\NDKHelper</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Scene\CCSelectLevelScene.cpp">
-      <Filter>src\Scene</Filter>
+    <ClCompile Include="..\Classes\Layer\CCSignInLayer.cpp">
+      <Filter>src\Layer</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Expand\Pop\CCPopupLayer.cpp">
-      <Filter>src\Expand\Pop</Filter>
+    <ClCompile Include="..\Classes\Layer\CCPhotoLayer.cpp">
+      <Filter>src\Layer</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Expand\SpriteButtom\CCSpriteButtom.cpp">
-      <Filter>src\Expand\SpriteButtom</Filter>
+    <ClCompile Include="..\Classes\Layer\CCDefaultImageLayer.cpp">
+      <Filter>src\Layer</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.cpp">
-      <Filter>src\Expand\SpriteButtom</Filter>
+    <ClCompile Include="..\Classes\Layer\CCHeadShotLayer.cpp">
+      <Filter>src\Layer</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\PlayerConfig\CCAppConfig.cpp">
-      <Filter>src\AppConfig</Filter>
+    <ClCompile Include="..\Classes\Expand\Hero\CCHeroEvent.cpp">
+      <Filter>src\Expand\Hero</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Adapter\CConfigFileAdapter.cpp">
-      <Filter>src\Adapter</Filter>
+    <ClCompile Include="..\Classes\Role\CCHero.cpp">
+      <Filter>src\Role</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Scene\CCStoreScene.cpp">
-      <Filter>src\Scene</Filter>
+    <ClCompile Include="..\Classes\Role\CCSupport.cpp">
+      <Filter>src\Role</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Layer\CCMarryLayer.cpp">
+      <Filter>src\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Rule\CCLimitedRule.cpp">
+      <Filter>src\Rule</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Audio\CCAudioHelper.cpp">
+      <Filter>src\Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,8 +143,32 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Define.h">
-      <Filter>src</Filter>
+    <ClInclude Include="..\Classes\AppConfig\CCAppConfig.h">
+      <Filter>src\AppConfig</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Adapter\CCConfigReadAndWriteAdapter.h">
+      <Filter>src\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Adapter\CConfigFileAdapter.h">
+      <Filter>src\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\CCLoaderScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\CCMenuScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Layer\CCSelectLevelLayer.h">
+      <Filter>src\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Layer\CCStoreLayer.h">
+      <Filter>src\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Expand\ImageScale\CCImageScaleEvent.h">
+      <Filter>src\Expand\ImageScale</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.h">
+      <Filter>src\Expand\SpriteButtom</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Adapter\CCHeroAdapterOfPhysics.h">
       <Filter>src\Adapter</Filter>
@@ -113,55 +182,68 @@
     <ClInclude Include="..\Classes\Adapter\CCGameUIAdapter.h">
       <Filter>src\Adapter</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Role\CCRole.h">
-      <Filter>src\Role</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Role\CCRoleFactory.h">
-      <Filter>src\Role</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Rule\CCNormalRule.h">
       <Filter>src\Rule</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Rule\CCRule.h">
       <Filter>src\Rule</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Role\CCRole.h">
+      <Filter>src\Role</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Role\CCRoleFactory.h">
+      <Filter>src\Role</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\Scene\CCGameScene.h">
       <Filter>src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Scene\CCLoaderScene.h">
-      <Filter>src\Scene</Filter>
+    <ClInclude Include="..\Classes\NDKHelper\NDKCallbackNode.h">
+      <Filter>src\NDKHelper</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Scene\HelloWorldScene.h">
-      <Filter>src\Scene</Filter>
+    <ClInclude Include="..\Classes\NDKHelper\NDKHelper.h">
+      <Filter>src\NDKHelper</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Scene\CCSelectLevelScene.h">
-      <Filter>src\Scene</Filter>
+    <ClInclude Include="..\Classes\Layer\CCSignInLayer.h">
+      <Filter>src\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Expand\Pop\CCPopupLayer.h">
-      <Filter>src\Expand\Pop</Filter>
+    <ClInclude Include="..\Classes\Layer\CCPhotoLayer.h">
+      <Filter>src\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Expand\SpriteButtom\CCSpriteButtom.h">
-      <Filter>src\Expand\SpriteButtom</Filter>
+    <ClInclude Include="..\Classes\Layer\CCDefaultImageLayer.h">
+      <Filter>src\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.h">
-      <Filter>src\Expand\SpriteButtom</Filter>
+    <ClInclude Include="..\Classes\Layer\CCHeadShotLayer.h">
+      <Filter>src\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\PlayerConfig\CCAppConfig.h">
-      <Filter>src\AppConfig</Filter>
+    <ClInclude Include="..\Classes\Expand\Hero\CCHeroEvent.h">
+      <Filter>src\Expand\Hero</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Adapter\CCConfigReadAndWriteAdapter.h">
-      <Filter>src\Adapter</Filter>
+    <ClInclude Include="..\Classes\Role\CCHero.h">
+      <Filter>src\Role</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Adapter\CConfigFileAdapter.h">
-      <Filter>src\Adapter</Filter>
+    <ClInclude Include="..\Classes\Role\CCSupport.h">
+      <Filter>src\Role</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Scene\CCStoreScene.h">
-      <Filter>src\Scene</Filter>
+    <ClInclude Include="..\Classes\Layer\CCMarryLayer.h">
+      <Filter>src\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Rule\CCLimitedRule.h">
+      <Filter>src\Rule</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\Classes\Audio\CCAudioHelper.h">
+      <Filter>src\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Define.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
       <Filter>resource</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\game.ico" />
   </ItemGroup>
 </Project>

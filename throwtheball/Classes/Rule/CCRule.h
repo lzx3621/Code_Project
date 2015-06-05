@@ -1,5 +1,5 @@
-#ifndef __RULE_FACTORY_H__
-#define __RULE_FACTORY_H__
+#ifndef __RULE_H__
+#define __RULE_H__
 
 #include "cocos2d.h"
 
@@ -17,8 +17,9 @@ public:
     virtual void gamePause() = 0;
     virtual void gameResume() = 0;
     virtual void gameOver() = 0;
+    virtual bool useObject(const std::string& Object) = 0;
 };
 
-#endif __RULE_FACTORY_H__
+#endif /*__RULE_H__*/
 
 

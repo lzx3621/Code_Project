@@ -8,8 +8,6 @@ class CCLoaderScene :public cocos2d::Scene
 public:
     CCLoaderScene();
     ~CCLoaderScene();
-    static cocos2d::Scene* createScene();
-
     virtual bool init() ;
     CREATE_FUNC(CCLoaderScene);
 protected:
@@ -20,12 +18,15 @@ protected:
     static void initResourceAndPlayer(CCLoaderScene* pthis);
     bool onHydrangeaTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) ;
     void onHydrangeaTouchMove(cocos2d::Touch* touch, cocos2d::Event* event) ;
-    void onHydrangeaTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) ;
-
+protected:
+    void loadingFinish();
 private:
     cocos2d::Node* _rootNode;
     cocos2d::Node* _loading;
     cocos2d::Node* _finish;
+    cocos2d::Point _originalPosition;
+    bool _showOther;
+    bool _finishok;
 };
 
 #endif // __LOADER_SCENE_H__

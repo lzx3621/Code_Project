@@ -1,12 +1,10 @@
 <Solution>
-  <PropertyGroup Name="throwtheball" Version="2.2.1.0" Type="CocosStudio" />
+  <PropertyGroup Name="throwtheball" Version="2.2.6.0" Type="CocosStudio" />
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
-        <Project Name="MainScene.csd" Type="Scene" />
-        <Image Name="HelloWorld.png" />
         <Folder Name="Sprite">
-          <Folder Name="hero">
+          <Folder Name="Hero">
             <PlistInfo Name="hero.csi" Type="Plist" />
             <Image Name="cateran.png" />
             <Image Name="cateran_disable.png" />
@@ -19,7 +17,6 @@
           </Folder>
           <Folder Name="object">
             <PlistInfo Name="object.csi" Type="Plist" />
-            <Image Name="badegg.png" />
             <Image Name="badvegetable.png" />
             <Image Name="handkerchief.png" />
             <Image Name="Hydrangea1.png" />
@@ -30,6 +27,132 @@
             <Image Name="sachet.png" />
             <Image Name="smellystockings.png" />
             <Image Name="tile.png" />
+            <Image Name="badegg.png" />
+            <Image Name="clock.png" />
+          </Folder>
+          <Folder Name="HeroArmature">
+            <Folder Name="cateran">
+              <ExportJsonFile Name="cateran.ExportJson" />
+              <PlistImageFolder Image="cateran0.png" PListFile="cateran0.plist" Name=".cateran0_PList.Dir">
+                <PlistImageFile Name="dz_1.png" Key="dz/1.png" />
+                <PlistImageFile Name="dz_l.png" Key="dz/l.png" />
+                <PlistImageFile Name="dz_2.png" Key="dz/2.png" />
+                <PlistImageFile Name="dz_3.png" Key="dz/3.png" />
+                <PlistImageFile Name="dz_4.png" Key="dz/4.png" />
+                <PlistImageFile Name="dz_5.png" Key="dz/5.png" />
+                <PlistImageFile Name="dz_6.png" Key="dz/6.png" />
+                <PlistImageFile Name="dz_7.png" Key="dz/7.png" />
+                <PlistImageFile Name="dz_8.png" Key="dz/8.png" />
+                <PlistImageFile Name="dz_9.png" Key="dz/9.png" />
+                <PlistImageFile Name="dz_10.png" Key="dz/10.png" />
+              </PlistImageFolder>
+              <Image Name="cateran0.png" />
+            </Folder>
+            <Folder Name="general">
+              <ExportJsonFile Name="general.ExportJson" />
+              <PlistImageFolder Image="general0.png" PListFile="general0.plist" Name=".general0_PList.Dir">
+                <PlistImageFile Name="jj_2.png" Key="jj/2.png" />
+                <PlistImageFile Name="jj_1.png" Key="jj/1.png" />
+                <PlistImageFile Name="jj_l.png" Key="jj/l.png" />
+                <PlistImageFile Name="jj_3.png" Key="jj/3.png" />
+                <PlistImageFile Name="jj_5.png" Key="jj/5.png" />
+                <PlistImageFile Name="jj_4.png" Key="jj/4.png" />
+                <PlistImageFile Name="jj_6.png" Key="jj/6.png" />
+                <PlistImageFile Name="jj_7.png" Key="jj/7.png" />
+                <PlistImageFile Name="jj_8.png" Key="jj/8.png" />
+              </PlistImageFolder>
+              <Image Name="general0.png" />
+            </Folder>
+            <Folder Name="scholar">
+              <ExportJsonFile Name="scholar.ExportJson" />
+              <PlistImageFolder Image="scholar0.png" PListFile="scholar0.plist" Name=".scholar0_PList.Dir">
+                <PlistImageFile Name="ss_2.png" Key="ss/2.png" />
+                <PlistImageFile Name="ss_1.png" Key="ss/1.png" />
+                <PlistImageFile Name="ss_l.png" Key="ss/l.png" />
+                <PlistImageFile Name="ss_3.png" Key="ss/3.png" />
+                <PlistImageFile Name="ss_4.png" Key="ss/4.png" />
+                <PlistImageFile Name="ss_5.png" Key="ss/5.png" />
+                <PlistImageFile Name="ss_6.png" Key="ss/6.png" />
+                <PlistImageFile Name="ss_7.png" Key="ss/7.png" />
+                <PlistImageFile Name="ss_8.png" Key="ss/8.png" />
+                <PlistImageFile Name="ss_9.png" Key="ss/9.png" />
+              </PlistImageFolder>
+              <Image Name="scholar0.png" />
+            </Folder>
+            <Folder Name="waiter">
+              <ExportJsonFile Name="waiter.ExportJson" />
+              <PlistImageFolder Image="waiter0.png" PListFile="waiter0.plist" Name=".waiter0_PList.Dir">
+                <PlistImageFile Name="xiaoer_1.png" Key="xiaoer/1.png" />
+                <PlistImageFile Name="l.png" Key="l.png" />
+                <PlistImageFile Name="xiaoer_2.png" Key="xiaoer/2.png" />
+                <PlistImageFile Name="xiaoer_3.png" Key="xiaoer/3.png" />
+                <PlistImageFile Name="xiaoer_4.png" Key="xiaoer/4.png" />
+                <PlistImageFile Name="xiaoer_5.png" Key="xiaoer/5.png" />
+                <PlistImageFile Name="xiaoer_6.png" Key="xiaoer/6.png" />
+                <PlistImageFile Name="xiaoer_7.png" Key="xiaoer/7.png" />
+                <PlistImageFile Name="xiaoer_8.png" Key="xiaoer/8.png" />
+              </PlistImageFolder>
+              <Image Name="waiter0.png" />
+            </Folder>
+            <Project Name="heroArmature.csd" Type="Node" />
+          </Folder>
+          <Folder Name="Bride">
+            <Folder Name="cateran">
+              <Image Name="1.png" />
+              <Image Name="2.png" />
+              <Image Name="3.png" />
+              <Image Name="4.png" />
+              <Image Name="5.png" />
+              <Image Name="6.png" />
+              <Image Name="7.png" />
+              <Image Name="8.png" />
+              <Image Name="9.png" />
+              <Project Name="cateran.csd" Type="Node" />
+            </Folder>
+            <Folder Name="general">
+              <Image Name="1.png" />
+              <Image Name="2.png" />
+              <Image Name="3.png" />
+              <Image Name="4.png" />
+              <Image Name="5.png" />
+              <Image Name="6.png" />
+              <Image Name="7.png" />
+              <Image Name="8.png" />
+              <Image Name="9.png" />
+              <Project Name="general.csd" Type="Node" />
+            </Folder>
+            <Folder Name="scholar">
+              <Image Name="1.png" />
+              <Image Name="2.png" />
+              <Image Name="3.png" />
+              <Image Name="4.png" />
+              <Image Name="5.png" />
+              <Image Name="6.png" />
+              <Image Name="7.png" />
+              <Image Name="8.png" />
+              <Image Name="9.png" />
+              <Project Name="scholar.csd" Type="Node" />
+            </Folder>
+            <Folder Name="waiter">
+              <Image Name="1.png" />
+              <Image Name="2.png" />
+              <Image Name="3.png" />
+              <Image Name="4.png" />
+              <Image Name="5.png" />
+              <Image Name="6.png" />
+              <Image Name="7.png" />
+              <Image Name="8.png" />
+              <Image Name="9.png" />
+              <Project Name="waiter.csd" Type="Node" />
+            </Folder>
+          </Folder>
+          <Folder Name="Bridegroom">
+            <Image Name="cateran.png" />
+            <Image Name="cateran_1.png" />
+            <Image Name="general.png" />
+            <Image Name="scholar.png" />
+            <Image Name="waiter.png" />
+            <Project Name="Bridegroom.csd" Type="Node" />
           </Folder>
         </Folder>
         <Folder Name="Common">
@@ -37,16 +160,261 @@
           <Image Name="tools.png" />
           <Image Name="clock.png" />
           <Image Name="fan.png" />
+          <Image Name="direction_l_n.png" />
+          <Image Name="direction_l_p.png" />
+          <Image Name="direction_r_n.png" />
+          <Image Name="direction_r_p.png" />
+          <Image Name="back.png" />
+          <Image Name="store.png" />
+          <Image Name="background_pop.png" />
+          <Image Name="ok2.png" />
+          <Image Name="ok1.png" />
+          <Image Name="background2.png" />
+          <Image Name="gold.png" />
+          <Image Name="red.png" />
+          <Image Name="buttom_1.png" />
+          <Image Name="buttom_2.png" />
+          <Image Name="title.png" />
+          <Image Name="item.png" />
+          <Image Name="item_ico.png" />
+          <Image Name="Container1.png" />
+          <Image Name="item_ok.png" />
+          <Image Name="diwen3.png" />
+          <Image Name="diwen2.png" />
+          <Image Name="pendant.png" />
+          <Image Name="disable.png" />
         </Folder>
-        <Folder Name="Scene">
-          <Folder Name="Start" />
+        <Folder Name="Font">
+          <Fnt Name="score.fnt" />
+          <Fnt Name="Japan.fnt" />
+          <Fnt Name="ch.fnt" />
+        </Folder>
+        <Folder Name="Layer">
           <Folder Name="Game">
-            <Project Name="GameScene.csd" Type="Scene" />
+            <Project Name="scoreAndLive.csd" Type="Node" />
             <Image Name="lives.png" />
             <Image Name="prop.png" />
+            <Image Name="title_ico.png" />
+            <Folder Name="Pop">
+              <Project Name="pause.csd" Type="Layer" />
+              <Project Name="gameover.csd" Type="Layer" />
+              <Image Name="bg_pause.png" />
+              <Image Name="bg_gameover.png" />
+              <Project Name="background.csd" Type="Node" />
+            </Folder>
+            <Project Name="gameLayer.csd" Type="Layer" />
+            <Image Name="note.png" />
+            <Image Name="title_ico1.png" />
+            <Image Name="scene1.jpg" />
+            <Image Name="scene2.jpg" />
+            <Image Name="scene3.jpg" />
+            <Image Name="scene4.jpg" />
+            <Image Name="haze1.png" />
+            <Image Name="haze2.png" />
+            <Image Name="haze.png" />
+          </Folder>
+          <Folder Name="Level">
+            <Project Name="selectLevel.csd" Type="Layer" />
+            <Image Name="background.png" />
+            <Image Name="best.png" />
+            <Image Name="bottom.png" />
+            <Image Name="cable.png" />
+            <Image Name="icon.png" />
+            <Image Name="Limited.png" />
+            <Image Name="new.png" />
+            <Image Name="normal.png" />
+            <Project Name="option.csd" Type="Node" />
+            <Image Name="Level.png" />
+            <Image Name="lock.png" />
+            <Image Name="acc.png" />
+            <Image Name="select.png" />
+            <Folder Name="Unlock">
+              <Project Name="unlock.csd" Type="Layer" />
+            </Folder>
+          </Folder>
+          <Folder Name="Load">
+            <Project Name="finish.csd" Type="Node" />
+            <Project Name="load.csd" Type="Layer" />
+            <Project Name="loading.csd" Type="Node" />
+            <Image Name="arrows_up.png" />
+            <Image Name="background.png" />
+            <Image Name="hydrangea.png" />
+            <Image Name="laoding.png" />
             <Image Name="title.png" />
-            <Project Name="ScoreAndLive.csd" Type="Node" />
-            <Project Name="GameLayer.csd" Type="Layer" />
+            <Image Name="title_1.png" />
+          </Folder>
+          <Folder Name="Photo">
+            <Project Name="photo.csd" Type="Layer" />
+            <Image Name="item.png" />
+            <Image Name="background.png" />
+            <Image Name="unkwon.png" />
+            <Image Name="select.png" />
+            <Image Name="zhezhao4.png" />
+            <Image Name="diwen5.png" />
+            <Folder Name="Bride">
+              <Folder Name="cateran">
+                <Image Name="1.png" />
+                <Image Name="2.png" />
+                <Image Name="3.png" />
+                <Image Name="4.png" />
+                <Image Name="5.png" />
+                <Image Name="6.png" />
+                <Image Name="7.png" />
+                <Image Name="8.png" />
+                <Image Name="9.png" />
+              </Folder>
+              <Folder Name="general">
+                <Image Name="1.png" />
+                <Image Name="2.png" />
+                <Image Name="3.png" />
+                <Image Name="4.png" />
+                <Image Name="5.png" />
+                <Image Name="6.png" />
+                <Image Name="7.png" />
+                <Image Name="8.png" />
+                <Image Name="9.png" />
+              </Folder>
+              <Folder Name="scholar">
+                <Image Name="1.png" />
+                <Image Name="2.png" />
+                <Image Name="3.png" />
+                <Image Name="4.png" />
+                <Image Name="5.png" />
+                <Image Name="6.png" />
+                <Image Name="7.png" />
+                <Image Name="8.png" />
+                <Image Name="9.png" />
+              </Folder>
+              <Folder Name="waiter">
+                <Image Name="1.png" />
+                <Image Name="2.png" />
+                <Image Name="3.png" />
+                <Image Name="4.png" />
+                <Image Name="5.png" />
+                <Image Name="6.png" />
+                <Image Name="7.png" />
+                <Image Name="8.png" />
+                <Image Name="9.png" />
+              </Folder>
+              <PlistInfo Name="bride.csi" Type="Plist" />
+            </Folder>
+          </Folder>
+          <Folder Name="Store">
+            <Project Name="store.csd" Type="Layer" />
+            <Project Name="storeNode.csd" Type="Node" />
+            <Image Name="buttom.png" />
+            <Image Name="money.png" />
+            <Folder Name="Buy">
+              <Project Name="buyfalse_already.csd" Type="Layer" />
+              <Image Name="containerfalse.png" />
+              <Image Name="containerok.png" />
+              <Project Name="buyok_object.csd" Type="Layer" />
+              <Image Name="goumai.png" />
+              <Project Name="buyok_level.csd" Type="Layer" />
+              <Project Name="buyfalse_notenough.csd" Type="Layer" />
+            </Folder>
+            <Image Name="title.png" />
+          </Folder>
+          <Folder Name="Headshot">
+            <Project Name="headshot.csd" Type="Layer" />
+            <Image Name="hollow.png" />
+            <Image Name="beijingse.png" />
+            <Image Name="title.png" />
+            <Folder Name="Hero">
+              <Image Name="cateran.png" />
+              <Image Name="general.png" />
+              <Image Name="scholar.png" />
+              <Image Name="waiter.png" />
+              <Image Name="face.png" />
+            </Folder>
+          </Folder>
+          <Folder Name="Menu">
+            <Project Name="menu.csd" Type="Layer" />
+            <Image Name="background.png" />
+          </Folder>
+          <Folder Name="SignIn">
+            <Project Name="signIn.csd" Type="Layer" />
+            <Image Name="background.png" />
+            <Folder Name="GetObject">
+              <Project Name="getobject.csd" Type="Node" />
+              <Image Name="clock.png" />
+              <Image Name="effects.png" />
+              <Image Name="fan.png" />
+              <Image Name="gold.png" />
+              <Image Name="redenvelope.png" />
+              <Image Name="title.png" />
+            </Folder>
+            <Image Name="Container2.png" />
+            <Image Name="title_text.png" />
+          </Folder>
+          <Folder Name="DefaultImage">
+            <Project Name="defaultImage.csd" Type="Layer" />
+            <Image Name="title.png" />
+            <Image Name="lock.png" />
+            <Image Name="lock_ico.png" />
+          </Folder>
+          <Folder Name="Marry">
+            <Project Name="marry.csd" Type="Layer" />
+            <Image Name="background.png" />
+            <Image Name="fenxiang.png" />
+            <Image Name="qq.png" />
+            <Image Name="renren.png" />
+            <Image Name="title.png" />
+            <Image Name="sina.png" />
+            <Image Name="biaotidiwen.png" />
+            <Image Name="wechat.png" />
+          </Folder>
+        </Folder>
+        <Image Name="test.jpg" />
+        <Project Name="unUsebutUse.csd" Type="Node" />
+        <Folder Name="Sound">
+          <Folder Name="Effect">
+            <Folder Name="Android">
+              <File Name="1.ogg" />
+              <File Name="10.ogg" />
+              <File Name="11.ogg" />
+              <File Name="12.ogg" />
+              <File Name="13.ogg" />
+              <File Name="14.ogg" />
+              <File Name="15.ogg" />
+              <File Name="16.ogg" />
+              <File Name="17.ogg" />
+              <File Name="2.ogg" />
+              <File Name="3.ogg" />
+              <File Name="4.ogg" />
+              <File Name="5.ogg" />
+              <File Name="6.ogg" />
+              <File Name="7.ogg" />
+              <File Name="8.ogg" />
+              <File Name="9.ogg" />
+            </Folder>
+            <Folder Name="Window">
+              <Audio Name="1.wav" />
+              <Audio Name="10.wav" />
+              <Audio Name="11.wav" />
+              <Audio Name="12.wav" />
+              <Audio Name="13.wav" />
+              <Audio Name="14.wav" />
+              <Audio Name="15.wav" />
+              <Audio Name="16.wav" />
+              <Audio Name="17.wav" />
+              <Audio Name="2.wav" />
+              <Audio Name="3.wav" />
+              <Audio Name="4.wav" />
+              <Audio Name="5.wav" />
+              <Audio Name="6.wav" />
+              <Audio Name="7.wav" />
+              <Audio Name="8.wav" />
+              <Audio Name="9.wav" />
+            </Folder>
+          </Folder>
+          <Folder Name="Music">
+            <Audio Name="cateran.mp3" />
+            <Audio Name="general.mp3" />
+            <Audio Name="marry.mp3" />
+            <Audio Name="normal.mp3" />
+            <Audio Name="scholar.mp3" />
+            <Audio Name="waiter.mp3" />
           </Folder>
         </Folder>
       </RootFolder>

@@ -1,0 +1,44 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Type="Plist" Name="bride" ID="ba15f142-048c-4946-8986-b614d8d1fe07" Version="2.2.6.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="0" AllowRotation="False" AllowAnySize="True" AllowTrim="True" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="Layer/Photo/Bride/cateran/1.png" />
+      <FilePathData Path="Layer/Photo/Bride/cateran/2.png" />
+      <FilePathData Path="Layer/Photo/Bride/cateran/3.png" />
+      <FilePathData Path="Layer/Photo/Bride/cateran/4.png" />
+      <FilePathData Path="Layer/Photo/Bride/cateran/5.png" />
+      <FilePathData Path="Layer/Photo/Bride/cateran/6.png" />
+      <FilePathData Path="Layer/Photo/Bride/cateran/7.png" />
+      <FilePathData Path="Layer/Photo/Bride/cateran/8.png" />
+      <FilePathData Path="Layer/Photo/Bride/cateran/9.png" />
+      <FilePathData Path="Layer/Photo/Bride/general/1.png" />
+      <FilePathData Path="Layer/Photo/Bride/general/2.png" />
+      <FilePathData Path="Layer/Photo/Bride/general/3.png" />
+      <FilePathData Path="Layer/Photo/Bride/general/4.png" />
+      <FilePathData Path="Layer/Photo/Bride/general/5.png" />
+      <FilePathData Path="Layer/Photo/Bride/general/6.png" />
+      <FilePathData Path="Layer/Photo/Bride/general/7.png" />
+      <FilePathData Path="Layer/Photo/Bride/general/8.png" />
+      <FilePathData Path="Layer/Photo/Bride/general/9.png" />
+      <FilePathData Path="Layer/Photo/Bride/scholar/1.png" />
+      <FilePathData Path="Layer/Photo/Bride/scholar/2.png" />
+      <FilePathData Path="Layer/Photo/Bride/scholar/3.png" />
+      <FilePathData Path="Layer/Photo/Bride/scholar/4.png" />
+      <FilePathData Path="Layer/Photo/Bride/scholar/5.png" />
+      <FilePathData Path="Layer/Photo/Bride/scholar/6.png" />
+      <FilePathData Path="Layer/Photo/Bride/scholar/7.png" />
+      <FilePathData Path="Layer/Photo/Bride/scholar/8.png" />
+      <FilePathData Path="Layer/Photo/Bride/scholar/9.png" />
+      <FilePathData Path="Layer/Photo/Bride/waiter/1.png" />
+      <FilePathData Path="Layer/Photo/Bride/waiter/2.png" />
+      <FilePathData Path="Layer/Photo/Bride/waiter/3.png" />
+      <FilePathData Path="Layer/Photo/Bride/waiter/4.png" />
+      <FilePathData Path="Layer/Photo/Bride/waiter/5.png" />
+      <FilePathData Path="Layer/Photo/Bride/waiter/6.png" />
+      <FilePathData Path="Layer/Photo/Bride/waiter/7.png" />
+      <FilePathData Path="Layer/Photo/Bride/waiter/8.png" />
+      <FilePathData Path="Layer/Photo/Bride/waiter/9.png" />
+    </ImageFiles>
+    <MaxSize Width="1024" Height="1024" />
+  </Content>
+</PlistInfoProjectFile>

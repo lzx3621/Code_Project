@@ -16,9 +16,10 @@ public:
     virtual bool write(const std::string &name /*in*/,const cocos2d::Value &value /*out*/);
     virtual void commit();
 protected:
+    std::string ValueToString(const cocos2d::Value &value);
     bool _first;
 private:
-    cocos2d::ValueMap _valueMap;
+    cocos2d::ValueMap _appConfig;
     std::string _flieName;
 };
 

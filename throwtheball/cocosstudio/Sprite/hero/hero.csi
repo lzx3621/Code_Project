@@ -1,15 +1,15 @@
 <PlistInfoProjectFile>
-  <PropertyGroup Type="Plist" Name="hero" ID="ffd71a0b-eca0-433b-860a-cbe8fae57e84" Version="2.2.1.0" />
+  <PropertyGroup Type="Plist" Name="hero" ID="ffd71a0b-eca0-433b-860a-cbe8fae57e84" Version="2.2.6.0" />
   <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="0" AllowRotation="True" AllowAnySize="True" AllowTrim="True" ctype="PlistInfoData">
     <ImageFiles>
-      <FilePathData Path="Sprite/hero/cateran.png" />
-      <FilePathData Path="Sprite/hero/cateran_disable.png" />
-      <FilePathData Path="Sprite/hero/general.png" />
-      <FilePathData Path="Sprite/hero/general_disable.png" />
-      <FilePathData Path="Sprite/hero/scholar_disable.png" />
-      <FilePathData Path="Sprite/hero/waiter.png" />
-      <FilePathData Path="Sprite/hero/waiter_disable.png" />
-      <FilePathData Path="Sprite/hero/scholar.png" />
+      <FilePathData Path="Sprite/Hero/cateran.png" />
+      <FilePathData Path="Sprite/Hero/cateran_disable.png" />
+      <FilePathData Path="Sprite/Hero/general.png" />
+      <FilePathData Path="Sprite/Hero/general_disable.png" />
+      <FilePathData Path="Sprite/Hero/scholar.png" />
+      <FilePathData Path="Sprite/Hero/scholar_disable.png" />
+      <FilePathData Path="Sprite/Hero/waiter.png" />
+      <FilePathData Path="Sprite/Hero/waiter_disable.png" />
     </ImageFiles>
     <MaxSize Width="1024" Height="1024" />
   </Content>

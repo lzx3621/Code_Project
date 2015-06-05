@@ -1,5 +1,5 @@
 <PlistInfoProjectFile>
-  <PropertyGroup Type="Plist" Name="object" ID="7e0b3ce8-7147-4925-a47b-bbb0ee1079af" Version="2.2.1.0" />
+  <PropertyGroup Type="Plist" Name="object" ID="7e0b3ce8-7147-4925-a47b-bbb0ee1079af" Version="2.2.6.0" />
   <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="0" AllowRotation="True" AllowAnySize="True" AllowTrim="True" ctype="PlistInfoData">
     <ImageFiles>
       <FilePathData Path="Sprite/object/badegg.png" />
@@ -13,6 +13,7 @@
       <FilePathData Path="Sprite/object/sachet.png" />
       <FilePathData Path="Sprite/object/smellystockings.png" />
       <FilePathData Path="Sprite/object/tile.png" />
+      <FilePathData Path="Sprite/object/clock.png" />
     </ImageFiles>
     <MaxSize Width="1024" Height="1024" />
   </Content>

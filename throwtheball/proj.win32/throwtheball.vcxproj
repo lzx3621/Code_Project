@@ -34,13 +34,13 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
-    <Import Project="$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\\cocos\2d\cocos2dx.props" />
-    <Import Project="$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\\cocos\2d\cocos2d_headers.props" />
+    <Import Project="$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\\cocos\2d\cocos2dx.props" />
+    <Import Project="$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\\cocos\2d\cocos2d_headers.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
-    <Import Project="$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\\cocos\2d\cocos2dx.props" />
-    <Import Project="$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\\cocos\2d\cocos2d_headers.props" />
+    <Import Project="$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\\cocos\2d\cocos2dx.props" />
+    <Import Project="$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\\cocos\2d\cocos2d_headers.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -67,7 +67,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot);$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\cocos\audio\include;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\external;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\external\chipmunk\include\chipmunk;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\cocos\audio\include;$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\external;$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\external\chipmunk\include\chipmunk;$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -93,7 +93,8 @@
     </PostBuildEvent>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
+xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\prebuilt\win32\*.*" "$(OutDir)"
+xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
 </Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
@@ -101,7 +102,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\cocos\audio\include;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\external;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\external\chipmunk\include\chipmunk;$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\cocos\audio\include;$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\external;$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\external\chipmunk\include\chipmunk;$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -128,7 +129,8 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
     </PostBuildEvent>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
+xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.6\prebuilt\win32\*.*" "$(OutDir)"
+xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
 </Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
@@ -137,19 +139,34 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\Adapter\CConfigFileAdapter.cpp" />
     <ClCompile Include="..\Classes\Adapter\CCRoleAdapter.cpp" />
     <ClCompile Include="..\Classes\Adapter\CCSupportAdapterOfPhysics.cpp" />
+    <ClCompile Include="..\Classes\AppConfig\CCAppConfig.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\Expand\Pop\CCPopupLayer.cpp" />
-    <ClCompile Include="..\Classes\Expand\SpriteButtom\CCSpriteButtom.cpp" />
+    <ClCompile Include="..\Classes\Audio\CCAudioHelper.cpp" />
+    <ClCompile Include="..\Classes\Expand\Hero\CCHeroEvent.cpp" />
+    <ClCompile Include="..\Classes\Expand\ImageScale\CCImageScaleEvent.cpp" />
     <ClCompile Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.cpp" />
-    <ClCompile Include="..\Classes\PlayerConfig\CCAppConfig.cpp" />
+    <ClCompile Include="..\Classes\Layer\CCDefaultImageLayer.cpp" />
+    <ClCompile Include="..\Classes\Layer\CCHeadShotLayer.cpp" />
+    <ClCompile Include="..\Classes\Layer\CCMarryLayer.cpp" />
+    <ClCompile Include="..\Classes\Layer\CCSignInLayer.cpp" />
+    <ClCompile Include="..\Classes\Layer\CCSelectLevelLayer.cpp" />
+    <ClCompile Include="..\Classes\Layer\CCPhotoLayer.cpp" />
+    <ClCompile Include="..\Classes\Layer\CCStoreLayer.cpp" />
+    <ClCompile Include="..\Classes\NDKHelper\NDKCallbackNode.cpp" />
+    <ClCompile Include="..\Classes\NDKHelper\NDKHelper.cpp" />
+    <ClCompile Include="..\Classes\Role\CCHero.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\Classes\Role\CCRole.cpp" />
     <ClCompile Include="..\Classes\Role\CCRoleFactory.cpp" />
+    <ClCompile Include="..\Classes\Role\CCSupport.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Rule\CCLimitedRule.cpp" />
     <ClCompile Include="..\Classes\Rule\CCNormalRule.cpp" />
     <ClCompile Include="..\Classes\Scene\CCGameScene.cpp" />
     <ClCompile Include="..\Classes\Scene\CCLoaderScene.cpp" />
-    <ClCompile Include="..\Classes\Scene\CCSelectLevelScene.cpp" />
-    <ClCompile Include="..\Classes\Scene\CCStoreScene.cpp" />
-    <ClCompile Include="..\Classes\Scene\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\Scene\CCMenuScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,25 +176,44 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.4\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\Adapter\CConfigFileAdapter.h" />
     <ClInclude Include="..\Classes\Adapter\CCRoleAdapter.h" />
     <ClInclude Include="..\Classes\Adapter\CCSupportAdapterOfPhysics.h" />
+    <ClInclude Include="..\Classes\AppConfig\CCAppConfig.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\Audio\CCAudioHelper.h" />
     <ClInclude Include="..\Classes\Define.h" />
-    <ClInclude Include="..\Classes\Expand\Pop\CCPopupLayer.h" />
-    <ClInclude Include="..\Classes\Expand\SpriteButtom\CCSpriteButtom.h" />
+    <ClInclude Include="..\Classes\Expand\Hero\CCHeroEvent.h" />
+    <ClInclude Include="..\Classes\Expand\ImageScale\CCImageScaleEvent.h" />
     <ClInclude Include="..\Classes\Expand\SpriteButtom\CCSpriteButtomEvent.h" />
-    <ClInclude Include="..\Classes\PlayerConfig\CCAppConfig.h" />
+    <ClInclude Include="..\Classes\Layer\CCDefaultImageLayer.h" />
+    <ClInclude Include="..\Classes\Layer\CCHeadShotLayer.h" />
+    <ClInclude Include="..\Classes\Layer\CCMarryLayer.h" />
+    <ClInclude Include="..\Classes\Layer\CCSignInLayer.h" />
+    <ClInclude Include="..\Classes\Layer\CCSelectLevelLayer.h" />
+    <ClInclude Include="..\Classes\Layer\CCPhotoLayer.h" />
+    <ClInclude Include="..\Classes\Layer\CCStoreLayer.h" />
+    <ClInclude Include="..\Classes\NDKHelper\NDKCallbackNode.h" />
+    <ClInclude Include="..\Classes\NDKHelper\NDKHelper.h" />
+    <ClInclude Include="..\Classes\Role\CCHero.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="..\Classes\Role\CCRole.h" />
     <ClInclude Include="..\Classes\Role\CCRoleFactory.h" />
+    <ClInclude Include="..\Classes\Role\CCSupport.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Rule\CCLimitedRule.h" />
     <ClInclude Include="..\Classes\Rule\CCNormalRule.h" />
     <ClInclude Include="..\Classes\Rule\CCRule.h" />
     <ClInclude Include="..\Classes\Scene\CCGameScene.h" />
     <ClInclude Include="..\Classes\Scene\CCLoaderScene.h" />
-    <ClInclude Include="..\Classes\Scene\CCSelectLevelScene.h" />
-    <ClInclude Include="..\Classes\Scene\CCStoreScene.h" />
-    <ClInclude Include="..\Classes\Scene\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\Scene\CCMenuScene.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\game.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

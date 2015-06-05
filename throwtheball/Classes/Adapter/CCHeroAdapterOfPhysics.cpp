@@ -1,40 +1,39 @@
 #include "CCHeroAdapterOfPhysics.h"
-#include "./Role/CCRole.h"
+#include "Role/CCHero.h"
 
 USING_NS_CC;
 
-CCHeroAdapterOfPhysics::CCHeroAdapterOfPhysics(void)
+CCHeroAdapterOfPhysics::CCHeroAdapterOfPhysics(CCHero* hero):
+    _hero(hero)
 {
 }
 
 
 CCHeroAdapterOfPhysics::~CCHeroAdapterOfPhysics(void)
 {
+    CC_SAFE_RELEASE_NULL(_hero);
 }
 
 bool CCHeroAdapterOfPhysics::init()
 {
+    if (nullptr == _hero)
+    {
+        CCLOGERROR("CCHeroAdapterOfPhysics _hero is Null!");
+        return false;
+    }
+    _hero->retain();
     return true;
 }
 
-Sprite* CCHeroAdapterOfPhysics::getSprite()
+cocos2d::Sprite* CCHeroAdapterOfPhysics::getHero()
 {
-    return _hero;
+    return static_cast<Sprite*>(_hero);
 }
 
-int CCHeroAdapterOfPhysics::getOriginLive()
-{
-    return _hero->getOriginLive();
-}
-
-int CCHeroAdapterOfPhysics::getOriginScore()
-{
-    return _hero->getOriginScore();
-}
 
 int CCHeroAdapterOfPhysics::getCurrentLive()
 {
-    return _hero->getLive();
+    return /*dynamic_cast<SuperRole*>*/(_hero)->getLive();
 }
 
 void CCHeroAdapterOfPhysics::setCurrentLive(const unsigned int & val)
@@ -52,8 +51,19 @@ int CCHeroAdapterOfPhysics::getCurrentScore()
     return _hero->getScore();
 }
 
-void CCHeroAdapterOfPhysics::setHero(CCHero* hero)
+CCHeroAdapterOfPhysics* CCHeroAdapterOfPhysics::create(CCHero* hero)
 {
-    _hero = hero;
+    auto *pRet = new(std::nothrow) CCHeroAdapterOfPhysics(hero); 
+    if (pRet && pRet->init()) 
+    { 
+        return pRet; 
+    } 
+    else 
+    { 
+        delete pRet; 
+        pRet = NULL; 
+        return NULL; 
+    } 
 }
+
 

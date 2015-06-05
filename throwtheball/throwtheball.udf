@@ -1,8 +1,4 @@
 <UserData>
-  <OpenedDocuments>
-    <FilePathData Path="Sprite/object/object.csi" />
-  </OpenedDocuments>
-  <ActiveDocument Path="Sprite/object/object.csi" />
   <Properties>
     <Item Key="PackageParamsKey">
       <Value ctype="PackageParams">
@@ -11,23 +7,26 @@
         <LuaEncryptSign Value="" />
         <Android_PackageName Value="org.cocos.throwtheball" />
         <AndroidkeyStore Value="" />
-        <AndroidVersion Value="android-11" />
+        <AndroidVersion Value="android-10" />
         <iOS_Target Value="throwtheball iOS" />
         <iOS_BundleID Value="" />
-        <Platform Value="Android" />
-        <PublishSetting Value="Resource" />
-        <FrameworkVersion Value="cocos2d-x-3.4" />
+        <Platform Value="None" />
+        <FrameworkVersion Value="cocos2d-x-3.6" />
         <IsDebugKeystore Value="True" />
+        <EnableSourceMap Value="False" />
+        <EnableHTML5Advanced Value="False" />
+      </Value>
+    </Item>
+    <Item Key="CocosRecentOperation">
+      <Value ctype="CocosRecentOperation">
+        <LastPublishType Value="Resource" />
+        <IsLastPublish Value="True" />
+        <LastRunType Value="Windows" />
       </Value>
     </Item>
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
-        <OpenedDocuments>
-          <FilePathData Path="Scene/Game/GameScene.csd" />
-          <FilePathData Path="Scene/Game/ScoreAndLive.csd" />
-          <FilePathData Path="Scene/Game/GameLayer.csd" />
-        </OpenedDocuments>
-        <ActiveDocument Path="Scene/Game/ScoreAndLive.csd" />
+        <ActiveDocument />
       </Value>
     </Item>
   </Properties>

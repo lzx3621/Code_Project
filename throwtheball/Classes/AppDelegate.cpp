@@ -1,10 +1,8 @@
 #include "AppDelegate.h"
-#include "./Scene/HelloWorldScene.h"
-#include "./Scene/CCGameScene.h"
-#include "./Scene/CCLoaderScene.h"
-#include "Scene/CCSelectLevelScene.h"
-#include "Scene/CCStoreScene.h"
-
+#include "Scene/CCLoaderScene.h"
+#include "AppConfig/CCAppConfig.h"
+#include "Audio/CCAudioHelper.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -14,6 +12,8 @@ AppDelegate::AppDelegate() {
 
 AppDelegate::~AppDelegate() 
 {
+    CCAppConfig::destroyInstance();
+    CCAudioHelper::destroyInstance();
 }
 
 //if you want a different context,just modify the value of glContextAttrs
@@ -33,40 +33,32 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
         glview = GLViewImpl::createWithRect("throwtheball", Rect(0, 0, 720, 1280));
-		glview->setFrameSize(360, 640);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+        glview->setFrameSize(360, 640);
+#endif
         director->setOpenGLView(glview);
     }
 
     director->getOpenGLView()->setDesignResolutionSize(720, 1280, ResolutionPolicy::SHOW_ALL);
 
-    // turn on display FPS
     director->setDisplayStats(true);
-
-    // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
-
     FileUtils::getInstance()->addSearchPath("res");
-    // create a scene. it's an autorelease object
-    auto scene = CCStoreScene::create();
+    auto scene = CCLoaderScene::create();
     
-    // run
     director->runWithScene(scene);
-    //scene->getChildByName<CCRule *>("Rule")->startGame();
     return true;
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
+    CCAppConfig::getInstance()->commit();
     Director::getInstance()->stopAnimation();
-
-    // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    CCAudioHelper::getInstance()->pauseAllAudio();
 }
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
-
-    // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    CCAudioHelper::getInstance()->resumeAllAudio();
 }

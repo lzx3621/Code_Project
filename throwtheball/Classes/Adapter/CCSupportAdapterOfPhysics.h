@@ -1,15 +1,15 @@
 #ifndef CCSUPPORTADAPTEROFPHYSICAL_H
 #define CCSUPPORTADAPTEROFPHYSICAL_H
 #include "CCRoleAdapter.h"
-#include "./Role/CCRole.h"
+class CCSupport;
 class CCSupportAdapterOfPhysics :
     public CCSupportAdapter, public cocos2d::Ref
 {
 protected:
-    CCSupportAdapterOfPhysics(void);
-    ~CCSupportAdapterOfPhysics(void);
+    CCSupportAdapterOfPhysics(CCSupport* support);
+    virtual ~CCSupportAdapterOfPhysics(void);
 public:
-    CREATE_FUNC(CCSupportAdapterOfPhysics);
+    static CCSupportAdapterOfPhysics* create(CCSupport* support);
     virtual bool init();
     virtual cocos2d::Sprite* getSprite() override;
     virtual int getPropertyOfLive() override;
@@ -18,6 +18,6 @@ public:
     virtual RoleType getType() override;
 protected:
     CCSupport* _support;
-    friend class SuperRole;
+    friend class CCSupport;
 };
 #endif /*CCSUPPORTADAPTEROFPHYSICAL_H*/

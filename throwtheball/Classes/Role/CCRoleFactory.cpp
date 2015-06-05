@@ -1,17 +1,16 @@
 #include "CCRoleFactory.h"
+#include "CCHero.h"
+#include "CCSupport.h"
 USING_NS_CC;
 
 //Role类工厂，用于创建角色对象，返回超类的引用对象
-SuperRole* CCRoleFactory::createRoleOfPhysics( RoleType Type, const cocos2d::Vec2 &pos )
+SuperRole* CCRoleFactory::createRoleOfPhysics( RoleType Type, const cocos2d::Point &pos )
 {
     SuperRole *ptr_Rtn = nullptr;
     switch(Type)
     {
     case MAIN_HERO:
         ptr_Rtn = CCHero::create();
-        break;
-    case GAIN_HYDRANGEA:
-        ptr_Rtn = CCHydrangea::create();
         break;
     case DAMAGE_TILE:
         ptr_Rtn = CCTile::create();
@@ -37,19 +36,22 @@ SuperRole* CCRoleFactory::createRoleOfPhysics( RoleType Type, const cocos2d::Vec
     case GAIN_JADE:
         ptr_Rtn = CCJade::create();
         break;
+    case GAIN_CLOCK:
+        ptr_Rtn = CCClock::create();
+        break;
     default:
-        CCLOG("error input RoleType");
+        CCLOGERROR("error input RoleType");
         break;
     };
     if (nullptr != ptr_Rtn)
     {
-        ptr_Rtn->setPosition(pos);
+        dynamic_cast<Sprite*>(ptr_Rtn)->setPosition(pos);
     }
     return ptr_Rtn;
 }
 //自动挂载到父节点的场景，如果没有场景，返回未挂载的
-Sprite* CCRoleFactory::createRole( RoleType Type, const cocos2d::Vec2 &pos /*= Vec2(0,0)*/)
+cocos2d::Sprite* CCRoleFactory::createRole( RoleType Type, const cocos2d::Point &pos /*= cocos2d::Point(0,0)*/)
 {
-	return createRoleOfPhysics(Type, pos);
+	return dynamic_cast<Sprite*>(createRoleOfPhysics(Type, pos));
 }
 

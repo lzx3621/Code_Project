@@ -1,14 +1,19 @@
 #include "CCLoaderScene.h"
 #include "cocostudio/CocoStudio.h"
+#include "CCMenuScene.h"
+#include "Audio/CCAudioHelper.h"
 USING_NS_CC;
 using namespace cocostudio::timeline;
 
 CCLoaderScene::CCLoaderScene()
     :_rootNode(nullptr),
     _loading(nullptr),
-    _finish(nullptr)
+    _finish(nullptr),
+    _originalPosition(Point::ZERO),
+    _showOther(false),
+    _finishok(false)
 {
-
+    CCLOG("CCLoaderScene create");
 }
 
 CCLoaderScene::~CCLoaderScene()
@@ -16,31 +21,12 @@ CCLoaderScene::~CCLoaderScene()
     CC_SAFE_RELEASE_NULL(_rootNode);
     CC_SAFE_RELEASE_NULL(_loading);
     CC_SAFE_RELEASE_NULL(_finish);
+    CCLOG("CCLoaderScene delete");
 }
 
-Scene* CCLoaderScene::createScene()
-{
-    // 'scene' is an autorelease object
-    auto scene = Scene::createWithPhysics();
-    if (nullptr != scene)
-    {
-        auto layer = CCLoaderScene::create();
-        if (nullptr != layer)
-        {
-            scene->addChild(layer);
-            return scene;
-        }
-    }
-    return nullptr;
-}
-
-// on "init" you need to initialize your instance
 bool CCLoaderScene::init()
 {
-    //////////////////////////////
-    // 1. super init first
-    
-    _rootNode   = CSLoader::createNode("Scene/Load/load.csb");
+    _rootNode   = CSLoader::createNode("Layer/Load/load.csb");
     if (!Scene::init() ||
         nullptr == _rootNode ||
         !initloading() ||
@@ -52,29 +38,36 @@ bool CCLoaderScene::init()
     _rootNode->retain();
     
     addChild(_rootNode);
-
+    CCAudioHelper::getInstance()->playMusic("normal");
     return true;
 }
 
 bool CCLoaderScene::initloading()
 {
-    _loading = CSLoader::createNode("Scene/Load/loading.csb");
+    _loading = CSLoader::createNode("Layer/Load/loading.csb");
     if (nullptr == _loading)
     {
-        CCLOG("Scene/Load/loading.csb load failed!");
+        CCLOGERROR("Layer/Load/loading.csb load failed!");
         return false;
     }
     _loading->retain();
-    _loading->runAction(RepeatForever::create(Sequence::createWithTwoActions(FadeOut::create(2.0f), FadeIn::create(1.0f))));
+    _loading->runAction(RepeatForever::create(
+        Sequence::create(
+        FadeOut::create(2.0f),
+        CallFunc::create(CC_CALLBACK_0(CCLoaderScene::loadingFinish, this)),
+        FadeIn::create(1.0f), 
+        nullptr)));
+    CCAudioHelper::getInstance()->preload();
+
     return true;
 }
 
 bool CCLoaderScene::initfinish()
 {
-    _finish = CSLoader::createNode("Scene/Load/finish.csb");
+    _finish = CSLoader::createNode("Layer/Load/finish.csb");
     if (nullptr == _finish)
     {
-        CCLOG("Scene/Load/loading.csb load failed!");
+        CCLOGERROR("Layer/Load/loading.csb load failed!");
         return false;
     }
     _finish->retain();
@@ -85,7 +78,7 @@ bool CCLoaderScene::initfinish()
 
 void CCLoaderScene::onEnterTransitionDidFinish()
 {
-    Node::onEnterTransitionDidFinish();
+    Node::onEnter();
 
     addChild(_loading);
     //驾照音乐等资源
@@ -98,23 +91,33 @@ void CCLoaderScene::initResourceAndPlayer(CCLoaderScene* pthis)
 {
     if (nullptr == pthis)
     {
-        CCLOG("pthis is Null!");
+        CCLOGERROR("pthis is Null!");
         return ;
     }
-    Sleep(3000);
-    pthis->getScheduler()->performFunctionInCocosThread([=]{
-        pthis->removeChild(pthis->_loading);
-        pthis->addChild(pthis->_finish);
-        pthis->_finish->runAction(Sequence::createWithTwoActions(FadeOut::create(0.0f), FadeIn::create(1.0f)));
+    pthis->scheduleOnce([=](float){
+        pthis->_finishok = true;
+    },
+        3.0f,
+        "addFinish");
+}
+
+void CCLoaderScene::loadingFinish()
+{
+    if (_finishok)
+    {
+        removeChild(_loading);
+        _loading->stopAllActions();
+        addChild(_finish);
         //没有阻塞函数通知是否完成某个动作，生硬点转换了
-        auto hydrangea = pthis->_rootNode->getChildByName<Sprite*>("hydrangea");
+        auto hydrangea = _rootNode->getChildByName<Sprite*>("hydrangea");
         auto touchEvent = EventListenerTouchOneByOne::create();
         touchEvent->setSwallowTouches(true);
-        touchEvent->onTouchBegan = CC_CALLBACK_2(CCLoaderScene::onHydrangeaTouchBegan, pthis);
-        touchEvent->onTouchMoved = CC_CALLBACK_2(CCLoaderScene::onHydrangeaTouchMove, pthis);
-        touchEvent->onTouchEnded = CC_CALLBACK_2(CCLoaderScene::onHydrangeaTouchEnded, pthis);
+        touchEvent->onTouchBegan = CC_CALLBACK_2(CCLoaderScene::onHydrangeaTouchBegan, this);
+        touchEvent->onTouchMoved = CC_CALLBACK_2(CCLoaderScene::onHydrangeaTouchMove, this);
         hydrangea->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchEvent, hydrangea);
-    });
+        _originalPosition = hydrangea->getPosition();
+    }
+
 }
 
 bool CCLoaderScene::onHydrangeaTouchBegan(Touch* touch, Event* event)
@@ -134,15 +137,18 @@ bool CCLoaderScene::onHydrangeaTouchBegan(Touch* touch, Event* event)
 void CCLoaderScene::onHydrangeaTouchMove(Touch* touch, Event* event)
 {
     auto hydrangea = dynamic_cast<Sprite*>(event->getCurrentTarget());
+    if (hydrangea->getPositionY() > touch->getLocation().y)
+    {
+        return ;
+    }
     hydrangea->setPositionY(touch->getLocation().y);
-}
-
-void CCLoaderScene::onHydrangeaTouchEnded(Touch* touch, Event* event)
-{
-    auto hydrangea = dynamic_cast<Sprite*>(event->getCurrentTarget());
-    if (hydrangea->getPositionY() > 900)
+    if (hydrangea->getPositionY() > 900 && !_showOther)
     {
         CCLOG("switch scene!");
+        CCAudioHelper::getInstance()->playEffect(17);
+        Director::getInstance()->replaceScene(CCMenuScene::create());
+        _showOther = true;
     }
-    
 }
+
+

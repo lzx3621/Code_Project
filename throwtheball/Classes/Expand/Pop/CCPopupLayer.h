@@ -53,4 +53,4 @@ private:
     CC_SYNTHESIZE_RETAIN(cocos2d::Label*, m__ltTitle, LabelTitle);
     CC_SYNTHESIZE_RETAIN(cocos2d::Label*, m__ltContentText, LabelContentText);
 };
-#endif __POPUPLAYER_H__
+#endif /*__POPUPLAYER_H__*/

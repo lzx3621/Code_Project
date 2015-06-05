@@ -4,18 +4,15 @@
 #include "Define.h"
 class CCSupportAdapter;
 class CCHeroAdapter;
-typedef std::function<void(CCHeroAdapter*, CCSupportAdapter*)> onHeroContact;
-typedef std::function<void(CCSupportAdapter*)> onObjectContactBottom;
+typedef std::function<void(CCHeroAdapter&,CCSupportAdapter&)> onHeroContact;
+typedef std::function<void(CCSupportAdapter&)> onObjectContactBottom;
 
 class CCHeroAdapter 
 {
 public:
-    CCHeroAdapter(void){}
-    ~CCHeroAdapter(void){}
-    virtual bool init()= 0;
-    virtual cocos2d::Sprite* getSprite() = 0;
-    virtual int getOriginLive() = 0;
-    virtual int getOriginScore() = 0;
+    CCHeroAdapter(){}
+    virtual ~CCHeroAdapter(void){}
+    virtual cocos2d::Sprite* getHero() = 0;
     virtual int getCurrentScore() = 0;
     virtual void setCurrentScore(const unsigned int & val) = 0;
     virtual int getCurrentLive() = 0;
@@ -30,7 +27,7 @@ class CCSupportAdapter
 {
 public:
     CCSupportAdapter(void){}
-    ~CCSupportAdapter(void){}
+    virtual ~CCSupportAdapter(void){}
     virtual bool init()= 0;
     virtual cocos2d::Sprite* getSprite() = 0;
     virtual int getPropertyOfLive() = 0;
